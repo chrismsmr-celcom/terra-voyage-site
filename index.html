@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terra Voyage</title>
   <!-- Favicon principal -->
-<link rel="icon" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png" type="image/png">
-
+<link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
 <!-- Pour compatibilité avec tous les navigateurs -->
-<link rel="shortcut icon" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
 
 <!-- Option Apple Touch Icon (iOS) -->
 <link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
@@ -21,41 +21,71 @@
     .modal-content { background: #111; padding: 1.5rem; border-radius: 1rem; max-width: 600px; width: 100%; }
   </style>
 </head>
-<body class="bg-black text-white font-sans antialiased">
+<body class="bg-black text-white font-sans antialiased overflow-x-hidden">
 
 <!-- NAVBAR -->
 <header class="fixed w-full z-50 bg-black/30 backdrop-blur-sm border-b border-red-700/30">
-  <div class="max-w-7xl mx-auto px-6 py-0 flex items-center justify-between">
-    <div class="flex items-center gap-1">
-      <img src="https://i.postimg.cc/j5VzVV3c/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png" class="h-20 "/>
-      <div>
-        <h1 class="text-lg font-bold tracking-wide">TERRA VOYAGE</h1>
-      </div>
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center gap-2">
+      <img src="https://i.postimg.cc/j5VzVV3c/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png" class="h-20"/>
+      <h1 class="text-lg font-bold tracking-wide text-white">TERRA VOYAGE</h1>
     </div>
-    <nav class="hidden md:flex items-center gap-8 text-sm">
+
+    <!-- Menu desktop -->
+    <nav class="hidden md:flex gap-8 text-sm text-white">
       <a href="#home" class="hover:text-red-500">Accueil</a>
       <a href="#destinations" class="hover:text-red-500">Destinations</a>
       <a href="#services" class="hover:text-red-500">Services</a>
       <a href="#about" class="hover:text-red-500">À propos</a>
       <a href="#contact" class="hover:text-red-500">Contact</a>
     </nav>
+
+    <!-- Boutons -->
     <div class="flex items-center gap-3">
-      <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20je%20souhaite%20réserver%20un%20voyage." target="_blank" rel="noreferrer" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-black/30 hover:bg-red-700">Réserver via WhatsApp</a>
-      <button id="menuBtn" class="md:hidden p-2 rounded-md focus:outline-none">☰</button>
+      <a href="https://wa.me/243854442103" class="hidden md:inline-flex px-4 py-2 rounded-lg bg-red-700 hover:bg-red-800 text-white">
+        WhatsApp
+      </a>
+      <button id="menuBtn" class="md:hidden text-2xl text-white focus:outline-none">☰</button>
     </div>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden px-6 pb-6">
-    <nav class="flex flex-col gap-3 text-base">
-      <a href="#home" onclick="toggleMenu()">Accueil</a>
-      <a href="#destinations" onclick="toggleMenu()">Destinations</a>
-      <a href="#services" onclick="toggleMenu()">Services</a>
-      <a href="#about" onclick="toggleMenu()">À propos</a>
-      <a href="#contact" onclick="toggleMenu()">Contact</a>
-      <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20je%20souhaite%20réserver%20un%20voyage." target="_blank" rel="noreferrer" class="mt-2 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600">Réserver via WhatsApp</a>
-    </nav>
+
+  <!-- Mobile overlay iOS-safe -->
+  <div id="menuOverlay" class="fixed inset-0 z-[999] hidden">
+    <!-- Fond semi-transparent + blur -->
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeMenu()"></div>
+
+    <!-- Menu latéral -->
+    <div id="menuPanel" class="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-white text-black shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col px-6 pt-8">
+      <div class="flex justify-between items-center mb-8">
+        <h3 class="text-xl font-bold text-red-600">Terra Voyage</h3>
+        <button id="closeMenuBtn" class="text-3xl">&times;</button>
+      </div>
+
+      <nav class="flex flex-col gap-6 text-lg">
+        <a href="#home" onclick="closeMenu()">Accueil</a>
+        <a href="#destinations" onclick="closeMenu()">Destinations</a>
+        <a href="#services" onclick="closeMenu()">Services</a>
+        <a href="#about" onclick="closeMenu()">À propos</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+
+        <hr class="border-gray-300">
+
+        <a href="#hotels" onclick="closeMenu()">Réservation d’hôtel</a>
+        <a href="#insurance" onclick="closeMenu()">Assurance voyage</a>
+        <a href="#car-rental" onclick="closeMenu()">Car rental</a>
+        <a href="#transfers" onclick="closeMenu()">Transfers</a>
+
+        <a href="https://wa.me/243854442103" target="_blank" rel="noreferrer" class="mt-6 bg-red-600 text-center py-3 rounded-xl font-semibold text-white">
+          WhatsApp
+        </a>
+      </nav>
+    </div>
   </div>
 </header>
-
+<main class="pt-24">
+  <!-- tes sections ici -->
+</main>
 <!-- HERO dynamique avec Multi-villes modifiable -->
 <section id="home" class="relative h-[95vh] pt-24 flex items-center overflow-hidden"> <!-- Background dynamique --> 
 <div id="heroBg" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-50"></div> <!-- Overlay gradient -->
@@ -1279,12 +1309,29 @@ Avec Terra Voyage, vous êtes assuré de payer le bon prix, sans compromis sur l
     <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Maldives." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
   </div>
 </div>
+
 <script>
-  function openModal(id){document.getElementById(id).style.display='flex'}
-  function closeModal(id){document.getElementById(id).style.display='none'}
-  const menuBtn=document.getElementById('menuBtn')
-  const mobileMenu=document.getElementById('mobileMe')
-   </script>
-  </footer>
+  const menuBtn = document.getElementById('menuBtn');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuPanel = document.getElementById('menuPanel');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+  menuBtn.addEventListener('click', () => {
+    menuOverlay.classList.remove('hidden');
+    setTimeout(() => menuPanel.classList.remove('translate-x-full'), 10);
+  });
+
+  function closeMenu() {
+    menuPanel.classList.add('translate-x-full');
+    setTimeout(() => menuOverlay.classList.add('hidden'), 300);
+  }
+
+  closeMenuBtn.addEventListener('click', closeMenu);
+  // Clique sur le fond pour fermer
+  menuOverlay.addEventListener('click', (e) => {
+    if (e.target === menuOverlay) closeMenu();
+  });
+</script>
+</footer>
 </body>
 </html>
