@@ -1,1686 +1,1593 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terra Voyage</title>
-
-  <!-- Favicon principal -->
-<link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
-<!-- Pour compatibilité avec tous les navigateurs -->
-  <link rel="icon" type="image/png" sizes="96x96" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
-
-<!-- Option Apple Touch Icon (iOS) -->
-<link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
-  <meta name="description" content="Terra Voyage – Agence de voyage premium. Billets d’avion, visas, hôtels et voyages sur mesure.">
-  <meta name="keywords" content="agence de voyage, visa, billet d'avion, voyage sur mesure, Terra Voyage">
-  <meta name="author" content="Terra Voyage">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .modal { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index:50; }
-    .modal-content { background: #111; padding: 1.5rem; border-radius: 1rem; max-width: 600px; width: 100%; }
-  </style>
-</head>
-<body class="bg-black text-white font-sans antialiased overflow-x-hidden">
-
-<!-- NAVBAR -->
-<header class="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-red-700/30">
-  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-
-    <div class="flex items-center gap-2">
-      <img src="https://i.postimg.cc/j5VzVV3c/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png"
-           class="h-14 w-auto" alt="Terra Voyage logo">
-      <span class="font-bold tracking-wide">TERRA VOYAGE</span>
-    </div>
-
-    <nav class="hidden md:flex gap-8 text-sm">
-      <a href="#home" class="hover:text-red-500">Accueil</a>
-      <a href="#destinations" class="hover:text-red-500">Destinations</a>
-      <a href="#services" class="hover:text-red-500">Services</a>
-      <a href="#about" class="hover:text-red-500">À propos</a>
-      <a href="#contact" class="hover:text-red-500">Contact</a>
-    </nav>
-
-    <div class="flex items-center gap-4">
-      <a href="https://wa.me/243854442103"
-         class="hidden md:inline-flex px-4 py-2 rounded-lg bg-red-700 hover:bg-red-800">
-        WhatsApp
-      </a>
-      <button id="menuBtn" class="md:hidden p-4 rounded-md focus:outline-none">☰</button>
-    </div>
-  </div>
-  <!-- Mobile overlay -->
-  <div id="mobileOverlay" class="fixed inset-0 bg-black/70 hidden z-40 transition-opacity duration-300"></div>
-
-  <!-- Mobile menu panel -->
-  <div id="mobileMenuPanel" class="fixed top-0 right-0 h-screen w-4/5 max-w-sm bg-white text-black shadow-2xl transform translate-x-full transition-transform duration-300 ease-out z-50 flex flex-col px-6 pt-8">
-    <div class="flex justify-between items-center mb-6">
-      <h3 class="text-xl font-bold text-red-600">Terra Voyage</h3>
-      <button id="closeMenuBtn" class="text-3xl">&times;</button>
-    </div>
-
-    <!-- Contenu du menu scrollable -->
-    <nav class="flex-1 overflow-y-auto flex flex-col gap-4 text-base font-poppins">
-      <!-- NAVIGATION PRINCIPALE -->
-      <a href="#home" onclick="toggleMenu()">Accueil</a>
-      <a href="#destinations" onclick="toggleMenu()">Destinations</a>
-      <a href="#services" onclick="toggleMenu()">Services</a>
-      <a href="#about" onclick="toggleMenu()">À propos</a>
-      <a href="#contact" onclick="toggleMenu()">Contact</a>
-
-      <hr class="border-gray-300 my-2">
-
-      <a href="#hotels" onclick="toggleMenu()">Réservation d’hôtel</a>
-      <a href="#insurance" onclick="toggleMenu()">Assurance voyage</a>
-      <a href="#car-rental" onclick="toggleMenu()">Car rental</a>
-      <a href="#transfers" onclick="toggleMenu()">Transfers</a>
-
-      <hr class="border-gray-300 my-2">
-
-      <!-- LIENS LÉGAUX / INFO -->
-      <a href="#" data-modal="legal" onclick="toggleMenu()">Mentions légales</a>
-      <a href="#" data-modal="privacy" onclick="toggleMenu()">Politique de confidentialité</a>
-      <a href="#" data-modal="terms" onclick="toggleMenu()">Conditions d'utilisation</a>
-      <a href="#" data-modal="cookies" onclick="toggleMenu()">Politique de cookie</a>
-      <a href="#" data-modal="help" onclick="toggleMenu()">Aide</a>
-      <a href="#payment" onclick="toggleMenu()">Options de paiement</a>
-      <a href="https://chrismsmr-celcom.github.io/mak24mus/" target="_blank" rel="noreferrer">Makem Groupe</a>
-
-      <!-- LANGUE -->
-      <button id="changeLang" class="mt-4 px-4 py-2 rounded-lg border border-gray-400 text-black font-semibold">
-        Langue : FR
-      </button>
-
-      <!-- Devis interactif -->
-      <div class="mt-4 px-4 py-3 border border-gray-400 rounded-lg">
-        <span class="font-semibold">Devis accepté :</span>
-        <div class="mt-2 flex flex-wrap gap-3 text-sm">
-          <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-            <i class="fas fa-dollar-sign"></i> USD
-          </span>
-          <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-            <i class="fas fa-euro-sign"></i> EUR
-          </span>
-          <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-            <i class="fas fa-coins"></i> CDF
-          </span>
-          <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-            <i class="fab fa-bitcoin"></i> BTC
-          </span>
-          <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-            <i class="fab fa-bnb"></i> BNB
-          </span>
-        </div>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Terra Voyage</title>
+      <!-- Favicon principal -->
+      <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
+      <!-- Pour compatibilité avec tous les navigateurs -->
+      <link rel="icon" type="image/png" sizes="96x96" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
+      <link rel="icon" type="image/png" sizes="192x192" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
+      <!-- Option Apple Touch Icon (iOS) -->
+      <link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
+      <meta name="description" content="Terra Voyage – Agence de voyage premium. Billets d’avion, visas, hôtels et voyages sur mesure.">
+      <meta name="keywords" content="agence de voyage, visa, billet d'avion, voyage sur mesure, Terra Voyage">
+      <meta name="author" content="Terra Voyage">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+         .modal { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index:50; }
+         .modal-content { background: #111; padding: 1.5rem; border-radius: 1rem; max-width: 600px; width: 100%; }
+      </style>
+   </head>
+   <body class="bg-black text-white font-sans antialiased overflow-x-hidden">
+      <!-- NAVBAR -->
+      <header class="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-red-700/30">
+         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+               <img src="https://i.postimg.cc/j5VzVV3c/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png"
+                  class="h-14 w-auto" alt="Terra Voyage logo">
+               <span class="font-bold tracking-wide">TERRA VOYAGE</span>
+            </div>
+            <nav class="hidden md:flex gap-8 text-sm">
+               <a href="#home" class="hover:text-red-500">Accueil</a>
+               <a href="#destinations" class="hover:text-red-500">Destinations</a>
+               <a href="#services" class="hover:text-red-500">Services</a>
+               <a href="#about" class="hover:text-red-500">À propos</a>
+               <a href="#contact" class="hover:text-red-500">Contact</a>
+            </nav>
+            <div class="flex items-center gap-4">
+               <a href="https://wa.me/243854442103"
+                  class="hidden md:inline-flex px-4 py-2 rounded-lg bg-red-700 hover:bg-red-800">
+               WhatsApp
+               </a>
+               <button id="menuBtn" class="md:hidden p-4 rounded-md focus:outline-none">☰</button>
+            </div>
+         </div>
+         <!-- Mobile overlay -->
+         <div id="mobileOverlay" class="fixed inset-0 bg-black/70 hidden z-40 transition-opacity duration-300"></div>
+         <!-- Mobile menu panel -->
+         <div id="mobileMenuPanel" class="fixed top-0 right-0 h-screen w-4/5 max-w-sm bg-white text-black shadow-2xl transform translate-x-full transition-transform duration-300 ease-out z-50 flex flex-col px-6 pt-8">
+            <div class="flex justify-between items-center mb-6">
+               <h3 class="text-xl font-bold text-red-600">Terra Voyage</h3>
+               <button id="closeMenuBtn" class="text-3xl">&times;</button>
+            </div>
+            <!-- Contenu du menu scrollable -->
+            <nav class="flex-1 overflow-y-auto flex flex-col gap-4 text-base font-poppins">
+               <!-- NAVIGATION PRINCIPALE -->
+               <a href="#home" onclick="toggleMenu()">Accueil</a>
+               <a href="#destinations" onclick="toggleMenu()">Destinations</a>
+               <a href="#services" onclick="toggleMenu()">Services</a>
+               <a href="#about" onclick="toggleMenu()">À propos</a>
+               <a href="#contact" onclick="toggleMenu()">Contact</a>
+               <hr class="border-gray-300 my-2">
+               <a href="#hotels" onclick="toggleMenu()">Réservation d’hôtel</a>
+               <a href="#insurance" onclick="toggleMenu()">Assurance voyage</a>
+               <a href="#car-rental" onclick="toggleMenu()">Car rental</a>
+               <a href="#transfers" onclick="toggleMenu()">Transfers</a>
+               <hr class="border-gray-300 my-2">
+               <!-- LIENS LÉGAUX / INFO -->
+               <a href="#" data-modal="legal" onclick="toggleMenu()">Mentions légales</a>
+               <a href="#" data-modal="privacy" onclick="toggleMenu()">Politique de confidentialité</a>
+               <a href="#" data-modal="terms" onclick="toggleMenu()">Conditions d'utilisation</a>
+               <a href="#" data-modal="cookies" onclick="toggleMenu()">Politique de cookie</a>
+               <a href="#" data-modal="help" onclick="toggleMenu()">Aide</a>
+               <a href="#payment" onclick="toggleMenu()">Options de paiement</a>
+               <a href="https://chrismsmr-celcom.github.io/mak24mus/" target="_blank" rel="noreferrer">Makem Groupe</a>
+               <!-- LANGUE -->
+               <button id="changeLang" class="mt-4 px-4 py-2 rounded-lg border border-gray-400 text-black font-semibold">
+               Langue : FR
+               </button>
+               <!-- Devis interactif -->
+               <div class="mt-4 px-4 py-3 border border-gray-400 rounded-lg">
+                  <span class="font-semibold">Devis accepté :</span>
+                  <div class="mt-2 flex flex-wrap gap-3 text-sm">
+                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
+                     <i class="fas fa-dollar-sign"></i> USD
+                     </span>
+                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
+                     <i class="fas fa-euro-sign"></i> EUR
+                     </span>
+                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
+                     <i class="fas fa-coins"></i> CDF
+                     </span>
+                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
+                     <i class="fab fa-bitcoin"></i> BTC
+                     </span>
+                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
+                     <i class="fab fa-bnb"></i> BNB
+                     </span>
+                  </div>
+               </div>
+               <a href="https://wa.me/243854442103" target="_blank" rel="noreferrer" class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-red-600 text-white font-semibold">
+               WhatsApp
+               </a>
+            </nav>
+         </div>
+      </header>
+      <main class="pt-24">
+         <!-- tes sections ici -->
+      </main>
+      <!-- HERO dynamique avec Multi-villes modifiable -->
+      <section id="home" class="relative h-[95vh] pt-24 flex items-center overflow-hidden">
+         <!-- Background dynamique --> 
+         <div id="heroBg" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-50"></div>
+         <!-- Overlay gradient -->
+         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80"></div>
+         <!-- Contenu --> 
+         <div class="relative z-10 max-w-7xl 
+            mx-auto px-6 w-full">
+         <div class="max-w-3xl text-white">
+            <span class=
+            <span id="welcomeText" class="inline-block mb-4 px-4 py-3 rounded-full bg-red-600/90-backdrop-30 text-sm font-semibold text-white opacity-0 transform translate-y-6">
+               <script>
+                  window.addEventListener('load', () => {
+                    const text = document.getElementById('welcomeText');
+                    
+                    // Apparition avec fade-in + petit bounce
+                    text.classList.add('transition', 'duration-1000', 'opacity-100', '-translate-y-2');
+                    
+                    // Bounce léger toutes les 300ms pendant 1s
+                    let bounceCount = 0;
+                    const bounceInterval = setInterval(() => {
+                      if (bounceCount >= 3) {
+                        clearInterval(bounceInterval);
+                        return;
+                      }
+                      text.classList.toggle('-translate-y-3');
+                      text.classList.toggle('-translate-y-2');
+                      bounceCount++;
+                    }, 300);
+                  
+                    // Disparition après 4 secondes avec translation vers le haut
+                    setTimeout(() => {
+                      text.classList.remove('opacity-100', '-translate-y-2');
+                      text.classList.add('opacity-0', '-translate-y-8');
+                    }, 4000); // 4s
+                  });
+               </script> 
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight opacity-0 animate-zoomIn">
+               Voyagez autrement.<br class="hidden md:block"> Avec élégance et précision.
+            </h1>
+            <style>
+               @keyframes zoomIn {
+               0% { opacity: 0; transform: scale(0.8); }
+               100% { opacity: 1; transform: scale(1); }
+               }
+               .animate-zoomIn {
+               animation: zoomIn 1s ease forwards;
+               }
+            </style>
+            </h1> 
+            <p class="mt-5 text-gray-300 text-lg"> Vols internationaux, hôtels, assurances et accompagnement personnalisé. Terra Voyage s’occupe de tout, avec rigueur et excellence. </p>
+            <!-- Formulaire -->
+            <!-- FORMULAIRE HERO -->
+            <form id="heroForm"
+               onsubmit="openWhatsAppHero(event)"
+               class="mt-8 max-w-6xl mx-auto
+               bg-gray-900/80 backdrop-blur-xl
+               p-4 sm:p-6 md:p-8
+               rounded-2xl shadow-2xl
+               grid grid-cols-1 md:grid-cols-7 gap-4 w-full">
+               <!-- TYPE DE VOYAGE -->
+               <div class="md:col-span-7 flex flex-wrap gap-4 text-sm text-gray-200">
+                  <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="tripType" value="Aller simple" checked onchange="toggleTrip(this)">
+                  Aller simple
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="tripType" value="Aller-retour" onchange="toggleTrip(this)">
+                  Aller-retour
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer"> <label id="multiVilleLabel" data-trip="multi" class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="tripType" value="Multi-villes" onchange="toggleTrip(this)">
+                  Multi-villes
+                  </label>
+               </div>
+               <!-- SEGMENTS -->
+               <div id="segmentsContainer" class="md:col-span-7 flex flex-col gap-3"></div>
+               <!-- BOUTONS MULTI-VILLES -->
+               <div id="multiBtns" class="md:col-span-7 flex gap-2 hidden">
+                  <button type="button"
+                     onclick="addSegment()"
+                     class="px-4 py-2 text-sm bg-gray-700 hover:bg-red-600 rounded-lg text-white font-semibold transition">
+                  + Segment
+                  </button>
+                  <button type="button"
+                     onclick="removeSegment()"
+                     class="px-4 py-2 text-sm bg-gray-700 hover:bg-red-600 rounded-lg text-white font-semibold transition">
+                  − Segment
+                  </button>
+               </div>
+               <!-- PASSAGERS -->
+               <div class="md:col-span-2">
+                  <select id="passengersHero"
+                     class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white text-sm
+                     focus:outline-none focus:ring-2 focus:ring-red-600">
+                     <option>1 passager</option>
+                     <option>2 passagers</option>
+                     <option>3 passagers</option>
+                     <option>4 passagers</option>
+                     <option>5 passagers</option>
+                  </select>
+               </div>
+               <!-- BOUTON RECHERCHE -->
+               <div class="md:col-span-2">
+                  <button type="submit"
+                     class="w-full px-6 py-3 bg-red-600 hover:bg-red-700
+                     rounded-lg font-bold text-white
+                     transition transform hover:scale-[1.02]">
+                  Rechercher
+                  </button>
+               </div>
+            <form onsubmit="openWhatsAppHero(event)">
+            </form>
+         </div>
+         <!-- Scripts -->
+         <script>
+            (function () {
+            
+              const heroForm = document.getElementById('heroForm');
+              if (!heroForm) return; // 🔒 sécurité : rien ne s’exécute hors hero
+            
+              /* =========================
+                 WHATSAPP SUBMIT
+              ========================= */
+              heroForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+            
+                const tripType = heroForm.querySelector('input[name="tripType"]:checked')?.value || '';
+                const segments = heroForm.querySelectorAll('.segment');
+                const passengers = heroForm.querySelector('#passengersHero')?.value || '';
+            
+                let message = `Bonjour Terra Voyage, je souhaite réserver un vol ${tripType}`;
+            
+                segments.forEach((seg, index) => {
+                  const texts = seg.querySelectorAll('input[type="text"]');
+                  const dates = seg.querySelectorAll('input[type="date"]');
+            
+                  const from = texts[0]?.value || '';
+                  const to   = texts[1]?.value || '';
+                  const dep  = dates[0]?.value || '';
+                  const ret  = dates[1]?.value || '';
+            
+                  message += `\nSegment ${index + 1} : de ${from} vers ${to} le ${dep}`;
+                  if (ret) message += ` avec retour le ${ret}`;
+                });
+            
+                message += `\nNombre de passagers : ${passengers}.`;
+            
+                window.open(
+                  `https://wa.me/243854442103?text=${encodeURIComponent(message)}`,
+                  '_blank'
+                );
+              });
+            
+              /* =========================
+                 MULTI-VILLE : DESACTIVÉ SUR MOBILE
+              ========================= */
+              function handleMobileMultiVille() {
+                const multiInput = heroForm.querySelector('input[value="Multi-villes"]');
+                const multiLabel = heroForm.querySelector('[data-trip="multi"]');
+            
+                if (!multiInput || !multiLabel) return;
+            
+                if (window.innerWidth < 768) {
+                  multiInput.disabled = true;
+                  multiLabel.classList.add('opacity-50', 'pointer-events-none');
+            
+                  if (multiInput.checked) {
+                    const fallback = heroForm.querySelector('input[value="Aller-retour"]');
+                    fallback.checked = true;
+                    toggleTrip(fallback);
+                  }
+                } else {
+                  multiInput.disabled = false;
+                  multiLabel.classList.remove('opacity-50', 'pointer-events-none');
+                }
+              }
+            
+              window.addEventListener('resize', handleMobileMultiVille);
+              handleMobileMultiVille(); // init
+            
+            })();
+            
+            const airports = [
+            
+              // ================= RDC =================
+              { city: "Kinshasa", airport: "Tous les aéroports", iata: "FIH-ALL" },
+              { city: "Kinshasa", airport: "N'Djili International", iata: "FIH" },
+              { city: "Kinshasa", airport: "N'Dolo", iata: "NLO" },
+              { city: "Lubumbashi", airport: "Lubumbashi International", iata: "FBM" },
+              { city: "Goma", airport: "Goma International", iata: "GOM" },
+              { city: "Kisangani", airport: "Bangoka", iata: "FKI" },
+              { city: "Bukavu", airport: "Kavumu", iata: "BKY" },
+            
+              // ================= AFRIQUE =================
+              { city: "Johannesburg", airport: "Tous les aéroports", iata: "JNB-ALL" },
+              { city: "Johannesburg", airport: "OR Tambo International", iata: "JNB" },
+            
+              { city: "Cape Town", airport: "Cape Town International", iata: "CPT" },
+              { city: "Nairobi", airport: "Jomo Kenyatta International", iata: "NBO" },
+              { city: "Addis Ababa", airport: "Bole International", iata: "ADD" },
+              { city: "Lagos", airport: "Murtala Muhammed International", iata: "LOS" },
+              { city: "Cairo", airport: "Cairo International", iata: "CAI" },
+              { city: "Casablanca", airport: "Mohammed V", iata: "CMN" },
+              { city: "Dakar", airport: "Blaise Diagne", iata: "DSS" },
+            
+              // ================= EUROPE =================
+              { city: "Paris", airport: "Tous les aéroports", iata: "PAR-ALL" },
+              { city: "Paris", airport: "Charles de Gaulle", iata: "CDG" },
+              { city: "Paris", airport: "Orly", iata: "ORY" },
+            
+              { city: "London", airport: "Tous les aéroports", iata: "LON-ALL" },
+              { city: "London", airport: "Heathrow", iata: "LHR" },
+              { city: "London", airport: "Gatwick", iata: "LGW" },
+            
+              { city: "Brussels", airport: "Brussels Airport", iata: "BRU" },
+              { city: "Amsterdam", airport: "Schiphol", iata: "AMS" },
+              { city: "Frankfurt", airport: "Frankfurt International", iata: "FRA" },
+              { city: "Munich", airport: "Munich International", iata: "MUC" },
+              { city: "Madrid", airport: "Barajas", iata: "MAD" },
+              { city: "Barcelona", airport: "El Prat", iata: "BCN" },
+              { city: "Rome", airport: "Fiumicino", iata: "FCO" },
+              { city: "Zurich", airport: "Zurich Airport", iata: "ZRH" },
+            
+              // ================= MOYEN-ORIENT =================
+              { city: "Dubai", airport: "Tous les aéroports", iata: "DXB-ALL" },
+              { city: "Dubai", airport: "Dubai International", iata: "DXB" },
+            
+              { city: "Abu Dhabi", airport: "Zayed International", iata: "AUH" },
+              { city: "Doha", airport: "Hamad International", iata: "DOH" },
+              { city: "Riyadh", airport: "King Khalid International", iata: "RUH" },
+              { city: "Jeddah", airport: "King Abdulaziz International", iata: "JED" },
+              { city: "Istanbul", airport: "Tous les aéroports", iata: "IST-ALL" },
+              { city: "Istanbul", airport: "Istanbul Airport", iata: "IST" },
+            
+              // ================= ASIE =================
+              { city: "Tokyo", airport: "Tous les aéroports", iata: "TYO-ALL" },
+              { city: "Tokyo", airport: "Narita International", iata: "NRT" },
+              { city: "Tokyo", airport: "Haneda", iata: "HND" },
+            
+              { city: "Bangkok", airport: "Tous les aéroports", iata: "BKK-ALL" },
+              { city: "Bangkok", airport: "Suvarnabhumi", iata: "BKK" },
+              { city: "Bangkok", airport: "Don Mueang", iata: "DMK" },
+            
+              { city: "Singapore", airport: "Changi", iata: "SIN" },
+              { city: "Hong Kong", airport: "Hong Kong International", iata: "HKG" },
+              { city: "Seoul", airport: "Incheon International", iata: "ICN" },
+              { city: "Beijing", airport: "Capital International", iata: "PEK" },
+              { city: "Shanghai", airport: "Pudong International", iata: "PVG" },
+              { city: "Delhi", airport: "Indira Gandhi International", iata: "DEL" },
+              { city: "Mumbai", airport: "Chhatrapati Shivaji", iata: "BOM" },
+            
+              // ================= AMÉRIQUE DU NORD =================
+              { city: "New York", airport: "Tous les aéroports", iata: "NYC-ALL" },
+              { city: "New York", airport: "JFK", iata: "JFK" },
+              { city: "New York", airport: "Newark Liberty", iata: "EWR" },
+            
+              { city: "Washington", airport: "Dulles International", iata: "IAD" },
+              { city: "Atlanta", airport: "Hartsfield-Jackson", iata: "ATL" },
+              { city: "Los Angeles", airport: "Los Angeles International", iata: "LAX" },
+              { city: "Toronto", airport: "Pearson International", iata: "YYZ" },
+              { city: "Montreal", airport: "Pierre Elliott Trudeau", iata: "YUL" },
+            
+              // ================= AMÉRIQUE DU SUD =================
+              { city: "São Paulo", airport: "Tous les aéroports", iata: "SAO-ALL" },
+              { city: "São Paulo", airport: "Guarulhos International", iata: "GRU" },
+            
+              { city: "Rio de Janeiro", airport: "Galeão International", iata: "GIG" },
+              { city: "Buenos Aires", airport: "Ezeiza International", iata: "EZE" },
+              { city: "Santiago", airport: "Arturo Merino Benítez", iata: "SCL" },
+              { city: "Lima", airport: "Jorge Chávez International", iata: "LIM" },
+              { city: "Bogotá", airport: "El Dorado International", iata: "BOG" },
+            
+              // ================= OCÉANIE =================
+              { city: "Sydney", airport: "Sydney International", iata: "SYD" },
+              { city: "Melbourne", airport: "Melbourne Airport", iata: "MEL" },
+              { city: "Brisbane", airport: "Brisbane Airport", iata: "BNE" },
+              { city: "Auckland", airport: "Auckland International", iata: "AKL" }
+            
+            ];
+            // Suggestions IATA
+            function showSuggestions(input) {
+              const segment = input.closest('.segment');
+              const list = segment.querySelector('.suggestions');
+            
+              list.innerHTML = '';
+            
+              if (!input.value) {
+                list.classList.add('hidden');
+                return;
+              }
+            
+              const value = input.value.toLowerCase();
+            
+              const filtered = airports.filter(a =>
+                a.city.toLowerCase().includes(value) ||
+                a.airport.toLowerCase().includes(value) ||
+                a.iata.toLowerCase().includes(value)
+              );
+            
+              if (filtered.length === 0) {
+                list.classList.add('hidden');
+                return;
+              }
+            
+              filtered.forEach(a => {
+                const li = document.createElement('li');
+                li.className = "px-4 py-2 cursor-pointer hover:bg-red-600 flex justify-between";
+                li.innerHTML = `<span>${a.city} – ${a.airport}</span><strong>${a.iata}</strong>`;
+                li.onclick = () => {
+                  input.value = `${a.city} (${a.iata})`;
+                  list.classList.add('hidden');
+                };
+                list.appendChild(li);
+              });
+            
+              list.classList.remove('hidden');
+            }
+            
+            // Trip toggle
+            function toggleTrip(radio) {
+              const container = document.getElementById('segmentsContainer');
+              const multiBtns = document.getElementById('multiBtns');
+            
+              container.innerHTML = '';
+            
+              if (radio.value === 'Aller simple' || radio.value === 'Aller-retour') {
+                container.appendChild(createSegment(radio.value === 'Aller-retour'));
+                multiBtns.classList.add('hidden');
+              } else {
+                container.appendChild(createSegment(true));
+                container.appendChild(createSegment(true));
+                multiBtns.classList.remove('hidden');
+              }
+            }
+            
+            // Créer un segment
+            function createSegment(showReturn) {
+              const div = document.createElement('div');
+            
+              /* GRID RESPONSIVE UNIQUE */
+              div.className = `
+              segment
+              grid grid-cols-1
+              gap-2
+              p-3 rounded-xl
+              bg-gray-900/60
+              md:bg-transparent md:p-0
+              md:grid-cols-4
+              md:gap-3
+            `;
+              /* DÉPART */
+            const fromDiv = document.createElement('div');
+            fromDiv.className = 'relative';
+            
+            const fromInput = document.createElement('input');
+            fromInput.type = 'text';
+            fromInput.placeholder = 'Départ';
+            fromInput.className = `
+              w-full
+              px-3 py-2
+              md:px-4 md:py-3
+              rounded-lg
+              bg-gray-800 text-white text-sm
+              focus:outline-none focus:ring-2 focus:ring-red-600
+            `;
+            fromInput.oninput = () => showSuggestions(fromInput);
+            
+            const fromUl = document.createElement('ul');
+            fromUl.className = `
+              suggestions absolute left-0 right-0 mt-1
+              bg-gray-800 rounded-lg shadow-xl
+              max-h-48 overflow-y-auto
+              hidden z-50 text-sm
+            `;
+            
+            fromDiv.appendChild(fromInput);
+            fromDiv.appendChild(fromUl);
+            
+              /* DESTINATION */
+            const toDiv = document.createElement('div');
+            toDiv.className = 'relative';
+            
+            const toInput = document.createElement('input');
+            toInput.type = 'text';
+            toInput.placeholder = 'Destination';
+            toInput.className = `
+              w-full
+              px-3 py-2
+              md:px-4 md:py-3
+              rounded-lg
+              bg-gray-800 text-white text-sm
+              focus:outline-none focus:ring-2 focus:ring-red-600
+            `;
+            toInput.oninput = () => showSuggestions(toInput);
+            
+            const toUl = document.createElement('ul');
+            toUl.className = `
+              suggestions absolute left-0 right-0 mt-1
+              bg-gray-800 rounded-lg shadow-xl
+              max-h-48 overflow-y-auto
+              hidden z-50 text-sm
+            `;
+            
+            toDiv.appendChild(toInput);
+            toDiv.appendChild(toUl);
+            
+              /* DATE DÉPART */
+              const dep = document.createElement('input');
+              dep.type = 'date';
+              dep.className = `
+                w-full px-4 py-3 rounded-lg
+                bg-gray-800 text-white text-sm
+                focus:outline-none focus:ring-2 focus:ring-red-600
+              `;
+            
+              /* DATE RETOUR */
+              const ret = document.createElement('input');
+              ret.type = 'date';
+              ret.className = `
+                w-full px-4 py-3 rounded-lg
+                bg-gray-800 text-white text-sm
+                focus:outline-none focus:ring-2 focus:ring-red-600
+              `;
+              if (!showReturn) ret.classList.add('hidden');
+            
+              /* ASSEMBLAGE */
+              div.appendChild(fromDiv);
+              div.appendChild(toDiv);
+              div.appendChild(dep);
+              div.appendChild(ret);
+            
+              return div;
+            }
+            // Ajouter / retirer segment
+            function addSegment() {
+              const container = document.getElementById('segmentsContainer');
+              const segments = container.querySelectorAll('.segment');
+              if (segments.length >= 5) return;
+              container.appendChild(createSegment(true));
+            }
+            
+            function removeSegment() {
+              const container = document.getElementById('segmentsContainer');
+              const segments = container.querySelectorAll('.segment');
+              if (segments.length <= 2) return;
+              container.removeChild(segments[segments.length - 1]);
+            }
+            // Background Hero
+            const heroBg=document.getElementById('heroBg');
+            const images=[
+              'https://images.unsplash.com/photo-1705874930271-88eeb8f533dc?w=1600&q=80',
+              'https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?w=1600&q=80',
+              'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1600&q=80',
+              'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1600&q=80',
+              'https://images.unsplash.com/photo-1565099824688-e93eb20fe622?w=1600&q=80',
+              'https://images.unsplash.com/photo-1636216056866-2051e801988c?=1600&q=80',
+              'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=1600&q=80',
+              'https://images.unsplash.com/photo-1467377791767-c929b5dc9a23?w=1600&q=80'
+            ];
+            let current=0;
+            heroBg.style.backgroundImage=`url('${images[0]}')`;
+            setInterval(()=>{
+              heroBg.style.opacity=0;
+              setTimeout(()=>{
+                current=(current+1)%images.length;
+                heroBg.style.backgroundImage=`url('${images[current]}')`;
+                heroBg.style.opacity=0.3;
+              },1000);
+            },50000);
+            
+            // Init segments
+            document.addEventListener('DOMContentLoaded',()=>{
+              toggleTrip(document.querySelector('input[name="tripType"]:checked'));
+            });
+         </script>
+      </section>
+      <!-- DESTINATIONS -->
+      <section id="destinations" class="py-20 bg-gray-950 text-white overflow-hidden">
+         <div class="max-w-7xl mx-auto px-6">
+            <h3 class="text-3xl font-bold text-center text-red-600">
+               Destinations populaires
+            </h3>
+            <p class="text-center text-gray-400 mt-2">
+               Des voyages créés pour ceux qui aiment le raffinement.
+            </p>
+            <!-- DESKTOP GRID -->
+            <div class="hidden md:grid mt-12 gap-8 grid-cols-3">
+               <!-- DUBAÏ -->
+               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+                  <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80"
+                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
+                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+                  <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+                     <h4 class="text-xl font-semibold text-white">Dubaï</h4>
+                     <p class="text-sm text-gray-200 mt-1">Luxe, shopping et désert</p>
+                     <div class="mt-3 flex justify-between text-sm text-gray-200">
+                        <span>6j / 5n</span>
+                        <span class="font-semibold text-white">Dès 1 799 $</span>
+                     </div>
+                     <div class="mt-4 flex gap-3">
+                        <button onclick="openModal('dubaiModal')" class="flex-1 px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600 transition">En savoir plus</button>
+                        <a href="https://wa.me/243854442103" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 transition">WhatsApp</a>
+                     </div>
+                  </div>
+               </div>
+               <!-- ZANZIBAR -->
+               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+                  <img src="https://images.unsplash.com/photo-1758040223029-2259eb8141fd?w=500&q=80"
+                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
+                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+                     <h4 class="text-xl font-semibold text-white">Zanzibar</h4>
+                     <p class="text-sm text-gray-200">Plages & détente</p>
+                     <div class="mt-3 flex justify-between text-sm text-gray-200">
+                        <span>7j / 6n</span>
+                        <span class="font-semibold">Dès 1 100 $</span>
+                     </div>
+                     <button onclick="openModal('zanzibarModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+                  </div>
+               </div>
+               <!-- ISTANBUL -->
+               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+                  <img src="https://images.unsplash.com/photo-1589561454226-796a8aa89b05?w=1600&q=80"
+                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
+                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+                     <h4 class="text-xl font-semibold text-white">Istanbul</h4>
+                     <p class="text-sm text-gray-200">Histoire & gastronomie</p>
+                     <div class="mt-3 flex justify-between text-sm text-gray-200">
+                        <span>5j / 4n</span>
+                        <span class="font-semibold">Dès 1 950 $</span>
+                     </div>
+                     <button onclick="openModal('istanbulModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+                  </div>
+               </div>
+               <!-- PARIS -->
+               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+                  <img src="https://images.unsplash.com/photo-1605701877331-645ad05dcb97?w=800&q=80"
+                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
+                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+                     <h4 class="text-xl font-semibold text-white">Paris</h4>
+                     <p class="text-sm text-gray-200">Romance & culture</p>
+                     <div class="mt-3 flex justify-between text-sm text-gray-200">
+                        <span>5j / 4n</span>
+                        <span class="font-semibold">Dès 1 650 $</span>
+                     </div>
+                     <button onclick="openModal('parisModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+                  </div>
+               </div>
+               <!-- BARCELONE -->
+               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+                  <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80"
+                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
+                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+                     <h4 class="text-xl font-semibold text-white">Barcelone</h4>
+                     <p class="text-sm text-gray-200">Plage & architecture</p>
+                     <div class="mt-3 flex justify-between text-sm text-gray-200">
+                        <span>4j / 3n</span>
+                        <span class="font-semibold">Dès 1 300 $</span>
+                     </div>
+                     <button onclick="openModal('barceloneModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+                  </div>
+               </div>
+               <!-- MALDIVES -->
+               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+                  <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80"
+                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
+                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+                     <h4 class="text-xl font-semibold text-white">Maldives</h4>
+                     <p class="text-sm text-gray-200">Luxe & détente</p>
+                     <div class="mt-3 flex justify-between text-sm text-gray-200">
+                        <span>7j / 6n</span>
+                        <span class="font-semibold">Dès 2 900 $</span>
+                     </div>
+                     <button onclick="openModal('maldivesModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+                  </div>
+               </div>
+            </div>
+            <!-- fin desktop grid -->
+            <!-- MOBILE CAROUSEL 3D COVERFLOW -->
+            <div id="mobileCarousel" class="md:hidden mt-10 flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-6 px-6 py-6 scrollbar-none perspective-1000">
+               <!-- Cartes injectées via JS -->
+            </div>
+         </div>
+      </section>
+      <style>
+         /* cacher scrollbar */
+         .scrollbar-none {
+         -ms-overflow-style: none;  
+         scrollbar-width: none;      
+         }
+         .scrollbar-none::-webkit-scrollbar {
+         display: none;              
+         }
+         /* Effet coverflow léger */
+         #mobileCarousel > div {
+         transform-style: preserve-3d;
+         transition: transform 0.3s ease;
+         }
+         #mobileCarousel > div:hover {
+         transform: scale(1.05) rotateY(0deg);
+         }
+         /* Perspective pour effet 3D */
+         .perspective-1000 {
+         perspective: 1000px;
+         }
+         /* Centrage des cartes au scroll */
+         .snap-center {
+         scroll-snap-align: center;
+         }
+      </style>
+      <script>
+         const destinations = [
+           {name:'Dubaï', days:'6j / 5n', price:'1 799 $', img:'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80', modal:'dubaiModal', desc:'Luxe, shopping et désert'},
+           {name:'Zanzibar', days:'7j / 6n', price:'1 100 $', img:'https://images.unsplash.com/photo-1758040223029-2259eb8141fd?w=500&q=80', modal:'zanzibarModal', desc:'Plages & détente'},
+           {name:'Istanbul', days:'5j / 4n', price:'1 950 $', img:'https://images.unsplash.com/photo-1589561454226-796a8aa89b05?w=1600&q=80', modal:'istanbulModal', desc:'Histoire & gastronomie'},
+           {name:'Paris', days:'5j / 4n', price:'1 650 $', img:'https://images.unsplash.com/photo-1605701877331-645ad05dcb97?w=800&q=80', modal:'parisModal', desc:'Romance & culture'},
+           {name:'Barcelone', days:'4j / 3n', price:'1 300 $', img:'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80', modal:'barceloneModal', desc:'Plage & architecture'},
+           {name:'Maldives', days:'7j / 6n', price:'2 900 $', img:'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80', modal:'maldivesModal', desc:'Luxe & détente'}
+         ];
+         
+         const mobileContainer = document.getElementById('mobileCarousel');
+         
+         destinations.forEach(d => {
+           const div = document.createElement('div');
+           div.className = "min-w-[80%] flex-shrink-0 snap-center rounded-3xl overflow-hidden bg-gray-900 shadow-2xl relative hover:scale-105 transition-transform duration-300";
+           div.innerHTML = `
+             <div class="relative">
+               <img src="${d.img}" class="w-full h-64 object-cover">
+               <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+               <div class="absolute bottom-0 left-0 right-0 p-5">
+                 <h4 class="text-xl font-semibold text-white">${d.name}</h4>
+                 <p class="text-sm text-gray-200 mt-1">${d.desc}</p>
+                 <div class="mt-3 flex justify-between items-center text-sm">
+                   <span class="bg-red-600/80 text-white px-3 py-1 rounded-full font-semibold">${d.days}</span>
+                   <span class="bg-yellow-500/90 text-black px-3 py-1 rounded-full font-semibold">${d.price}</span>
+                 </div>
+                 <button onclick="openModal('${d.modal}')" class="mt-4 w-full px-4 py-2 rounded-2xl border border-gray-600 hover:border-red-600 transition">En savoir plus</button>
+               </div>
+             </div>
+           `;
+           mobileContainer.appendChild(div);
+         });
+         
+         // modal functions
+         function openModal(id) {
+           document.getElementById(id).classList.remove('hidden');
+           document.getElementById(id).classList.add('flex');
+         }
+         function closeModal(id) {
+           document.getElementById(id).classList.add('hidden');
+           document.getElementById(id).classList.remove('flex');
+         }
+         
+         // Coverflow dynamique au scroll
+         mobileContainer.addEventListener('scroll', () => {
+           const cards = mobileContainer.querySelectorAll('div');
+           const center = mobileContainer.scrollLeft + mobileContainer.offsetWidth / 2;
+           cards.forEach(card => {
+             const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+             const offset = (cardCenter - center) / 10; // ajuster l'intensité
+             card.style.transform = `rotateY(${offset}deg) scale(1)`;
+           });
+         });
+      </script>
+      <!-- ABOUT -->
+      <section id="about" class="py-20 bg-gray-50 text-gray-900">
+         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+            <div>
+               <h3 class="text-3xl font-bold">À propos de Terra Voyage</h3>
+               <p class="text-gray-900 mt-4">Terra Voyage est une agence spécialisée dans les expériences premium. Notre priorité : votre confort et des souvenirs inoubliables. Nous opérons avec transparence et une équipe locale dédiée pour chaque destination.</p>
+               <ul class="mt-6 text-gray-900 space-y-2 text-sm">
+                  <li>• Équipe bilingue (FR / EN)</li>
+                  <li>• Réservation via WhatsApp pour une personnalisation complète</li>
+                  <li>• Partenaires hôteliers sélectionnés</li>
+               </ul>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-white/5 p-4">
+               <img src="https://i.postimg.cc/YSkZfVMS/YABISO-VOYAGE-20251216-035622-0000.png" alt="Notre équipe" class="w-full h-64 object-cover rounded-lg">
+               <div class="mt-4 text-gray-900 text-sm">Nous croyons au voyage qui transforme — laissez-nous imaginer le vôtre.</div>
+            </div>
+         </div>
+      </section>
+      <!-- WHY CHOOSE US -->
+      <section class="py-20 px-6 bg-gray-50 text-gray-900">
+         <div class="max-w-6xl mx-auto">
+         <h2 class="text-3xl font-bold mb-12 text-center">Pourquoi choisir Terra Voyage</h2>
+         <!-- Onglets -->
+         <style>
+            .tab-btn svg {
+            transition: transform 0.3s ease, color 0.3s ease;
+            }
+            .tab-btn:hover svg {
+            transform: translateY(-5px);
+            color: #f59e0b; /* Jaune/orange subtil */
+            }
+            .tab-btn span {
+            position: relative;
+            display: inline-block;
+            }
+            .tab-btn span::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 0;
+            bottom: -4px;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+            }
+            .tab-btn:hover span::after {
+            width: 100%;
+            }
+         </style>
+         <div class="flex flex-wrap justify-center gap-6 mb-12">
+            <!-- Onglets -->
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+               <!-- Support 24/7 -->
+               <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="support">
+               <img src="https://cdn-icons-png.flaticon.com/128/7595/7595894.png" alt="Support 24/7" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
+               Support 24/7
+               <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Discutez avec notre équipe à tout moment</span>
+               </button>
+               <!-- Méthodes de paiement -->
+               <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="payment">
+               <img src="https://cdn-icons-png.flaticon.com/128/6993/6993595.png" alt="Paiement" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
+               Méthodes de paiement
+               <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Visa, Mastercard, Crypto, Orange Money, M-Pesa</span>
+               </button>
+               <!-- Avantages & Réductions -->
+               <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="rewards">
+               <img src="https://cdn-icons-png.flaticon.com/128/372/372768.png" alt="Avantages & Réductions" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
+               Avantages & Réductions
+               <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Offres exclusives et promotions régulières</span>
+               </button>
+               <!-- Meilleur Prix -->
+               <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="bestprice">
+               <img src="https://cdn-icons-png.flaticon.com/128/9419/9419260.png" alt="Meilleur Prix" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
+               Garantie Meilleur Prix
+               <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Nous ajustons vos tarifs si vous trouvez moins cher</span>
+               </button>
+            </div>
+            <!-- Contenu des onglets -->
+            <div class="tab-content space-y-6">
+               <div id="support" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+                  <h3 class="text-2xl font-bold mb-4">Support 24/7</h3>
+                  <p>Notre service client est disponible 24h/24 et 7j/7 pour vous accompagner à chaque étape de votre voyage.
+                     Que ce soit pour une information, une modification de réservation ou une assistance urgente, notre équipe est à votre écoute.
+                     Grâce à notre support intelligent, vous obtenez des réponses immédiates aux questions les plus fréquentes, et un conseiller dédié prend le relais dès que nécessaire via WhatsApp.
+                     Chez Terra Voyage, votre tranquillité d’esprit est une priorité, avant, pendant et après votre déplacement.
+                  </p>
+               </div>
+               <div id="payment" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+                  <!-- Méthodes de paiement -->
+                  <div id="payment" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+                     <h3 class="text-2xl font-bold mb-6">Méthodes de paiement acceptées</h3>
+                     <p class="mb-6 text-gray-900">
+                        Terra Voyage vous offre une large gamme de solutions de paiement sécurisées, locales et internationales.
+                     </p>
+                     <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center">
+                        <!-- Cartes internationales -->
+                        <img src="https://cdn-icons-png.flaticon.com/128/11378/11378185.png" alt="Mastercard" class="h-10 mx-auto">
+                        <img src="https://cdn-icons-png.flaticon.com/128/5968/5968397.png" alt="Visa" class="h-10 mx-auto">
+                        <img src="https://cdn-icons-png.flaticon.com/128/38/38971.png" alt="PayPal" class="h-10 mx-auto">
+                        <!-- Mobile Money -->
+                        <img src="https://images.seeklogo.com/logo-png/44/1/m-pesa-logo-png_seeklogo-442995.png" alt="M-Pesa" class="h-10 mx-auto">
+                        <img src="https://www.logo.wine/a/logo/Orange_Money/Orange_Money-Logo.wine.svg" alt="Orange Money" class="h-10 mx-auto">
+                        <img src="https://images.seeklogo.com/logo-png/55/1/airtel-money-uganda-logo-png_seeklogo-556391.png" alt="Airtel Money" class="h-10 mx-auto">
+                        <!-- Paiements digitaux -->
+                        <img src="https://www.logo.wine/a/logo/Google_Pay/Google_Pay-Logo.wine.svg" alt="Google Pay" class="h-10 mx-auto">
+                        <img src="https://cdn-icons-png.flaticon.com/128/5977/5977576.png" alt="Apple Pay" class="h-10 mx-auto">
+                        <img src="https://cdn-icons-png.flaticon.com/128/14446/14446125.png" alt="Binance Pay" class="h-10 mx-auto">
+                        <!-- Paiements locaux -->
+                        <img src="https://cdn-icons-png.flaticon.com/128/4305/4305512.png" alt="Paiement agent cash" class="h-10 mx-auto">
+                        <img src="https://cdn-icons-png.flaticon.com/128/4021/4021708.png" alt="Carte locale" class="h-10 mx-auto">
+                        <img src="https://cdn-icons-png.flaticon.com/128/13974/13974303.png" alt="Chèque" class="h-10 mx-auto">
+                     </div>
+                     <p class="mt-6 text-sm text-gray-400 text-center">
+                        Tous les paiements sont traités de manière sécurisée selon nos conditions générales.
+                     </p>
+                  </div>
+               </div>
+               <div id="rewards" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+                  <h3 class="text-2xl font-bold mb-4">Avantages & Réductions</h3>
+                  <p>voyager avec Terra Voyage, c’est bénéficier de privilèges exclusifs.
+                     Nous récompensons la fidélité de nos clients par des offres personnalisées, des réductions régulières et des promotions ciblées selon vos habitudes de voyage.
+                     Profitez d’avantages négociés auprès de nos partenaires aériens, hôteliers et logistiques, ainsi que d’un accès prioritaire à certaines disponibilités.
+                     Plus vous voyagez avec nous, plus vos avantages grandissent.
+                  </p>
+               </div>
+               <div id="bestprice" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+                  <h3 class="text-2xl font-bold mb-4">Garantie Meilleur Prix</h3>
+                  <p>Nous nous engageons à vous proposer des tarifs justes, transparents et compétitifs.
+                     Si vous trouvez une offre équivalente à un prix inférieur, nous ajustons votre réservation selon nos conditions afin de vous garantir le meilleur rapport qualité-prix.
+                     Cette garantie s’accompagne d’une politique claire de remboursement et d’ajustement tarifaire, pour vous permettre de réserver en toute confiance.
+                     Avec Terra Voyage, vous êtes assuré de payer le bon prix, sans compromis sur la qualité du service.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </section>
+      <script>
+         const tabButtons = document.querySelectorAll('.tab-btn');
+         const tabItems = document.querySelectorAll('.tab-item');
+         let activeTab = null;
+         
+         tabButtons.forEach(button => {
+           button.addEventListener('click', () => {
+             const target = button.dataset.tab;
+         
+             if(activeTab === target){
+               tabItems.forEach(item => item.classList.add('hidden', 'opacity-0', 'translate-y-6'));
+               button.classList.remove('bg-gray-700', 'text-white');
+               activeTab = null;
+             } else {
+               tabItems.forEach(item => {
+                 if(item.id === target){
+                   item.classList.remove('hidden', 'opacity-0', 'translate-y-6');
+                   item.classList.add('opacity-100', 'translate-y-0');
+                 } else {
+                   item.classList.add('hidden', 'opacity-0', 'translate-y-6');
+                   item.classList.remove('opacity-100', 'translate-y-0');
+                 }
+               });
+         
+               tabButtons.forEach(btn => btn.classList.remove('bg-gray-700', 'text-white'));
+               button.classList.add('bg-gray-700', 'text-white');
+               activeTab = target;
+             }
+           });
+         });
+         
+         if(tabButtons.length > 0) tabButtons[0].click();
+      </script>
+      <section id="partners" class="py-20 bg-gray-50 text-gray-900">
+         <div class="max-w-7xl mx-auto px-6 text-center">
+         <h3 class="text-3xl font-bold text-gray-900 mb-12">Nos partenaires</h3>
+         <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+               <!-- Compagnies aériennes -->
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Air_France_Logo.svg/512px-Air_France_Logo.svg.png" alt="Air France" class="h-16 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/logo-ethiopian-airlines.svg"alt="Ethiopian airlines" class="h-20 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/emirates-fly-better-logo-6.svg" alt="Emirates" class="h-20 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/logo-american-airlines.svg" alt="American Airlines" class="h-24 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/turkish-airlines-logo.svg" alt="turkish Airlines" class="h-24 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/qatar-airways-1.svg" alt="Qatar Airlines" class="h-24 object-contain">
+               </div>
+               <!-- Hôtels -->
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/accor-logo.svg" alt="accor live limiteless" class="h-24 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/hilton-3.svg" alt="Hilton Hotels" class="h-24 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/bookingcom-1.svg" alt="Booking.com" class="h-24 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/hyatt-vacations.svg" alt="Hyatt Hotels" class="h-24 object-contain">
+               </div>
+               <!-- Assurances -->
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/allianz-1.svg" alt="Allianz" class="h-24 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://files.brandlogos.net/svg/OeSUpbYXG3/hotels.com-logo-brandlogos.net_stqquk45q.svg" alt="Marriott hotels et resorts" class="h-24 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/axa-logo-4.svg" alt="AXA Insurance" class="h-24 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/dubai-1.svg" alt="Dubai class="h-20 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://brandlogos.net/wp-content/uploads/2023/09/yango-logo_brandlogos.net_tymas-768x253.png" alt="Dubai class="h-20 object-contain">
+               </div>
+               <!-- Paiement -->
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://files.brandlogos.net/svg/aqOfS52Rxn/kenya-airways-logo-brandlogos.net_au19uargz.svg" alt="Visa" class="h-16 object-contain">
+               </div>
+               <!-- Location véhicules -->
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/dollar-rent-a-car.svg" alt="dollar rent a car" class="h-20 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1158px-Mastercard-logo.svg.png" alt="Avis" class="h-20 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://cdn.worldvectorlogo.com/logos/enterprise-rent-a-car.svg" alt="Enterprise Rent-A-Car" class="h-20 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Brussels_Airlines.svg/1200px-Brussels_Airlines.svg.png" alt="Alamo Car Rental" class="h-20 object-contain">
+               </div>
+               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
+                  <img src="https://vectorseek.com/wp-content/uploads/2023/09/Uganda-Airlines-Logo-Vector.svg-.png" alt="Alamo Car Rental" class="h-20 object-contain">
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- Swiper CSS & JS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+      <script>
+         const swiper = new Swiper(".mySwiper", {
+           slidesPerView: 4,
+           spaceBetween: 30,
+           loop: true,
+           autoplay: { delay: 2500, disableOnInteraction: false },
+           breakpoints: {
+             640: { slidesPerView: 2 },
+             768: { slidesPerView: 3 },
+             1024: { slidesPerView: 4 },
+           },
+         });
+      </script>
+      <!-- Swiper JS & CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+      <script>
+         const partnersSwiper = new Swiper('.partnersSwiper', {
+           slidesPerView: 2,
+           spaceBetween: 40,
+           loop: true,
+           autoplay: {
+             delay: 2500,
+             disableOnInteraction: false,
+           },
+           breakpoints: {
+             640: { slidesPerView: 3 },
+             768: { slidesPerView: 4 },
+             1024: { slidesPerView: 6 },
+           },
+         });
+      </script>
+      <!-- CONTACT -->
+      <section id="contact" class="py-20 bg-gray-100">
+         <div class="max-w-4xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold text-red-600">
+               Prêt à voyager ?
+            </h3>
+            <p class="text-black mt-4">
+               Contactez-nous et construisons ensemble votre prochain voyage.
+            </p>
+            <a href="https://wa.me/243854442103"
+               target="_blank"
+               class="inline-block mt-8 px-8 py-4 bg-red-600 hover:bg-red-700 rounded-xl text-lg font-semibold text-white transition">
+            Discuter sur WhatsApp
+            </a>
+         </div>
+      </section>
+      <!-- FOOTER PREMIUM MOBILE ACCORDÉON -->
+      <footer class="bg-gray-950 text-gray-300 pt-12 md:pt-20 pb-10 relative">
+         <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <!-- Logo & description -->
+            <div class="flex flex-col justify-start mb-8 md:mb-0">
+               <h4 class="text-2xl font-extrabold text-white mb-2 md:mb-4">
+                  Terra <span class="text-red-600">Voyage</span>
+               </h4>
+               <p class="text-sm leading-relaxed text-gray-400 md:max-w-xs">
+                  Agence de voyage premium dédiée aux expériences sur mesure, aux voyages d’affaires et aux destinations d’exception.
+               </p>
+            </div>
+            <!-- Mobile Accordions -->
+            <div class="space-y-4 md:hidden">
+               <!-- Navigation -->
+               <div class="border-b border-gray-700 accordion-item">
+                  <button class="w-full flex justify-between items-center py-3 accordion-toggle text-left font-semibold text-white">
+                  Navigation
+                  <span class="accordion-icon">+</span>
+                  </button>
+                  <ul class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out space-y-2 text-sm text-gray-400 mt-0">
+                     <li><a href="#home" class="hover:text-red-600">Accueil</a></li>
+                     <li><a href="#services" class="hover:text-red-600">Services</a></li>
+                     <li><a href="#destinations" class="hover:text-red-600">Destinations</a></li>
+                     <li><a href="#partners" class="hover:text-red-600">Partenaires</a></li>
+                     <li><a href="#contact" class="hover:text-red-600">Contact</a></li>
+                  </ul>
+               </div>
+               <!-- Services -->
+               <div class="border-b border-gray-700 accordion-item">
+                  <button class="w-full flex justify-between items-center py-3 accordion-toggle text-left font-semibold text-white">
+                  Nos services
+                  <span class="accordion-icon">+</span>
+                  </button>
+                  <ul class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out space-y-2 text-sm text-gray-400 mt-0">
+                     <li>Voyages sur mesure</li>
+                     <li>Billetterie aérienne</li>
+                     <li>Hôtels & Resorts</li>
+                     <li>Visas & Assistance</li>
+                     <li>Voyages d’affaires</li>
+                  </ul>
+               </div>
+               <!-- Newsletter -->
+               <div class="border-b border-gray-700 accordion-item">
+                  <button class="w-full flex justify-between items-center py-3 accordion-toggle text-left font-semibold text-white">
+                  Newsletter
+                  <span class="accordion-icon">+</span>
+                  </button>
+                  <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out mt-0">
+                     <p class="text-sm text-gray-400 mb-2">
+                        Recevez nos offres exclusives et inspirations de voyage.
+                     </p>
+                     <form class="flex flex-col space-y-3">
+                        <input
+                           type="email"
+                           placeholder="Votre adresse email"
+                           class="px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600"
+                           />
+                        <button
+                           type="submit"
+                           class="bg-red-600 hover:bg-red-700 transition text-white py-3 rounded-lg text-sm font-semibold">
+                        S’inscrire
+                        </button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <!-- Desktop Grid -->
+            <div class="hidden md:grid md:grid-cols-3 md:gap-12 space-y-0">
+               <div>
+                  <h5 class="font-semibold text-white mb-4">Navigation</h5>
+                  <ul class="space-y-2 text-sm text-gray-400">
+                     <li><a href="#home" class="hover:text-red-600">Accueil</a></li>
+                     <li><a href="#services" class="hover:text-red-600">Services</a></li>
+                     <li><a href="#destinations" class="hover:text-red-600">Destinations</a></li>
+                     <li><a href="#partners" class="hover:text-red-600">Partenaires</a></li>
+                     <li><a href="#contact" class="hover:text-red-600">Contact</a></li>
+                  </ul>
+               </div>
+               <div>
+                  <h5 class="font-semibold text-white mb-4">Nos services</h5>
+                  <ul class="space-y-2 text-sm text-gray-400">
+                     <li>Voyages sur mesure</li>
+                     <li>Billetterie aérienne</li>
+                     <li>Hôtels & Resorts</li>
+                     <li>Visas & Assistance</li>
+                     <li>Voyages d’affaires</li>
+                  </ul>
+               </div>
+               <div>
+                  <h5 class="font-semibold text-white mb-4">Newsletter</h5>
+                  <p class="text-sm text-gray-400 mb-2">Recevez nos offres exclusives et inspirations de voyage.</p>
+                  <form class="flex flex-col space-y-3">
+                     <input
+                        type="email"
+                        placeholder="Votre adresse email"
+                        class="px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600"
+                        />
+                     <button
+                        type="submit"
+                        class="bg-red-600 hover:bg-red-700 transition text-white py-3 rounded-lg text-sm font-semibold">
+                     S’inscrire
+                     </button>
+                  </form>
+               </div>
+            </div>
+            <!-- Réseaux sociaux toujours visibles, centrés -->
+            <div class="flex justify-center space-x-6 mt-8 md:mt-12">
+               <a href="https://www.facebook.com/tonprofil" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
+               <img src="https://cdn-icons-png.flaticon.com/128/733/733547.png" alt="Facebook" class="h-6 w-6">
+               </a>
+               <a href="https://www.instagram.com/terravoyage_" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
+               <img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="Instagram" class="h-6 w-6">
+               </a>
+               <a href="https://www.linkedin.com/in/tonprofil" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
+               <img src="https://cdn-icons-png.flaticon.com/128/145/145807.png" alt="LinkedIn" class="h-6 w-6">
+               </a>
+               <a href="https://x.com/tonprofil" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
+               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/X_logo_2023_%28white%29.svg/500px-X_logo_2023_%28white%29.svg.png" alt="X" class="h-6 w-6">
+               </a>
+            </div>
+         </div>
+         <style>
+            .accordion-content {
+            transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
+            overflow: hidden;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            }
+            .accordion-content[style*="max-height"]:not([style*="0px"]) {
+            opacity: 1;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            }
+            .accordion-toggle:hover .accordion-icon {
+            transform: rotate(90deg);
+            transition: transform 0.3s ease;
+            }
+         </style>
+      </footer>
+      <script>
+         document.addEventListener('DOMContentLoaded', () => {
+           const accordions = document.querySelectorAll('.accordion-toggle');
+         
+           accordions.forEach(button => {
+             button.addEventListener('click', (e) => {
+               e.stopPropagation();
+               const content = button.nextElementSibling;
+               const icon = button.querySelector('.accordion-icon');
+         
+               if(content && icon){
+                 const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+         
+                 // Ferme tous les autres accordéons
+                 document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = "0px");
+                 document.querySelectorAll('.accordion-icon').forEach(i => i.textContent = "+");
+         
+                 if(!isOpen){
+                   content.style.maxHeight = content.scrollHeight + "px";
+                   icon.textContent = "-";
+                 }
+               }
+             });
+           });
+         
+           // Fermer tous les accordéons si clic en dehors
+           document.addEventListener('click', (e) => {
+             if(!e.target.closest('.accordion-item')){
+               document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = "0px");
+               document.querySelectorAll('.accordion-icon').forEach(i => i.textContent = "+");
+             }
+           });
+         });
+      </script>
+      <!-- Barre inférieure -->
+      <footer class="mt-16 border-t border-gray-800 bg-gray-950">
+         <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm font-sans">
+            <p class="text-gray-500 mb-4 md:mb-0 leading-relaxed">
+               © 2025 Terra Voyage. Tous droits réservés.
+            </p>
+            <!-- Footer links -->
+            <div class="flex flex-wrap justify-center md:justify-start gap-3 md:gap-6 text-gray-400">
+               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="legal">Mentions légales</a>
+               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="privacy">Confidentialité</a>
+               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="terms">Conditions</a>
+               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="cookies">Politique de cookies</a>
+               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="help">Aide</a>
+               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="faq">FAQ</a>
+            </div>
+         </div>
+      </footer>
+      <!-- Modal Overlay -->
+      <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 transition-opacity duration-300"></div>
+      <!-- Modal Mentions légales -->
+      <div id="modal-legal" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
+         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
+            <h2 class="text-2xl font-bold mb-4">Mentions légales</h2>
+            <p><strong>Éditeur du site :</strong> Terra Voyage SARL</p>
+            <p>Siège social : [Adresse complète, RDC]</p>
+            <p>R.C : [Numéro d’enregistrement]</p>
+            <p>Directeur de publication : [Nom]</p>
+            <p>Email : contact@terravoyage.com</p>
+            <p><strong>Hébergement :</strong> [Nom de l’hébergeur], [Adresse complète]</p>
+            <p class="mt-2"><strong>Propriété intellectuelle :</strong> Tous les contenus sont protégés et appartiennent à Terra Voyage ou à ses partenaires.</p>
+            <p class="mt-2"><strong>Responsabilité :</strong> Terra Voyage ne saurait être tenu responsable des dommages liés à l’utilisation du site.</p>
+            <div class="mt-6 flex justify-end space-x-3">
+               <button onclick="printModal('modal-legal')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Imprimer / PDF</button>
+               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
+            </div>
+         </div>
       </div>
-
-      <a href="https://wa.me/243854442103" target="_blank" rel="noreferrer" class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-red-600 text-white font-semibold">
-        WhatsApp
-      </a>
-    </nav>
-  </div>
-</header>
-
-<main class="pt-24">
-  <!-- tes sections ici -->
-</main>
-
-<!-- HERO dynamique avec Multi-villes modifiable -->
-<section id="home" class="relative h-[95vh] pt-24 flex items-center overflow-hidden"> <!-- Background dynamique --> 
-<div id="heroBg" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-50"></div> <!-- Overlay gradient -->
- <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80"></div> <!-- Contenu --> <div class="relative z-10 max-w-7xl 
- mx-auto px-6 w-full"><div class="max-w-3xl text-white"> <span class=
-<span id="welcomeText" class="inline-block mb-4 px-4 py-3 rounded-full bg-red-600/90-backdrop-30 text-sm font-semibold text-white opacity-0 transform translate-y-6">
-<script>
-  window.addEventListener('load', () => {
-    const text = document.getElementById('welcomeText');
-    
-    // Apparition avec fade-in + petit bounce
-    text.classList.add('transition', 'duration-1000', 'opacity-100', '-translate-y-2');
-    
-    // Bounce léger toutes les 300ms pendant 1s
-    let bounceCount = 0;
-    const bounceInterval = setInterval(() => {
-      if (bounceCount >= 3) {
-        clearInterval(bounceInterval);
-        return;
-      }
-      text.classList.toggle('-translate-y-3');
-      text.classList.toggle('-translate-y-2');
-      bounceCount++;
-    }, 300);
-
-    // Disparition après 4 secondes avec translation vers le haut
-    setTimeout(() => {
-      text.classList.remove('opacity-100', '-translate-y-2');
-      text.classList.add('opacity-0', '-translate-y-8');
-    }, 4000); // 4s
-  });
-</script> 
-
-</span> <h1 class="text-4xl md:text-6xl font-extrabold leading-tight opacity-0 animate-zoomIn">
-  Voyagez autrement.<br class="hidden md:block"> Avec élégance et précision.
-</h1>
-
-<style>
-@keyframes zoomIn {
-  0% { opacity: 0; transform: scale(0.8); }
-  100% { opacity: 1; transform: scale(1); }
-}
-.animate-zoomIn {
-  animation: zoomIn 1s ease forwards;
-}
-</style>
-  </h1> <p class="mt-5 text-gray-300 text-lg"> Vols internationaux, hôtels, assurances et accompagnement personnalisé. Terra Voyage s’occupe de tout, avec rigueur et excellence. </p>
-    <!-- Formulaire -->
-   <!-- FORMULAIRE HERO -->
-<form id="heroForm"
-  onsubmit="openWhatsAppHero(event)"
-  class="mt-8 max-w-6xl mx-auto
-         bg-gray-900/80 backdrop-blur-xl
-         p-4 sm:p-6 md:p-8
-         rounded-2xl shadow-2xl
-         grid grid-cols-1 md:grid-cols-7 gap-4 w-full">
-
-  <!-- TYPE DE VOYAGE -->
-  <div class="md:col-span-7 flex flex-wrap gap-4 text-sm text-gray-200">
-    <label class="flex items-center gap-2 cursor-pointer">
-      <input type="radio" name="tripType" value="Aller simple" checked onchange="toggleTrip(this)">
-      Aller simple
-    </label>
-    <label class="flex items-center gap-2 cursor-pointer">
-      <input type="radio" name="tripType" value="Aller-retour" onchange="toggleTrip(this)">
-      Aller-retour
-    </label>
-    <label class="flex items-center gap-2 cursor-pointer"> <label id="multiVilleLabel" data-trip="multi" class="flex items-center gap-2 cursor-pointer">
-      <input type="radio" name="tripType" value="Multi-villes" onchange="toggleTrip(this)">
-      Multi-villes
-    </label>
-  </div>
-
-  <!-- SEGMENTS -->
-  <div id="segmentsContainer" class="md:col-span-7 flex flex-col gap-3"></div>
-
-  <!-- BOUTONS MULTI-VILLES -->
-  <div id="multiBtns" class="md:col-span-7 flex gap-2 hidden">
-    <button type="button"
-      onclick="addSegment()"
-      class="px-4 py-2 text-sm bg-gray-700 hover:bg-red-600 rounded-lg text-white font-semibold transition">
-      + Segment
-    </button>
-    <button type="button"
-      onclick="removeSegment()"
-      class="px-4 py-2 text-sm bg-gray-700 hover:bg-red-600 rounded-lg text-white font-semibold transition">
-      − Segment
-    </button>
-  </div>
-
-  <!-- PASSAGERS -->
-  <div class="md:col-span-2">
-    <select id="passengersHero"
-      class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white text-sm
-             focus:outline-none focus:ring-2 focus:ring-red-600">
-      <option>1 passager</option>
-      <option>2 passagers</option>
-      <option>3 passagers</option>
-      <option>4 passagers</option>
-      <option>5 passagers</option>
-    </select>
-  </div>
-
-  <!-- BOUTON RECHERCHE -->
-  <div class="md:col-span-2">
-    <button type="submit"
-      class="w-full px-6 py-3 bg-red-600 hover:bg-red-700
-             rounded-lg font-bold text-white
-             transition transform hover:scale-[1.02]">
-      Rechercher
-    </button>
-  </div>
-
-<form onsubmit="openWhatsAppHero(event)">
-    </form>
-  </div>
-
-
- <!-- Scripts -->
-<script>
-(function () {
-
-  const heroForm = document.getElementById('heroForm');
-  if (!heroForm) return; // 🔒 sécurité : rien ne s’exécute hors hero
-
-  /* =========================
-     WHATSAPP SUBMIT
-  ========================= */
-  heroForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const tripType = heroForm.querySelector('input[name="tripType"]:checked')?.value || '';
-    const segments = heroForm.querySelectorAll('.segment');
-    const passengers = heroForm.querySelector('#passengersHero')?.value || '';
-
-    let message = `Bonjour Terra Voyage, je souhaite réserver un vol ${tripType}`;
-
-    segments.forEach((seg, index) => {
-      const texts = seg.querySelectorAll('input[type="text"]');
-      const dates = seg.querySelectorAll('input[type="date"]');
-
-      const from = texts[0]?.value || '';
-      const to   = texts[1]?.value || '';
-      const dep  = dates[0]?.value || '';
-      const ret  = dates[1]?.value || '';
-
-      message += `\nSegment ${index + 1} : de ${from} vers ${to} le ${dep}`;
-      if (ret) message += ` avec retour le ${ret}`;
-    });
-
-    message += `\nNombre de passagers : ${passengers}.`;
-
-    window.open(
-      `https://wa.me/243854442103?text=${encodeURIComponent(message)}`,
-      '_blank'
-    );
-  });
-
-  /* =========================
-     MULTI-VILLE : DESACTIVÉ SUR MOBILE
-  ========================= */
-  function handleMobileMultiVille() {
-    const multiInput = heroForm.querySelector('input[value="Multi-villes"]');
-    const multiLabel = heroForm.querySelector('[data-trip="multi"]');
-
-    if (!multiInput || !multiLabel) return;
-
-    if (window.innerWidth < 768) {
-      multiInput.disabled = true;
-      multiLabel.classList.add('opacity-50', 'pointer-events-none');
-
-      if (multiInput.checked) {
-        const fallback = heroForm.querySelector('input[value="Aller-retour"]');
-        fallback.checked = true;
-        toggleTrip(fallback);
-      }
-    } else {
-      multiInput.disabled = false;
-      multiLabel.classList.remove('opacity-50', 'pointer-events-none');
-    }
-  }
-
-  window.addEventListener('resize', handleMobileMultiVille);
-  handleMobileMultiVille(); // init
-
-})();
-
-const airports = [
-
-  // ================= RDC =================
-  { city: "Kinshasa", airport: "Tous les aéroports", iata: "FIH-ALL" },
-  { city: "Kinshasa", airport: "N'Djili International", iata: "FIH" },
-  { city: "Kinshasa", airport: "N'Dolo", iata: "NLO" },
-  { city: "Lubumbashi", airport: "Lubumbashi International", iata: "FBM" },
-  { city: "Goma", airport: "Goma International", iata: "GOM" },
-  { city: "Kisangani", airport: "Bangoka", iata: "FKI" },
-  { city: "Bukavu", airport: "Kavumu", iata: "BKY" },
-
-  // ================= AFRIQUE =================
-  { city: "Johannesburg", airport: "Tous les aéroports", iata: "JNB-ALL" },
-  { city: "Johannesburg", airport: "OR Tambo International", iata: "JNB" },
-
-  { city: "Cape Town", airport: "Cape Town International", iata: "CPT" },
-  { city: "Nairobi", airport: "Jomo Kenyatta International", iata: "NBO" },
-  { city: "Addis Ababa", airport: "Bole International", iata: "ADD" },
-  { city: "Lagos", airport: "Murtala Muhammed International", iata: "LOS" },
-  { city: "Cairo", airport: "Cairo International", iata: "CAI" },
-  { city: "Casablanca", airport: "Mohammed V", iata: "CMN" },
-  { city: "Dakar", airport: "Blaise Diagne", iata: "DSS" },
-
-  // ================= EUROPE =================
-  { city: "Paris", airport: "Tous les aéroports", iata: "PAR-ALL" },
-  { city: "Paris", airport: "Charles de Gaulle", iata: "CDG" },
-  { city: "Paris", airport: "Orly", iata: "ORY" },
-
-  { city: "London", airport: "Tous les aéroports", iata: "LON-ALL" },
-  { city: "London", airport: "Heathrow", iata: "LHR" },
-  { city: "London", airport: "Gatwick", iata: "LGW" },
-
-  { city: "Brussels", airport: "Brussels Airport", iata: "BRU" },
-  { city: "Amsterdam", airport: "Schiphol", iata: "AMS" },
-  { city: "Frankfurt", airport: "Frankfurt International", iata: "FRA" },
-  { city: "Munich", airport: "Munich International", iata: "MUC" },
-  { city: "Madrid", airport: "Barajas", iata: "MAD" },
-  { city: "Barcelona", airport: "El Prat", iata: "BCN" },
-  { city: "Rome", airport: "Fiumicino", iata: "FCO" },
-  { city: "Zurich", airport: "Zurich Airport", iata: "ZRH" },
-
-  // ================= MOYEN-ORIENT =================
-  { city: "Dubai", airport: "Tous les aéroports", iata: "DXB-ALL" },
-  { city: "Dubai", airport: "Dubai International", iata: "DXB" },
-
-  { city: "Abu Dhabi", airport: "Zayed International", iata: "AUH" },
-  { city: "Doha", airport: "Hamad International", iata: "DOH" },
-  { city: "Riyadh", airport: "King Khalid International", iata: "RUH" },
-  { city: "Jeddah", airport: "King Abdulaziz International", iata: "JED" },
-  { city: "Istanbul", airport: "Tous les aéroports", iata: "IST-ALL" },
-  { city: "Istanbul", airport: "Istanbul Airport", iata: "IST" },
-
-  // ================= ASIE =================
-  { city: "Tokyo", airport: "Tous les aéroports", iata: "TYO-ALL" },
-  { city: "Tokyo", airport: "Narita International", iata: "NRT" },
-  { city: "Tokyo", airport: "Haneda", iata: "HND" },
-
-  { city: "Bangkok", airport: "Tous les aéroports", iata: "BKK-ALL" },
-  { city: "Bangkok", airport: "Suvarnabhumi", iata: "BKK" },
-  { city: "Bangkok", airport: "Don Mueang", iata: "DMK" },
-
-  { city: "Singapore", airport: "Changi", iata: "SIN" },
-  { city: "Hong Kong", airport: "Hong Kong International", iata: "HKG" },
-  { city: "Seoul", airport: "Incheon International", iata: "ICN" },
-  { city: "Beijing", airport: "Capital International", iata: "PEK" },
-  { city: "Shanghai", airport: "Pudong International", iata: "PVG" },
-  { city: "Delhi", airport: "Indira Gandhi International", iata: "DEL" },
-  { city: "Mumbai", airport: "Chhatrapati Shivaji", iata: "BOM" },
-
-  // ================= AMÉRIQUE DU NORD =================
-  { city: "New York", airport: "Tous les aéroports", iata: "NYC-ALL" },
-  { city: "New York", airport: "JFK", iata: "JFK" },
-  { city: "New York", airport: "Newark Liberty", iata: "EWR" },
-
-  { city: "Washington", airport: "Dulles International", iata: "IAD" },
-  { city: "Atlanta", airport: "Hartsfield-Jackson", iata: "ATL" },
-  { city: "Los Angeles", airport: "Los Angeles International", iata: "LAX" },
-  { city: "Toronto", airport: "Pearson International", iata: "YYZ" },
-  { city: "Montreal", airport: "Pierre Elliott Trudeau", iata: "YUL" },
-
-  // ================= AMÉRIQUE DU SUD =================
-  { city: "São Paulo", airport: "Tous les aéroports", iata: "SAO-ALL" },
-  { city: "São Paulo", airport: "Guarulhos International", iata: "GRU" },
-
-  { city: "Rio de Janeiro", airport: "Galeão International", iata: "GIG" },
-  { city: "Buenos Aires", airport: "Ezeiza International", iata: "EZE" },
-  { city: "Santiago", airport: "Arturo Merino Benítez", iata: "SCL" },
-  { city: "Lima", airport: "Jorge Chávez International", iata: "LIM" },
-  { city: "Bogotá", airport: "El Dorado International", iata: "BOG" },
-
-  // ================= OCÉANIE =================
-  { city: "Sydney", airport: "Sydney International", iata: "SYD" },
-  { city: "Melbourne", airport: "Melbourne Airport", iata: "MEL" },
-  { city: "Brisbane", airport: "Brisbane Airport", iata: "BNE" },
-  { city: "Auckland", airport: "Auckland International", iata: "AKL" }
-
-];
-// Suggestions IATA
-function showSuggestions(input) {
-  const segment = input.closest('.segment');
-  const list = segment.querySelector('.suggestions');
-
-  list.innerHTML = '';
-
-  if (!input.value) {
-    list.classList.add('hidden');
-    return;
-  }
-
-  const value = input.value.toLowerCase();
-
-  const filtered = airports.filter(a =>
-    a.city.toLowerCase().includes(value) ||
-    a.airport.toLowerCase().includes(value) ||
-    a.iata.toLowerCase().includes(value)
-  );
-
-  if (filtered.length === 0) {
-    list.classList.add('hidden');
-    return;
-  }
-
-  filtered.forEach(a => {
-    const li = document.createElement('li');
-    li.className = "px-4 py-2 cursor-pointer hover:bg-red-600 flex justify-between";
-    li.innerHTML = `<span>${a.city} – ${a.airport}</span><strong>${a.iata}</strong>`;
-    li.onclick = () => {
-      input.value = `${a.city} (${a.iata})`;
-      list.classList.add('hidden');
-    };
-    list.appendChild(li);
-  });
-
-  list.classList.remove('hidden');
-}
-
-// Trip toggle
-function toggleTrip(radio) {
-  const container = document.getElementById('segmentsContainer');
-  const multiBtns = document.getElementById('multiBtns');
-
-  container.innerHTML = '';
-
-  if (radio.value === 'Aller simple' || radio.value === 'Aller-retour') {
-    container.appendChild(createSegment(radio.value === 'Aller-retour'));
-    multiBtns.classList.add('hidden');
-  } else {
-    container.appendChild(createSegment(true));
-    container.appendChild(createSegment(true));
-    multiBtns.classList.remove('hidden');
-  }
-}
-
-// Créer un segment
-function createSegment(showReturn) {
-  const div = document.createElement('div');
-
-  /* GRID RESPONSIVE UNIQUE */
-  div.className = `
-  segment
-  grid grid-cols-1
-  gap-2
-  p-3 rounded-xl
-  bg-gray-900/60
-  md:bg-transparent md:p-0
-  md:grid-cols-4
-  md:gap-3
-`;
-  /* DÉPART */
-const fromDiv = document.createElement('div');
-fromDiv.className = 'relative';
-
-const fromInput = document.createElement('input');
-fromInput.type = 'text';
-fromInput.placeholder = 'Départ';
-fromInput.className = `
-  w-full
-  px-3 py-2
-  md:px-4 md:py-3
-  rounded-lg
-  bg-gray-800 text-white text-sm
-  focus:outline-none focus:ring-2 focus:ring-red-600
-`;
-fromInput.oninput = () => showSuggestions(fromInput);
-
-const fromUl = document.createElement('ul');
-fromUl.className = `
-  suggestions absolute left-0 right-0 mt-1
-  bg-gray-800 rounded-lg shadow-xl
-  max-h-48 overflow-y-auto
-  hidden z-50 text-sm
-`;
-
-fromDiv.appendChild(fromInput);
-fromDiv.appendChild(fromUl);
-
-  /* DESTINATION */
-const toDiv = document.createElement('div');
-toDiv.className = 'relative';
-
-const toInput = document.createElement('input');
-toInput.type = 'text';
-toInput.placeholder = 'Destination';
-toInput.className = `
-  w-full
-  px-3 py-2
-  md:px-4 md:py-3
-  rounded-lg
-  bg-gray-800 text-white text-sm
-  focus:outline-none focus:ring-2 focus:ring-red-600
-`;
-toInput.oninput = () => showSuggestions(toInput);
-
-const toUl = document.createElement('ul');
-toUl.className = `
-  suggestions absolute left-0 right-0 mt-1
-  bg-gray-800 rounded-lg shadow-xl
-  max-h-48 overflow-y-auto
-  hidden z-50 text-sm
-`;
-
-toDiv.appendChild(toInput);
-toDiv.appendChild(toUl);
-
-  /* DATE DÉPART */
-  const dep = document.createElement('input');
-  dep.type = 'date';
-  dep.className = `
-    w-full px-4 py-3 rounded-lg
-    bg-gray-800 text-white text-sm
-    focus:outline-none focus:ring-2 focus:ring-red-600
-  `;
-
-  /* DATE RETOUR */
-  const ret = document.createElement('input');
-  ret.type = 'date';
-  ret.className = `
-    w-full px-4 py-3 rounded-lg
-    bg-gray-800 text-white text-sm
-    focus:outline-none focus:ring-2 focus:ring-red-600
-  `;
-  if (!showReturn) ret.classList.add('hidden');
-
-  /* ASSEMBLAGE */
-  div.appendChild(fromDiv);
-  div.appendChild(toDiv);
-  div.appendChild(dep);
-  div.appendChild(ret);
-
-  return div;
-}
-// Ajouter / retirer segment
-function addSegment() {
-  const container = document.getElementById('segmentsContainer');
-  const segments = container.querySelectorAll('.segment');
-  if (segments.length >= 5) return;
-  container.appendChild(createSegment(true));
-}
-
-function removeSegment() {
-  const container = document.getElementById('segmentsContainer');
-  const segments = container.querySelectorAll('.segment');
-  if (segments.length <= 2) return;
-  container.removeChild(segments[segments.length - 1]);
-}
-// Background Hero
-const heroBg=document.getElementById('heroBg');
-const images=[
-  'https://images.unsplash.com/photo-1705874930271-88eeb8f533dc?w=1600&q=80',
-  'https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?w=1600&q=80',
-  'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1600&q=80',
-  'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1600&q=80',
-  'https://images.unsplash.com/photo-1565099824688-e93eb20fe622?w=1600&q=80',
-  'https://images.unsplash.com/photo-1636216056866-2051e801988c?=1600&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=1600&q=80',
-  'https://images.unsplash.com/photo-1467377791767-c929b5dc9a23?w=1600&q=80'
-];
-let current=0;
-heroBg.style.backgroundImage=`url('${images[0]}')`;
-setInterval(()=>{
-  heroBg.style.opacity=0;
-  setTimeout(()=>{
-    current=(current+1)%images.length;
-    heroBg.style.backgroundImage=`url('${images[current]}')`;
-    heroBg.style.opacity=0.3;
-  },1000);
-},50000);
-
-// Init segments
-document.addEventListener('DOMContentLoaded',()=>{
-  toggleTrip(document.querySelector('input[name="tripType"]:checked'));
-});
-</script>
-</section>
-
-<!-- DESTINATIONS -->
-<section id="destinations" class="py-20 bg-gray-950 text-white overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <h3 class="text-3xl font-bold text-center text-red-600">
-      Destinations populaires
-    </h3>
-    <p class="text-center text-gray-400 mt-2">
-      Des voyages créés pour ceux qui aiment le raffinement.
-    </p>
-
-    <!-- DESKTOP GRID -->
-    <div class="hidden md:grid mt-12 gap-8 grid-cols-3">
-
-      <!-- DUBAÏ -->
-      <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-        <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80"
-             class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-          <h4 class="text-xl font-semibold text-white">Dubaï</h4>
-          <p class="text-sm text-gray-200 mt-1">Luxe, shopping et désert</p>
-          <div class="mt-3 flex justify-between text-sm text-gray-200">
-            <span>6j / 5n</span>
-            <span class="font-semibold text-white">Dès 1 799 $</span>
-          </div>
-          <div class="mt-4 flex gap-3">
-            <button onclick="openModal('dubaiModal')" class="flex-1 px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600 transition">En savoir plus</button>
-            <a href="https://wa.me/243854442103" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 transition">WhatsApp</a>
-          </div>
-        </div>
+      <!-- Modal Politique de confidentialité -->
+      <div id="modal-privacy" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
+         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
+            <h2 class="text-2xl font-bold mb-4">Politique de confidentialité</h2>
+            <p>Terra Voyage protège vos données personnelles conformément aux lois en vigueur.</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+               <li><strong>Collecte :</strong> Données strictement nécessaires aux services.</li>
+               <li><strong>Utilisation :</strong> Réservations, assistance et offres personnalisées.</li>
+               <li><strong>Partage :</strong> Aucun partage non autorisé.</li>
+               <li><strong>Sécurité :</strong> Mesures techniques et organisationnelles adaptées.</li>
+               <li><strong>Droits :</strong> Accès, rectification et suppression sur demande.</li>
+            </ul>
+            <div class="mt-6 flex justify-end space-x-3">
+               <button onclick="printModal('modal-privacy')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Imprimer / PDF</button>
+               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
+            </div>
+         </div>
       </div>
-
-      <!-- ZANZIBAR -->
-      <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-        <img src="https://images.unsplash.com/photo-1758040223029-2259eb8141fd?w=500&q=80"
-             class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-        <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-          <h4 class="text-xl font-semibold text-white">Zanzibar</h4>
-          <p class="text-sm text-gray-200">Plages & détente</p>
-          <div class="mt-3 flex justify-between text-sm text-gray-200">
-            <span>7j / 6n</span>
-            <span class="font-semibold">Dès 1 100 $</span>
-          </div>
-          <button onclick="openModal('zanzibarModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-        </div>
+      <!-- Modal Conditions générales -->
+      <div id="modal-terms" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
+         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
+            <h2 class="text-2xl font-bold mb-4">Conditions générales</h2>
+            <ul class="list-disc list-inside space-y-2">
+               <li><strong>Réservation :</strong> Confirmée après paiement intégral.</li>
+               <li><strong>Paiement :</strong> Sécurisé via nos partenaires.</li>
+               <li><strong>Annulation :</strong> Selon conditions des prestataires.</li>
+               <li><strong>Responsabilité :</strong> Événements hors contrôle exclus.</li>
+               <li><strong>Mise à jour :</strong> Conditions modifiables à tout moment.</li>
+            </ul>
+            <div class="mt-6 flex justify-end space-x-3">
+               <button onclick="printModal('modal-terms')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Imprimer / PDF</button>
+               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
+            </div>
+         </div>
       </div>
-
-      <!-- ISTANBUL -->
-      <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-        <img src="https://images.unsplash.com/photo-1589561454226-796a8aa89b05?w=1600&q=80"
-             class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-        <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-          <h4 class="text-xl font-semibold text-white">Istanbul</h4>
-          <p class="text-sm text-gray-200">Histoire & gastronomie</p>
-          <div class="mt-3 flex justify-between text-sm text-gray-200">
-            <span>5j / 4n</span>
-            <span class="font-semibold">Dès 1 950 $</span>
-          </div>
-          <button onclick="openModal('istanbulModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-        </div>
+      <!-- Modal Politique de cookies -->
+      <div id="modal-cookies" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
+         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
+            <h2 class="text-2xl font-bold mb-4">Politique de cookies</h2>
+            <p>Ce site utilise des cookies pour améliorer votre expérience et analyser le trafic.</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+               <li>Cookies nécessaires au fonctionnement du site</li>
+               <li>Cookies analytiques pour suivre la performance</li>
+               <li>Cookies de préférences pour personnaliser votre expérience</li>
+            </ul>
+            <div class="mt-6 flex justify-end space-x-3">
+               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
+            </div>
+         </div>
       </div>
-
-      <!-- PARIS -->
-      <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-        <img src="https://images.unsplash.com/photo-1605701877331-645ad05dcb97?w=800&q=80"
-             class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-        <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-          <h4 class="text-xl font-semibold text-white">Paris</h4>
-          <p class="text-sm text-gray-200">Romance & culture</p>
-          <div class="mt-3 flex justify-between text-sm text-gray-200">
-            <span>5j / 4n</span>
-            <span class="font-semibold">Dès 1 650 $</span>
-          </div>
-          <button onclick="openModal('parisModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-        </div>
+      <!-- Modal Aide -->
+      <div id="modal-help" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
+         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
+            <h2 class="text-2xl font-bold mb-4">Aide</h2>
+            <p>Vous avez besoin d'aide ? Voici quelques ressources :</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+               <li>Pour les réservations, contactez notre support via WhatsApp ou email.</li>
+               <li>Consultez la FAQ pour les questions fréquentes.</li>
+               <li>Pour tout problème technique sur le site, utilisez notre formulaire de contact.</li>
+            </ul>
+            <div class="mt-6 flex justify-end space-x-3">
+               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
+            </div>
+         </div>
       </div>
-
-      <!-- BARCELONE -->
-      <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-        <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80"
-             class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-        <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-          <h4 class="text-xl font-semibold text-white">Barcelone</h4>
-          <p class="text-sm text-gray-200">Plage & architecture</p>
-          <div class="mt-3 flex justify-between text-sm text-gray-200">
-            <span>4j / 3n</span>
-            <span class="font-semibold">Dès 1 300 $</span>
-          </div>
-          <button onclick="openModal('barceloneModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-        </div>
+      <!-- Modal FAQ -->
+      <div id="modal-faq" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
+         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
+            <h2 class="text-2xl font-bold mb-6 text-red-600">FAQ – Questions fréquentes</h2>
+            <div class="space-y-4">
+               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
+                  <h3 class="font-semibold mb-1 text-white">Comment réserver un voyage ?</h3>
+                  <p class="text-gray-300">Réservez via notre formulaire en ligne ou WhatsApp.</p>
+               </div>
+               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
+                  <h3 class="font-semibold mb-1 text-white">Quels modes de paiement sont acceptés ?</h3>
+                  <p class="text-gray-300">Cartes bancaires, PayPal, crypto et espèces.</p>
+               </div>
+               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
+                  <h3 class="font-semibold mb-1 text-white">Comment annuler ou modifier une réservation ?</h3>
+                  <p class="text-gray-300">Contactez notre support via WhatsApp ou email.</p>
+               </div>
+               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
+                  <h3 class="font-semibold mb-1 text-white">Comment obtenir un visa ?</h3>
+                  <p class="text-gray-300">Suivez la procédure dans la section Visa et fournissez les documents requis.</p>
+               </div>
+               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
+                  <h3 class="font-semibold mb-1 text-white">Est-ce que les hôtels sont garantis ?</h3>
+                  <p class="text-gray-300">Nos partenaires sont fiables, mais certaines réservations sont soumises à disponibilité.</p>
+               </div>
+            </div>
+            <div class="mt-6 flex justify-end">
+               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
+            </div>
+         </div>
       </div>
-
-      <!-- MALDIVES -->
-      <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-        <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80"
-             class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-        <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-          <h4 class="text-xl font-semibold text-white">Maldives</h4>
-          <p class="text-sm text-gray-200">Luxe & détente</p>
-          <div class="mt-3 flex justify-between text-sm text-gray-200">
-            <span>7j / 6n</span>
-            <span class="font-semibold">Dès 2 900 $</span>
-          </div>
-          <button onclick="openModal('maldivesModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-        </div>
+      <script>
+         const overlay = document.getElementById("modal-overlay");
+         document.querySelectorAll("[data-modal]").forEach(link => {
+           link.addEventListener("click", e => {
+             e.preventDefault();
+             const modalId = "modal-" + link.dataset.modal;
+             document.getElementById(modalId).classList.remove("hidden");
+             overlay.classList.remove("hidden");
+           });
+         });
+         document.querySelectorAll(".close-modal").forEach(btn => {
+           btn.addEventListener("click", () => {
+             document.querySelectorAll(".modal").forEach(m => m.classList.add("hidden"));
+             overlay.classList.add("hidden");
+           });
+         });
+         function printModal(id) {
+           const content = document.getElementById(id).innerHTML;
+           const win = window.open("", "", "width=900,height=700");
+           win.document.write(`<html><body>${content}</body></html>`);
+           win.document.close();
+           win.print();
+         }
+      </script>
+      <style>
+         .scrollbar-thin { scrollbar-width: thin; }
+         .scrollbar-thin::-webkit-scrollbar { width: 6px; }
+         .scrollbar-thin::-webkit-scrollbar-thumb { background-color: #9ca3af; border-radius: 10px; }
+         .scrollbar-thin::-webkit-scrollbar-track { background-color: #f3f4f6; border-radius: 10px; }
+      </style>
+      <!-- Popup Promotion -->
+      <div id="promoPopup" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
+         <div class="bg-white rounded-2xl max-w-sm w-full p-6 relative">
+            <button onclick="closePopup()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 text-xl">&times;</button>
+            <h4 class="text-red-600 text-xl font-bold mb-2">Offres Spéciales</h4>
+            <p class="text-gray-700 mb-4">Voyage à Dubaï dès 1 799$ et Zanzibar dès 1 100$ !</p>
+            <a href="#destinations" class="block w-full text-center bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition">Voir les promos</a>
+         </div>
       </div>
-
-    </div> <!-- fin desktop grid -->
-
-    <!-- MOBILE CAROUSEL 3D COVERFLOW -->
-    <div id="mobileCarousel" class="md:hidden mt-10 flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-6 px-6 py-6 scrollbar-none perspective-1000">
-      <!-- Cartes injectées via JS -->
-    </div>
-
-  </div>
-</section>
-
-<style>
-/* cacher scrollbar */
-.scrollbar-none {
-  -ms-overflow-style: none;  
-  scrollbar-width: none;      
-}
-.scrollbar-none::-webkit-scrollbar {
-  display: none;              
-}
-
-/* Effet coverflow léger */
-#mobileCarousel > div {
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease;
-}
-#mobileCarousel > div:hover {
-  transform: scale(1.05) rotateY(0deg);
-}
-
-/* Perspective pour effet 3D */
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-/* Centrage des cartes au scroll */
-.snap-center {
-  scroll-snap-align: center;
-}
-</style>
-
-<script>
-const destinations = [
-  {name:'Dubaï', days:'6j / 5n', price:'1 799 $', img:'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80', modal:'dubaiModal', desc:'Luxe, shopping et désert'},
-  {name:'Zanzibar', days:'7j / 6n', price:'1 100 $', img:'https://images.unsplash.com/photo-1758040223029-2259eb8141fd?w=500&q=80', modal:'zanzibarModal', desc:'Plages & détente'},
-  {name:'Istanbul', days:'5j / 4n', price:'1 950 $', img:'https://images.unsplash.com/photo-1589561454226-796a8aa89b05?w=1600&q=80', modal:'istanbulModal', desc:'Histoire & gastronomie'},
-  {name:'Paris', days:'5j / 4n', price:'1 650 $', img:'https://images.unsplash.com/photo-1605701877331-645ad05dcb97?w=800&q=80', modal:'parisModal', desc:'Romance & culture'},
-  {name:'Barcelone', days:'4j / 3n', price:'1 300 $', img:'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80', modal:'barceloneModal', desc:'Plage & architecture'},
-  {name:'Maldives', days:'7j / 6n', price:'2 900 $', img:'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80', modal:'maldivesModal', desc:'Luxe & détente'}
-];
-
-const mobileContainer = document.getElementById('mobileCarousel');
-
-destinations.forEach(d => {
-  const div = document.createElement('div');
-  div.className = "min-w-[80%] flex-shrink-0 snap-center rounded-3xl overflow-hidden bg-gray-900 shadow-2xl relative hover:scale-105 transition-transform duration-300";
-  div.innerHTML = `
-    <div class="relative">
-      <img src="${d.img}" class="w-full h-64 object-cover">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-      <div class="absolute bottom-0 left-0 right-0 p-5">
-        <h4 class="text-xl font-semibold text-white">${d.name}</h4>
-        <p class="text-sm text-gray-200 mt-1">${d.desc}</p>
-        <div class="mt-3 flex justify-between items-center text-sm">
-          <span class="bg-red-600/80 text-white px-3 py-1 rounded-full font-semibold">${d.days}</span>
-          <span class="bg-yellow-500/90 text-black px-3 py-1 rounded-full font-semibold">${d.price}</span>
-        </div>
-        <button onclick="openModal('${d.modal}')" class="mt-4 w-full px-4 py-2 rounded-2xl border border-gray-600 hover:border-red-600 transition">En savoir plus</button>
+      <script>
+         setTimeout(()=>{document.getElementById('promoPopup').classList.remove('hidden');document.getElementById('promoPopup').classList.add('flex');}, 2000);
+         function closePopup(){
+           document.getElementById('promoPopup').classList.add('hidden');
+           document.getElementById('promoPopup').classList.remove('flex');
+         }
+      </script>
+      <!-- FLOATING WHATSAPP -->
+      <div id="floating-whatsapp" class="fixed right-6 bottom-6 z-50 flex flex-col items-end">
+         <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20j'aimerais%20des%20informations." 
+            target="_blank" rel="noreferrer">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full shadow-xl bg-gradient-to-br from-green-500 to-green-400 hover:scale-110 transition-transform duration-300">
+               <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-8 h-8">
+            </div>
+         </a>
+         <button id="close-whatsapp" 
+            class="mt-1 w-5 h-5 flex items-center justify-center text-white text-xs bg-gray-800 bg-opacity-60 hover:bg-opacity-80 rounded-full shadow-sm transition-opacity duration-200">
+         ✕
+         </button>
       </div>
-    </div>
-  `;
-  mobileContainer.appendChild(div);
-});
-
-// modal functions
-function openModal(id) {
-  document.getElementById(id).classList.remove('hidden');
-  document.getElementById(id).classList.add('flex');
-}
-function closeModal(id) {
-  document.getElementById(id).classList.add('hidden');
-  document.getElementById(id).classList.remove('flex');
-}
-
-// Coverflow dynamique au scroll
-mobileContainer.addEventListener('scroll', () => {
-  const cards = mobileContainer.querySelectorAll('div');
-  const center = mobileContainer.scrollLeft + mobileContainer.offsetWidth / 2;
-  cards.forEach(card => {
-    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-    const offset = (cardCenter - center) / 10; // ajuster l'intensité
-    card.style.transform = `rotateY(${offset}deg) scale(1)`;
-  });
-});
-</script>
-
-
-<!-- ABOUT -->
-<section id="about" class="py-20 bg-gray-50 text-gray-900">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <h3 class="text-3xl font-bold">À propos de Terra Voyage</h3>
-      <p class="text-gray-900 mt-4">Terra Voyage est une agence spécialisée dans les expériences premium. Notre priorité : votre confort et des souvenirs inoubliables. Nous opérons avec transparence et une équipe locale dédiée pour chaque destination.</p>
-      <ul class="mt-6 text-gray-900 space-y-2 text-sm">
-        <li>• Équipe bilingue (FR / EN)</li>
-        <li>• Réservation via WhatsApp pour une personnalisation complète</li>
-        <li>• Partenaires hôteliers sélectionnés</li>
-      </ul>
-    </div>
-    <div class="rounded-2xl overflow-hidden bg-white/5 p-4">
-      <img src="https://i.postimg.cc/YSkZfVMS/YABISO-VOYAGE-20251216-035622-0000.png" alt="Notre équipe" class="w-full h-64 object-cover rounded-lg">
-      <div class="mt-4 text-gray-900 text-sm">Nous croyons au voyage qui transforme — laissez-nous imaginer le vôtre.</div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section class="py-20 px-6 bg-gray-50 text-gray-900">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold mb-12 text-center">Pourquoi choisir Terra Voyage</h2>
-
-    <!-- Onglets -->
-    <style>
-      .tab-btn svg {
-        transition: transform 0.3s ease, color 0.3s ease;
-      }
-      .tab-btn:hover svg {
-        transform: translateY(-5px);
-        color: #f59e0b; /* Jaune/orange subtil */
-      }
-      .tab-btn span {
-        position: relative;
-        display: inline-block;
-      }
-      .tab-btn span::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        left: 0;
-        bottom: -4px;
-        background-color: #f59e0b;
-        transition: width 0.3s ease;
-      }
-      .tab-btn:hover span::after {
-        width: 100%;
-      }
-    </style>
-
-    <div class="flex flex-wrap justify-center gap-6 mb-12">
-      <!-- Onglets -->
-<div class="flex flex-wrap justify-center gap-6 mb-12">
-  <!-- Support 24/7 -->
-  <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="support">
-    <img src="https://cdn-icons-png.flaticon.com/128/7595/7595894.png" alt="Support 24/7" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
-    Support 24/7
-    <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Discutez avec notre équipe à tout moment</span>
-  </button>
-
-  <!-- Méthodes de paiement -->
-  <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="payment">
-    <img src="https://cdn-icons-png.flaticon.com/128/6993/6993595.png" alt="Paiement" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
-    Méthodes de paiement
-    <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Visa, Mastercard, Crypto, Orange Money, M-Pesa</span>
-  </button>
-
-  <!-- Avantages & Réductions -->
-  <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="rewards">
-    <img src="https://cdn-icons-png.flaticon.com/128/372/372768.png" alt="Avantages & Réductions" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
-    Avantages & Réductions
-    <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Offres exclusives et promotions régulières</span>
-  </button>
-
-  <!-- Meilleur Prix -->
-  <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="bestprice">
-    <img src="https://cdn-icons-png.flaticon.com/128/9419/9419260.png" alt="Meilleur Prix" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
-    Garantie Meilleur Prix
-    <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Nous ajustons vos tarifs si vous trouvez moins cher</span>
-  </button>
-</div>
-
-    <!-- Contenu des onglets -->
-    <div class="tab-content space-y-6">
-      <div id="support" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-        <h3 class="text-2xl font-bold mb-4">Support 24/7</h3>
-        <p>Notre service client est disponible 24h/24 et 7j/7 pour vous accompagner à chaque étape de votre voyage.
-Que ce soit pour une information, une modification de réservation ou une assistance urgente, notre équipe est à votre écoute.
-Grâce à notre support intelligent, vous obtenez des réponses immédiates aux questions les plus fréquentes, et un conseiller dédié prend le relais dès que nécessaire via WhatsApp.
-Chez Terra Voyage, votre tranquillité d’esprit est une priorité, avant, pendant et après votre déplacement.</p>
+      <script>
+         // Faire remonter le WhatsApp lorsqu'on atteint le bas de la page
+         const whatsapp = document.getElementById("floating-whatsapp");
+         
+         window.addEventListener("scroll", () => {
+           const scrollPosition = window.scrollY + window.innerHeight;
+           const pageHeight = document.documentElement.scrollHeight;
+         
+           if(scrollPosition >= pageHeight - 50) { 
+             whatsapp.style.bottom = "80px"; // remonte de 50px
+           } else {
+             whatsapp.style.bottom = "24px"; // position normale
+           }
+         });
+         
+         // Bouton pour fermer le WhatsApp flottant
+         document.getElementById("close-whatsapp").addEventListener("click", () => {
+           whatsapp.style.display = "none";
+         });
+      </script>
+      <!-- MODALES DESTINATIONS -->
+      <div id="dubaiModal" class="modal">
+         <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+               <h4 class="text-xl font-bold text-red-500">Dubaï — Luxe & Shopping</h4>
+               <button onclick="closeModal('dubaiModal')" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <p class="text-sm text-gray-300 mb-4">Luxe, shopping et désert.</p>
+            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
+               <li>Hôtel 4★</li>
+               <li>billet</li>
+               <li>Guides et visites incluses</li>
+               <li>Transferts privés</li>
+               <li>Assistance visa</li>
+               <li>assurance offerte</li>
+            </ul>
+            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Dubaï." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
+         </div>
       </div>
-      <div id="payment" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-    <!-- Méthodes de paiement -->
-<div id="payment" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-  <h3 class="text-2xl font-bold mb-6">Méthodes de paiement acceptées</h3>
-  <p class="mb-6 text-gray-900">
-    Terra Voyage vous offre une large gamme de solutions de paiement sécurisées, locales et internationales.
-  </p>
-
-  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center">
-    <!-- Cartes internationales -->
-    <img src="https://cdn-icons-png.flaticon.com/128/11378/11378185.png" alt="Mastercard" class="h-10 mx-auto">
-    <img src="https://cdn-icons-png.flaticon.com/128/5968/5968397.png" alt="Visa" class="h-10 mx-auto">
-    <img src="https://cdn-icons-png.flaticon.com/128/38/38971.png" alt="PayPal" class="h-10 mx-auto">
-
-    <!-- Mobile Money -->
-    <img src="https://images.seeklogo.com/logo-png/44/1/m-pesa-logo-png_seeklogo-442995.png" alt="M-Pesa" class="h-10 mx-auto">
-    <img src="https://www.logo.wine/a/logo/Orange_Money/Orange_Money-Logo.wine.svg" alt="Orange Money" class="h-10 mx-auto">
-    <img src="https://images.seeklogo.com/logo-png/55/1/airtel-money-uganda-logo-png_seeklogo-556391.png" alt="Airtel Money" class="h-10 mx-auto">
-
-    <!-- Paiements digitaux -->
-    <img src="https://www.logo.wine/a/logo/Google_Pay/Google_Pay-Logo.wine.svg" alt="Google Pay" class="h-10 mx-auto">
-    <img src="https://cdn-icons-png.flaticon.com/128/5977/5977576.png" alt="Apple Pay" class="h-10 mx-auto">
-    <img src="https://cdn-icons-png.flaticon.com/128/14446/14446125.png" alt="Binance Pay" class="h-10 mx-auto">
-
-    <!-- Paiements locaux -->
-    <img src="https://cdn-icons-png.flaticon.com/128/4305/4305512.png" alt="Paiement agent cash" class="h-10 mx-auto">
-    <img src="https://cdn-icons-png.flaticon.com/128/4021/4021708.png" alt="Carte locale" class="h-10 mx-auto">
-    <img src="https://cdn-icons-png.flaticon.com/128/13974/13974303.png" alt="Chèque" class="h-10 mx-auto">
-  </div>
-
-  <p class="mt-6 text-sm text-gray-400 text-center">
-    Tous les paiements sont traités de manière sécurisée selon nos conditions générales.
-  </p>
-</div>
+      <div id="zanzibarModal" class="modal">
+         <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+               <h4 class="text-xl font-bold text-red-500">Zanzibar — Séjour détente & découverte</h4>
+               <button onclick="closeModal('zanzibarModal')" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <p class="text-sm text-gray-300 mb-4">
+               Profitez des plages et de la culture swahilie.
+            </p>
+            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
+               <li>Hôtel 4★</li>
+               <li>billet</li>
+               <li>Guides et visites incluses</li>
+               <li>Transferts privés</li>
+               <li>Assistance visa</li>
+               <li>assurance offerte</li>
+            </ul>
+            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Zanzibar." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
+         </div>
       </div>
-      <div id="rewards" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-        <h3 class="text-2xl font-bold mb-4">Avantages & Réductions</h3>
-        <p>voyager avec Terra Voyage, c’est bénéficier de privilèges exclusifs.
-Nous récompensons la fidélité de nos clients par des offres personnalisées, des réductions régulières et des promotions ciblées selon vos habitudes de voyage.
-Profitez d’avantages négociés auprès de nos partenaires aériens, hôteliers et logistiques, ainsi que d’un accès prioritaire à certaines disponibilités.
-Plus vous voyagez avec nous, plus vos avantages grandissent.</p>
+      <div id="istanbulModal" class="modal">
+         <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+               <h4 class="text-xl font-bold text-red-500">Istanbul — Histoire & Gastronomie</h4>
+               <button onclick="closeModal('istanbulModal')" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <p class="text-sm text-gray-300 mb-4">Découvrez la ville historique et ses spécialités culinaires.</p>
+            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
+               <li>Hôtel 4★</li>
+               <li>billet</li>
+               <li>Guides et visites incluses</li>
+               <li>Transferts privés</li>
+               <li>assurance offerte</li>
+            </ul>
+            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Istanbul." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
+         </div>
       </div>
-      <div id="bestprice" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-        <h3 class="text-2xl font-bold mb-4">Garantie Meilleur Prix</h3>
-        <p>Nous nous engageons à vous proposer des tarifs justes, transparents et compétitifs.
-Si vous trouvez une offre équivalente à un prix inférieur, nous ajustons votre réservation selon nos conditions afin de vous garantir le meilleur rapport qualité-prix.
-Cette garantie s’accompagne d’une politique claire de remboursement et d’ajustement tarifaire, pour vous permettre de réserver en toute confiance.
-Avec Terra Voyage, vous êtes assuré de payer le bon prix, sans compromis sur la qualité du service.</p>
+      <div id="parisModal" class="modal">
+         <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+               <h4 class="text-xl font-bold text-red-500">Paris — Romance & Culture</h4>
+               <button onclick="closeModal('parisModal')" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <p class="text-sm text-gray-300 mb-4">Explorez la ville lumière, ses monuments et sa gastronomie.</p>
+            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
+               <li>Hôtel 4★</li>
+               <li>billet</li>
+               <li>Guides et visites incluses</li>
+               <li>Transferts privés</li>
+               <li>Assistance visa</li>
+               <li>assurance offerte</li>
+            </ul>
+            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Paris." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
+         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const tabItems = document.querySelectorAll('.tab-item');
-  let activeTab = null;
-
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const target = button.dataset.tab;
-
-      if(activeTab === target){
-        tabItems.forEach(item => item.classList.add('hidden', 'opacity-0', 'translate-y-6'));
-        button.classList.remove('bg-gray-700', 'text-white');
-        activeTab = null;
-      } else {
-        tabItems.forEach(item => {
-          if(item.id === target){
-            item.classList.remove('hidden', 'opacity-0', 'translate-y-6');
-            item.classList.add('opacity-100', 'translate-y-0');
-          } else {
-            item.classList.add('hidden', 'opacity-0', 'translate-y-6');
-            item.classList.remove('opacity-100', 'translate-y-0');
-          }
-        });
-
-        tabButtons.forEach(btn => btn.classList.remove('bg-gray-700', 'text-white'));
-        button.classList.add('bg-gray-700', 'text-white');
-        activeTab = target;
-      }
-    });
-  });
-
-  if(tabButtons.length > 0) tabButtons[0].click();
-</script>
-
-<section id="partners" class="py-20 bg-gray-50 text-gray-900">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <h3 class="text-3xl font-bold text-gray-900 mb-12">Nos partenaires</h3>
-
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-
-        <!-- Compagnies aériennes -->
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Air_France_Logo.svg/512px-Air_France_Logo.svg.png" alt="Air France" class="h-16 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/logo-ethiopian-airlines.svg"alt="Ethiopian airlines" class="h-20 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/emirates-fly-better-logo-6.svg" alt="Emirates" class="h-20 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/logo-american-airlines.svg" alt="American Airlines" class="h-24 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/turkish-airlines-logo.svg" alt="turkish Airlines" class="h-24 object-contain">
-        </div>
-       <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/qatar-airways-1.svg" alt="Qatar Airlines" class="h-24 object-contain">
-        </div>
-
-
-        <!-- Hôtels -->
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/accor-logo.svg" alt="accor live limiteless" class="h-24 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/hilton-3.svg" alt="Hilton Hotels" class="h-24 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/bookingcom-1.svg" alt="Booking.com" class="h-24 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/hyatt-vacations.svg" alt="Hyatt Hotels" class="h-24 object-contain">
-        </div>
-
-        <!-- Assurances -->
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/allianz-1.svg" alt="Allianz" class="h-24 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://files.brandlogos.net/svg/OeSUpbYXG3/hotels.com-logo-brandlogos.net_stqquk45q.svg" alt="Marriott hotels et resorts" class="h-24 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/axa-logo-4.svg" alt="AXA Insurance" class="h-24 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/dubai-1.svg" alt="Dubai class="h-20 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://brandlogos.net/wp-content/uploads/2023/09/yango-logo_brandlogos.net_tymas-768x253.png" alt="Dubai class="h-20 object-contain">
-        </div>
-
-        <!-- Paiement -->
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://files.brandlogos.net/svg/aqOfS52Rxn/kenya-airways-logo-brandlogos.net_au19uargz.svg" alt="Visa" class="h-16 object-contain">
-        </div>
-
-        <!-- Location véhicules -->
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/dollar-rent-a-car.svg" alt="dollar rent a car" class="h-20 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1158px-Mastercard-logo.svg.png" alt="Avis" class="h-20 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://cdn.worldvectorlogo.com/logos/enterprise-rent-a-car.svg" alt="Enterprise Rent-A-Car" class="h-20 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Brussels_Airlines.svg/1200px-Brussels_Airlines.svg.png" alt="Alamo Car Rental" class="h-20 object-contain">
-        </div>
-        <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-          <img src="https://vectorseek.com/wp-content/uploads/2023/09/Uganda-Airlines-Logo-Vector.svg-.png" alt="Alamo Car Rental" class="h-20 object-contain">
-
+      <div id="barceloneModal" class="modal">
+         <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+               <h4 class="text-xl font-bold text-red-500">Barcelone — Plage & Architecture</h4>
+               <button onclick="closeModal('barceloneModal')" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <p class="text-sm text-gray-300 mb-4">Prages et de l’architecture moderniste.</p>
+            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
+               <li>Hôtel 4★</li>
+               <li>billet</li>
+               <li>Guides et visites incluses</li>
+               <li>Transferts privés</li>
+               <li>Assistance visa</li>
+               <li>assurance offerte</li>
+            </ul>
+            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Barcelone." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
+         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Swiper CSS & JS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-<script>
-  const swiper = new Swiper(".mySwiper", {
-    slidesPerView: 4,
-    spaceBetween: 30,
-    loop: true,
-    autoplay: { delay: 2500, disableOnInteraction: false },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      768: { slidesPerView: 3 },
-      1024: { slidesPerView: 4 },
-    },
-  });
-</script>
-
-<!-- Swiper JS & CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-<script>
-  const partnersSwiper = new Swiper('.partnersSwiper', {
-    slidesPerView: 2,
-    spaceBetween: 40,
-    loop: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      640: { slidesPerView: 3 },
-      768: { slidesPerView: 4 },
-      1024: { slidesPerView: 6 },
-    },
-  });
-</script>
-
-
-<!-- CONTACT -->
-<section id="contact" class="py-20 bg-gray-100">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h3 class="text-3xl font-bold text-red-600">
-      Prêt à voyager ?
-    </h3>
-    <p class="text-black mt-4">
-      Contactez-nous et construisons ensemble votre prochain voyage.
-    </p>
-
-    <a href="https://wa.me/243854442103"
-       target="_blank"
-       class="inline-block mt-8 px-8 py-4 bg-red-600 hover:bg-red-700 rounded-xl text-lg font-semibold text-white transition">
-      Discuter sur WhatsApp
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER PREMIUM MOBILE ACCORDÉON -->
-<footer class="bg-gray-950 text-gray-300 pt-12 md:pt-20 pb-10 relative">
-  <div class="max-w-7xl mx-auto px-4 md:px-6">
-
-    <!-- Logo & description -->
-    <div class="flex flex-col justify-start mb-8 md:mb-0">
-      <h4 class="text-2xl font-extrabold text-white mb-2 md:mb-4">
-        Terra <span class="text-red-600">Voyage</span>
-      </h4>
-      <p class="text-sm leading-relaxed text-gray-400 md:max-w-xs">
-        Agence de voyage premium dédiée aux expériences sur mesure, aux voyages d’affaires et aux destinations d’exception.
-      </p>
-    </div>
-
-    <!-- Mobile Accordions -->
-    <div class="space-y-4 md:hidden">
-
-      <!-- Navigation -->
-      <div class="border-b border-gray-700 accordion-item">
-        <button class="w-full flex justify-between items-center py-3 accordion-toggle text-left font-semibold text-white">
-          Navigation
-          <span class="accordion-icon">+</span>
-        </button>
-        <ul class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out space-y-2 text-sm text-gray-400 mt-0">
-          <li><a href="#home" class="hover:text-red-600">Accueil</a></li>
-          <li><a href="#services" class="hover:text-red-600">Services</a></li>
-          <li><a href="#destinations" class="hover:text-red-600">Destinations</a></li>
-          <li><a href="#partners" class="hover:text-red-600">Partenaires</a></li>
-          <li><a href="#contact" class="hover:text-red-600">Contact</a></li>
-        </ul>
+      <div id="maldivesModal" class="modal">
+         <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+               <h4 class="text-xl font-bold text-red-500">Maldives — Luxe & Détente</h4>
+               <button onclick="closeModal('maldivesModal')" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <p class="text-sm text-gray-300 mb-4">Séjour paradisiaque sur des plages idylliques avec confort et détente.</p>
+            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
+               <li>Hôtel 5★</li>
+               <li>billet</li>
+               <li>Guides et excursions incluses</li>
+               <li>Transferts privés</li>
+               <li>Assistance visa</li>
+               <li>assurance offerte</li>
+            </ul>
+            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Maldives." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
+         </div>
       </div>
-
-      <!-- Services -->
-      <div class="border-b border-gray-700 accordion-item">
-        <button class="w-full flex justify-between items-center py-3 accordion-toggle text-left font-semibold text-white">
-          Nos services
-          <span class="accordion-icon">+</span>
-        </button>
-        <ul class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out space-y-2 text-sm text-gray-400 mt-0">
-          <li>Voyages sur mesure</li>
-          <li>Billetterie aérienne</li>
-          <li>Hôtels & Resorts</li>
-          <li>Visas & Assistance</li>
-          <li>Voyages d’affaires</li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div class="border-b border-gray-700 accordion-item">
-        <button class="w-full flex justify-between items-center py-3 accordion-toggle text-left font-semibold text-white">
-          Newsletter
-          <span class="accordion-icon">+</span>
-        </button>
-        <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out mt-0">
-          <p class="text-sm text-gray-400 mb-2">
-            Recevez nos offres exclusives et inspirations de voyage.
-          </p>
-          <form class="flex flex-col space-y-3">
-            <input
-              type="email"
-              placeholder="Votre adresse email"
-              class="px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600"
-            />
-            <button
-              type="submit"
-              class="bg-red-600 hover:bg-red-700 transition text-white py-3 rounded-lg text-sm font-semibold">
-              S’inscrire
-            </button>
-          </form>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Desktop Grid -->
-    <div class="hidden md:grid md:grid-cols-3 md:gap-12 space-y-0">
-      <div>
-        <h5 class="font-semibold text-white mb-4">Navigation</h5>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li><a href="#home" class="hover:text-red-600">Accueil</a></li>
-          <li><a href="#services" class="hover:text-red-600">Services</a></li>
-          <li><a href="#destinations" class="hover:text-red-600">Destinations</a></li>
-          <li><a href="#partners" class="hover:text-red-600">Partenaires</a></li>
-          <li><a href="#contact" class="hover:text-red-600">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5 class="font-semibold text-white mb-4">Nos services</h5>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li>Voyages sur mesure</li>
-          <li>Billetterie aérienne</li>
-          <li>Hôtels & Resorts</li>
-          <li>Visas & Assistance</li>
-          <li>Voyages d’affaires</li>
-        </ul>
-      </div>
-      <div>
-        <h5 class="font-semibold text-white mb-4">Newsletter</h5>
-        <p class="text-sm text-gray-400 mb-2">Recevez nos offres exclusives et inspirations de voyage.</p>
-        <form class="flex flex-col space-y-3">
-          <input
-            type="email"
-            placeholder="Votre adresse email"
-            class="px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600"
-          />
-          <button
-            type="submit"
-            class="bg-red-600 hover:bg-red-700 transition text-white py-3 rounded-lg text-sm font-semibold">
-            S’inscrire
-          </button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Réseaux sociaux toujours visibles, centrés -->
-    <div class="flex justify-center space-x-6 mt-8 md:mt-12">
-      <a href="https://www.facebook.com/tonprofil" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
-        <img src="https://cdn-icons-png.flaticon.com/128/733/733547.png" alt="Facebook" class="h-6 w-6">
-      </a>
-      <a href="https://www.instagram.com/terravoyage_" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
-        <img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="Instagram" class="h-6 w-6">
-      </a>
-      <a href="https://www.linkedin.com/in/tonprofil" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
-        <img src="https://cdn-icons-png.flaticon.com/128/145/145807.png" alt="LinkedIn" class="h-6 w-6">
-      </a>
-      <a href="https://x.com/tonprofil" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/X_logo_2023_%28white%29.svg/500px-X_logo_2023_%28white%29.svg.png" alt="X" class="h-6 w-6">
-      </a>
-    </div>
-  </div>
-
-  <style>
-    .accordion-content {
-      transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
-      overflow: hidden;
-      opacity: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    .accordion-content[style*="max-height"]:not([style*="0px"]) {
-      opacity: 1;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-    }
-    .accordion-toggle:hover .accordion-icon {
-      transform: rotate(90deg);
-      transition: transform 0.3s ease;
-    }
-  </style>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const accordions = document.querySelectorAll('.accordion-toggle');
-
-  accordions.forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const content = button.nextElementSibling;
-      const icon = button.querySelector('.accordion-icon');
-
-      if(content && icon){
-        const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
-
-        // Ferme tous les autres accordéons
-        document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = "0px");
-        document.querySelectorAll('.accordion-icon').forEach(i => i.textContent = "+");
-
-        if(!isOpen){
-          content.style.maxHeight = content.scrollHeight + "px";
-          icon.textContent = "-";
-        }
-      }
-    });
-  });
-
-  // Fermer tous les accordéons si clic en dehors
-  document.addEventListener('click', (e) => {
-    if(!e.target.closest('.accordion-item')){
-      document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = "0px");
-      document.querySelectorAll('.accordion-icon').forEach(i => i.textContent = "+");
-    }
-  });
-});
-</script>
-  <!-- Barre inférieure -->
-<footer class="mt-16 border-t border-gray-800 bg-gray-950">
-  <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm font-sans">
-    <p class="text-gray-500 mb-4 md:mb-0 leading-relaxed">
-      © 2025 Terra Voyage. Tous droits réservés.
-    </p>
-
-    <!-- Footer links -->
-    <div class="flex flex-wrap justify-center md:justify-start gap-3 md:gap-6 text-gray-400">
-      <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="legal">Mentions légales</a>
-      <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="privacy">Confidentialité</a>
-      <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="terms">Conditions</a>
-      <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="cookies">Politique de cookies</a>
-      <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="help">Aide</a>
-      <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="faq">FAQ</a>
-    </div>
-  </div>
-</footer>
-
-<!-- Modal Overlay -->
-<div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 transition-opacity duration-300"></div>
-
-<!-- Modal Mentions légales -->
-<div id="modal-legal" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-  <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-    <h2 class="text-2xl font-bold mb-4">Mentions légales</h2>
-    <p><strong>Éditeur du site :</strong> Terra Voyage SARL</p>
-    <p>Siège social : [Adresse complète, RDC]</p>
-    <p>R.C : [Numéro d’enregistrement]</p>
-    <p>Directeur de publication : [Nom]</p>
-    <p>Email : contact@terravoyage.com</p>
-    <p><strong>Hébergement :</strong> [Nom de l’hébergeur], [Adresse complète]</p>
-    <p class="mt-2"><strong>Propriété intellectuelle :</strong> Tous les contenus sont protégés et appartiennent à Terra Voyage ou à ses partenaires.</p>
-    <p class="mt-2"><strong>Responsabilité :</strong> Terra Voyage ne saurait être tenu responsable des dommages liés à l’utilisation du site.</p>
-    <div class="mt-6 flex justify-end space-x-3">
-      <button onclick="printModal('modal-legal')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Imprimer / PDF</button>
-      <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Politique de confidentialité -->
-<div id="modal-privacy" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-  <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-    <h2 class="text-2xl font-bold mb-4">Politique de confidentialité</h2>
-    <p>Terra Voyage protège vos données personnelles conformément aux lois en vigueur.</p>
-    <ul class="list-disc list-inside mt-2 space-y-1">
-      <li><strong>Collecte :</strong> Données strictement nécessaires aux services.</li>
-      <li><strong>Utilisation :</strong> Réservations, assistance et offres personnalisées.</li>
-      <li><strong>Partage :</strong> Aucun partage non autorisé.</li>
-      <li><strong>Sécurité :</strong> Mesures techniques et organisationnelles adaptées.</li>
-      <li><strong>Droits :</strong> Accès, rectification et suppression sur demande.</li>
-    </ul>
-    <div class="mt-6 flex justify-end space-x-3">
-      <button onclick="printModal('modal-privacy')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Imprimer / PDF</button>
-      <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Conditions générales -->
-<div id="modal-terms" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-  <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-    <h2 class="text-2xl font-bold mb-4">Conditions générales</h2>
-    <ul class="list-disc list-inside space-y-2">
-      <li><strong>Réservation :</strong> Confirmée après paiement intégral.</li>
-      <li><strong>Paiement :</strong> Sécurisé via nos partenaires.</li>
-      <li><strong>Annulation :</strong> Selon conditions des prestataires.</li>
-      <li><strong>Responsabilité :</strong> Événements hors contrôle exclus.</li>
-      <li><strong>Mise à jour :</strong> Conditions modifiables à tout moment.</li>
-    </ul>
-    <div class="mt-6 flex justify-end space-x-3">
-      <button onclick="printModal('modal-terms')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Imprimer / PDF</button>
-      <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Politique de cookies -->
-<div id="modal-cookies" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-  <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-    <h2 class="text-2xl font-bold mb-4">Politique de cookies</h2>
-    <p>Ce site utilise des cookies pour améliorer votre expérience et analyser le trafic.</p>
-    <ul class="list-disc list-inside mt-2 space-y-1">
-      <li>Cookies nécessaires au fonctionnement du site</li>
-      <li>Cookies analytiques pour suivre la performance</li>
-      <li>Cookies de préférences pour personnaliser votre expérience</li>
-    </ul>
-    <div class="mt-6 flex justify-end space-x-3">
-      <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Aide -->
-<div id="modal-help" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-  <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-    <h2 class="text-2xl font-bold mb-4">Aide</h2>
-    <p>Vous avez besoin d'aide ? Voici quelques ressources :</p>
-    <ul class="list-disc list-inside mt-2 space-y-1">
-      <li>Pour les réservations, contactez notre support via WhatsApp ou email.</li>
-      <li>Consultez la FAQ pour les questions fréquentes.</li>
-      <li>Pour tout problème technique sur le site, utilisez notre formulaire de contact.</li>
-    </ul>
-    <div class="mt-6 flex justify-end space-x-3">
-      <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal FAQ -->
-<div id="modal-faq" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-  <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-    <h2 class="text-2xl font-bold mb-6 text-red-600">FAQ – Questions fréquentes</h2>
-    <div class="space-y-4">
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold mb-1 text-white">Comment réserver un voyage ?</h3>
-        <p class="text-gray-300">Réservez via notre formulaire en ligne ou WhatsApp.</p>
-      </div>
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold mb-1 text-white">Quels modes de paiement sont acceptés ?</h3>
-        <p class="text-gray-300">Cartes bancaires, PayPal, crypto et espèces.</p>
-      </div>
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold mb-1 text-white">Comment annuler ou modifier une réservation ?</h3>
-        <p class="text-gray-300">Contactez notre support via WhatsApp ou email.</p>
-      </div>
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold mb-1 text-white">Comment obtenir un visa ?</h3>
-        <p class="text-gray-300">Suivez la procédure dans la section Visa et fournissez les documents requis.</p>
-      </div>
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold mb-1 text-white">Est-ce que les hôtels sont garantis ?</h3>
-        <p class="text-gray-300">Nos partenaires sont fiables, mais certaines réservations sont soumises à disponibilité.</p>
-      </div>
-    </div>
-    <div class="mt-6 flex justify-end">
-      <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-    </div>
-  </div>
-</div>
-
-<script>
-const overlay = document.getElementById("modal-overlay");
-document.querySelectorAll("[data-modal]").forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault();
-    const modalId = "modal-" + link.dataset.modal;
-    document.getElementById(modalId).classList.remove("hidden");
-    overlay.classList.remove("hidden");
-  });
-});
-document.querySelectorAll(".close-modal").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".modal").forEach(m => m.classList.add("hidden"));
-    overlay.classList.add("hidden");
-  });
-});
-function printModal(id) {
-  const content = document.getElementById(id).innerHTML;
-  const win = window.open("", "", "width=900,height=700");
-  win.document.write(`<html><body>${content}</body></html>`);
-  win.document.close();
-  win.print();
-}
-</script>
-
-<style>
-.scrollbar-thin { scrollbar-width: thin; }
-.scrollbar-thin::-webkit-scrollbar { width: 6px; }
-.scrollbar-thin::-webkit-scrollbar-thumb { background-color: #9ca3af; border-radius: 10px; }
-.scrollbar-thin::-webkit-scrollbar-track { background-color: #f3f4f6; border-radius: 10px; }
-</style>
-
-<!-- Popup Promotion -->
-<div id="promoPopup" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
-  <div class="bg-white rounded-2xl max-w-sm w-full p-6 relative">
-    <button onclick="closePopup()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 text-xl">&times;</button>
-    <h4 class="text-red-600 text-xl font-bold mb-2">Offres Spéciales</h4>
-    <p class="text-gray-700 mb-4">Voyage à Dubaï dès 1 799$ et Zanzibar dès 1 100$ !</p>
-    <a href="#destinations" class="block w-full text-center bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition">Voir les promos</a>
-  </div>
-</div>
-
-<script>
-setTimeout(()=>{document.getElementById('promoPopup').classList.remove('hidden');document.getElementById('promoPopup').classList.add('flex');}, 2000);
-function closePopup(){
-  document.getElementById('promoPopup').classList.add('hidden');
-  document.getElementById('promoPopup').classList.remove('flex');
-}
-</script>
-<!-- FLOATING WHATSAPP -->
-<div id="floating-whatsapp" class="fixed right-6 bottom-6 z-50 flex flex-col items-end">
-  <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20j'aimerais%20des%20informations." 
-     target="_blank" rel="noreferrer">
-    <div class="w-16 h-16 flex items-center justify-center rounded-full shadow-xl bg-gradient-to-br from-green-500 to-green-400 hover:scale-110 transition-transform duration-300">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-8 h-8">
-    </div>
-  </a>
-  <button id="close-whatsapp" 
-          class="mt-1 w-5 h-5 flex items-center justify-center text-white text-xs bg-gray-800 bg-opacity-60 hover:bg-opacity-80 rounded-full shadow-sm transition-opacity duration-200">
-    ✕
-  </button>
-</div>
-
-<script>
-// Faire remonter le WhatsApp lorsqu'on atteint le bas de la page
-const whatsapp = document.getElementById("floating-whatsapp");
-
-window.addEventListener("scroll", () => {
-  const scrollPosition = window.scrollY + window.innerHeight;
-  const pageHeight = document.documentElement.scrollHeight;
-
-  if(scrollPosition >= pageHeight - 50) { 
-    whatsapp.style.bottom = "80px"; // remonte de 50px
-  } else {
-    whatsapp.style.bottom = "24px"; // position normale
-  }
-});
-
-// Bouton pour fermer le WhatsApp flottant
-document.getElementById("close-whatsapp").addEventListener("click", () => {
-  whatsapp.style.display = "none";
-});
-</script>
-
-<!-- MODALES DESTINATIONS -->
-<div id="dubaiModal" class="modal">
-  <div class="modal-content">
-    <div class="flex justify-between items-center mb-4">
-      <h4 class="text-xl font-bold text-red-500">Dubaï — Luxe & Shopping</h4>
-      <button onclick="closeModal('dubaiModal')" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <p class="text-sm text-gray-300 mb-4">Luxe, shopping et désert.</p>
-    <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-   <li>Hôtel 4★</li>
-      <li>billet</li>
-      <li>Guides et visites incluses</li>
-      <li>Transferts privés</li>
-      <li>Assistance visa</li>
-      <li>assurance offerte</li>
-    </ul>
-    <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Dubaï." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-  </div>
-</div>
-
-<div id="zanzibarModal" class="modal">
-  <div class="modal-content">
-    <div class="flex justify-between items-center mb-4">
-      <h4 class="text-xl font-bold text-red-500">Zanzibar — Séjour détente & découverte</h4>
-      <button onclick="closeModal('zanzibarModal')" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <p class="text-sm text-gray-300 mb-4">
-      Profitez des plages et de la culture swahilie.
-    </p>
-    <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-      <li>Hôtel 4★</li>
-      <li>billet</li>
-      <li>Guides et visites incluses</li>
-      <li>Transferts privés</li>
-      <li>Assistance visa</li>
-      <li>assurance offerte</li>
-    </ul>
-    <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Zanzibar." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-  </div>
-</div>
-
-<div id="istanbulModal" class="modal">
-  <div class="modal-content">
-    <div class="flex justify-between items-center mb-4">
-      <h4 class="text-xl font-bold text-red-500">Istanbul — Histoire & Gastronomie</h4>
-      <button onclick="closeModal('istanbulModal')" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <p class="text-sm text-gray-300 mb-4">Découvrez la ville historique et ses spécialités culinaires.</p>
-    <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-      <li>Hôtel 4★</li>
-      <li>billet</li>
-      <li>Guides et visites incluses</li>
-      <li>Transferts privés</li>
-      <li>assurance offerte</li>
-    </ul>
-    <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Istanbul." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-  </div>
-</div>
-<div id="parisModal" class="modal">
-  <div class="modal-content">
-    <div class="flex justify-between items-center mb-4">
-      <h4 class="text-xl font-bold text-red-500">Paris — Romance & Culture</h4>
-      <button onclick="closeModal('parisModal')" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <p class="text-sm text-gray-300 mb-4">Explorez la ville lumière, ses monuments et sa gastronomie.</p>
-    <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-      <li>Hôtel 4★</li>
-      <li>billet</li>
-      <li>Guides et visites incluses</li>
-      <li>Transferts privés</li>
-      <li>Assistance visa</li>
-      <li>assurance offerte</li>
-    </ul>
-    <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Paris." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-  </div>
-</div>
-
-<div id="barceloneModal" class="modal">
-  <div class="modal-content">
-    <div class="flex justify-between items-center mb-4">
-      <h4 class="text-xl font-bold text-red-500">Barcelone — Plage & Architecture</h4>
-      <button onclick="closeModal('barceloneModal')" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <p class="text-sm text-gray-300 mb-4">Prages et de l’architecture moderniste.</p>
-    <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-      <li>Hôtel 4★</li>
-      <li>billet</li>
-      <li>Guides et visites incluses</li>
-      <li>Transferts privés</li>
-      <li>Assistance visa</li>
-      <li>assurance offerte</li>
-    </ul>
-    <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Barcelone." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-  </div>
-</div>
-
-<div id="maldivesModal" class="modal">
-  <div class="modal-content">
-    <div class="flex justify-between items-center mb-4">
-      <h4 class="text-xl font-bold text-red-500">Maldives — Luxe & Détente</h4>
-      <button onclick="closeModal('maldivesModal')" class="text-gray-400 hover:text-white">✕</button>
-    </div>
-    <p class="text-sm text-gray-300 mb-4">Séjour paradisiaque sur des plages idylliques avec confort et détente.</p>
-    <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-      <li>Hôtel 5★</li>
-      <li>billet</li>
-      <li>Guides et excursions incluses</li>
-      <li>Transferts privés</li>
-      <li>Assistance visa</li>
-      <li>assurance offerte</li>
-    </ul>
-    <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Maldives." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-  </div>
-</div>
-<script>
-const menuBtn = document.getElementById('menuBtn');
-const closeMenuBtn = document.getElementById('closeMenuBtn');
-const mobileMenu = document.getElementById('mobileMenuPanel');
-const mobileOverlay = document.getElementById('mobileOverlay');
-
-function toggleMenu() {
-  const isOpen = !mobileMenu.classList.contains('translate-x-full');
-  mobileMenu.classList.toggle('translate-x-full', isOpen);
-  mobileOverlay.classList.toggle('hidden', isOpen);
-}
-
-menuBtn.addEventListener('click', toggleMenu);
-closeMenuBtn.addEventListener('click', toggleMenu);
-mobileOverlay.addEventListener('click', toggleMenu);
-</script>
-
-</footer>
-</body>
+      <script>
+         const menuBtn = document.getElementById('menuBtn');
+         const closeMenuBtn = document.getElementById('closeMenuBtn');
+         const mobileMenu = document.getElementById('mobileMenuPanel');
+         const mobileOverlay = document.getElementById('mobileOverlay');
+         
+         function toggleMenu() {
+           const isOpen = !mobileMenu.classList.contains('translate-x-full');
+           mobileMenu.classList.toggle('translate-x-full', isOpen);
+           mobileOverlay.classList.toggle('hidden', isOpen);
+         }
+         
+         menuBtn.addEventListener('click', toggleMenu);
+         closeMenuBtn.addEventListener('click', toggleMenu);
+         mobileOverlay.addEventListener('click', toggleMenu);
+      </script>
+      </footer>
+   </body>
 </html>
