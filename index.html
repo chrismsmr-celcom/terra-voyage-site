@@ -27,6 +27,7 @@
          .modal { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index:50; }
          .modal-content { background: #111; padding: 1.5rem; border-radius: 1rem; max-width: 600px; width: 100%; }
       </style>
+      <link rel="stylesheet" href="assets/css/style.css">
    </head>
    <body class="bg-black text-white font-sans antialiased overflow-x-hidden">
       <!-- NAVBAR -->
@@ -49,7 +50,22 @@
                   class="hidden md:inline-flex px-4 py-2 rounded-lg bg-red-700 hover:bg-red-800">
                WhatsApp
                </a>
-               <button id="menuBtn" class="md:hidden p-4 rounded-md focus:outline-none">☰</button>
+<!-- Hamburger -->
+<button id="menuBtn" class="md:hidden">☰</button>
+
+<!-- Overlay -->
+<div id="mobileOverlay" class="hidden fixed inset-0 bg-black/50 z-40"></div>
+
+<!-- Menu mobile -->
+<div id="mobileMenuPanel" class="fixed top-0 right-0 h-full w-64 bg-gray-950 transform translate-x-full transition-transform z-50">
+  <button id="closeMenuBtn" class="p-4 text-white">✕</button>
+  <nav class="flex flex-col mt-6 space-y-4 px-4">
+    <a href="#home" class="text-white">Accueil</a>
+    <a href="#services" class="text-white">Services</a>
+    <a href="#destinations" class="text-white">Destinations</a>
+    <a href="#contact" class="text-white">Contact</a>
+  </nav>
+</div>
             </div>
          </div>
          <!-- Mobile overlay -->
@@ -1095,507 +1111,176 @@
                   Agence de voyage premium dédiée aux expériences sur mesure, aux voyages d’affaires et aux destinations d’exception.
                </p>
             </div>
-            <!-- Mobile Accordions -->
-            <div class="space-y-4 md:hidden">
-               <!-- Navigation -->
-               <div class="border-b border-gray-700 accordion-item">
-                  <button class="w-full flex justify-between items-center py-3 accordion-toggle text-left font-semibold text-white">
-                  Navigation
-                  <span class="accordion-icon">+</span>
-                  </button>
-                  <ul class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out space-y-2 text-sm text-gray-400 mt-0">
-                     <li><a href="#home" class="hover:text-red-600">Accueil</a></li>
-                     <li><a href="#services" class="hover:text-red-600">Services</a></li>
-                     <li><a href="#destinations" class="hover:text-red-600">Destinations</a></li>
-                     <li><a href="#partners" class="hover:text-red-600">Partenaires</a></li>
-                     <li><a href="#contact" class="hover:text-red-600">Contact</a></li>
-                  </ul>
-               </div>
-               <!-- Services -->
-               <div class="border-b border-gray-700 accordion-item">
-                  <button class="w-full flex justify-between items-center py-3 accordion-toggle text-left font-semibold text-white">
-                  Nos services
-                  <span class="accordion-icon">+</span>
-                  </button>
-                  <ul class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out space-y-2 text-sm text-gray-400 mt-0">
-                     <li>Voyages sur mesure</li>
-                     <li>Billetterie aérienne</li>
-                     <li>Hôtels & Resorts</li>
-                     <li>Visas & Assistance</li>
-                     <li>Voyages d’affaires</li>
-                  </ul>
-               </div>
-               <!-- Newsletter -->
-               <div class="border-b border-gray-700 accordion-item">
-                  <button class="w-full flex justify-between items-center py-3 accordion-toggle text-left font-semibold text-white">
-                  Newsletter
-                  <span class="accordion-icon">+</span>
-                  </button>
-                  <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out mt-0">
-                     <p class="text-sm text-gray-400 mb-2">
-                        Recevez nos offres exclusives et inspirations de voyage.
-                     </p>
-                     <form class="flex flex-col space-y-3">
-                        <input
-                           type="email"
-                           placeholder="Votre adresse email"
-                           class="px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600"
-                           />
-                        <button
-                           type="submit"
-                           class="bg-red-600 hover:bg-red-700 transition text-white py-3 rounded-lg text-sm font-semibold">
-                        S’inscrire
-                        </button>
-                     </form>
-                  </div>
-               </div>
-            </div>
-            <!-- Desktop Grid -->
-            <div class="hidden md:grid md:grid-cols-3 md:gap-12 space-y-0">
-               <div>
-                  <h5 class="font-semibold text-white mb-4">Navigation</h5>
-                  <ul class="space-y-2 text-sm text-gray-400">
-                     <li><a href="#home" class="hover:text-red-600">Accueil</a></li>
-                     <li><a href="#services" class="hover:text-red-600">Services</a></li>
-                     <li><a href="#destinations" class="hover:text-red-600">Destinations</a></li>
-                     <li><a href="#partners" class="hover:text-red-600">Partenaires</a></li>
-                     <li><a href="#contact" class="hover:text-red-600">Contact</a></li>
-                  </ul>
-               </div>
-               <div>
-                  <h5 class="font-semibold text-white mb-4">Nos services</h5>
-                  <ul class="space-y-2 text-sm text-gray-400">
-                     <li>Voyages sur mesure</li>
-                     <li>Billetterie aérienne</li>
-                     <li>Hôtels & Resorts</li>
-                     <li>Visas & Assistance</li>
-                     <li>Voyages d’affaires</li>
-                  </ul>
-               </div>
-               <div>
-                  <h5 class="font-semibold text-white mb-4">Newsletter</h5>
-                  <p class="text-sm text-gray-400 mb-2">Recevez nos offres exclusives et inspirations de voyage.</p>
-                  <form class="flex flex-col space-y-3">
-                     <input
-                        type="email"
-                        placeholder="Votre adresse email"
-                        class="px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600"
-                        />
-                     <button
-                        type="submit"
-                        class="bg-red-600 hover:bg-red-700 transition text-white py-3 rounded-lg text-sm font-semibold">
-                     S’inscrire
-                     </button>
-                  </form>
-               </div>
-            </div>
-            <!-- Réseaux sociaux toujours visibles, centrés -->
-            <div class="flex justify-center space-x-6 mt-8 md:mt-12">
-               <a href="https://www.facebook.com/tonprofil" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
-               <img src="https://cdn-icons-png.flaticon.com/128/733/733547.png" alt="Facebook" class="h-6 w-6">
-               </a>
-               <a href="https://www.instagram.com/terravoyage_" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
-               <img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="Instagram" class="h-6 w-6">
-               </a>
-               <a href="https://www.linkedin.com/in/tonprofil" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
-               <img src="https://cdn-icons-png.flaticon.com/128/145/145807.png" alt="LinkedIn" class="h-6 w-6">
-               </a>
-               <a href="https://x.com/tonprofil" target="_blank" rel="noopener noreferrer" class="transition transform hover:scale-110 hover:opacity-80">
-               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/X_logo_2023_%28white%29.svg/500px-X_logo_2023_%28white%29.svg.png" alt="X" class="h-6 w-6">
-               </a>
-            </div>
-         </div>
-         <style>
-            .accordion-content {
-            transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
-            overflow: hidden;
-            opacity: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-            }
-            .accordion-content[style*="max-height"]:not([style*="0px"]) {
-            opacity: 1;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-            }
-            .accordion-toggle:hover .accordion-icon {
-            transform: rotate(90deg);
-            transition: transform 0.3s ease;
-            }
-         </style>
-      </footer>
-      <script>
-         document.addEventListener('DOMContentLoaded', () => {
-           const accordions = document.querySelectorAll('.accordion-toggle');
-         
-           accordions.forEach(button => {
-             button.addEventListener('click', (e) => {
-               e.stopPropagation();
-               const content = button.nextElementSibling;
-               const icon = button.querySelector('.accordion-icon');
-         
-               if(content && icon){
-                 const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
-         
-                 // Ferme tous les autres accordéons
-                 document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = "0px");
-                 document.querySelectorAll('.accordion-icon').forEach(i => i.textContent = "+");
-         
-                 if(!isOpen){
-                   content.style.maxHeight = content.scrollHeight + "px";
-                   icon.textContent = "-";
-                 }
-               }
-             });
-           });
-         
-           // Fermer tous les accordéons si clic en dehors
-           document.addEventListener('click', (e) => {
-             if(!e.target.closest('.accordion-item')){
-               document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = "0px");
-               document.querySelectorAll('.accordion-icon').forEach(i => i.textContent = "+");
-             }
-           });
-         });
-      </script>
-      <!-- Barre inférieure -->
-      <footer class="mt-16 border-t border-gray-800 bg-gray-950">
-         <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm font-sans">
-            <p class="text-gray-500 mb-4 md:mb-0 leading-relaxed">
-               © 2025 Terra Voyage. Tous droits réservés.
-            </p>
-            <!-- Footer links -->
-            <div class="flex flex-wrap justify-center md:justify-start gap-3 md:gap-6 text-gray-400">
-               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="legal">Mentions légales</a>
-               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="privacy">Confidentialité</a>
-               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="terms">Conditions</a>
-               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="cookies">Politique de cookies</a>
-               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="help">Aide</a>
-               <a href="#" class="hover:text-red-600 text-xs md:text-sm leading-relaxed" data-modal="faq">FAQ</a>
-            </div>
-         </div>
-      </footer>
-      <!-- Modal Overlay -->
-      <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 transition-opacity duration-300"></div>
-      <!-- Modal Mentions légales -->
-      <div id="modal-legal" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-            <h2 class="text-2xl font-bold mb-4">Mentions légales</h2>
-            <p><strong>Éditeur du site :</strong> Terra Voyage SARL</p>
-            <p>Siège social : [Adresse complète, RDC]</p>
-            <p>R.C : [Numéro d’enregistrement]</p>
-            <p>Directeur de publication : [Nom]</p>
-            <p>Email : contact@terravoyage.com</p>
-            <p><strong>Hébergement :</strong> [Nom de l’hébergeur], [Adresse complète]</p>
-            <p class="mt-2"><strong>Propriété intellectuelle :</strong> Tous les contenus sont protégés et appartiennent à Terra Voyage ou à ses partenaires.</p>
-            <p class="mt-2"><strong>Responsabilité :</strong> Terra Voyage ne saurait être tenu responsable des dommages liés à l’utilisation du site.</p>
-            <div class="mt-6 flex justify-end space-x-3">
-               <button onclick="printModal('modal-legal')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Imprimer / PDF</button>
-               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-            </div>
-         </div>
-      </div>
-      <!-- Modal Politique de confidentialité -->
-      <div id="modal-privacy" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-            <h2 class="text-2xl font-bold mb-4">Politique de confidentialité</h2>
-            <p>Terra Voyage protège vos données personnelles conformément aux lois en vigueur.</p>
-            <ul class="list-disc list-inside mt-2 space-y-1">
-               <li><strong>Collecte :</strong> Données strictement nécessaires aux services.</li>
-               <li><strong>Utilisation :</strong> Réservations, assistance et offres personnalisées.</li>
-               <li><strong>Partage :</strong> Aucun partage non autorisé.</li>
-               <li><strong>Sécurité :</strong> Mesures techniques et organisationnelles adaptées.</li>
-               <li><strong>Droits :</strong> Accès, rectification et suppression sur demande.</li>
-            </ul>
-            <div class="mt-6 flex justify-end space-x-3">
-               <button onclick="printModal('modal-privacy')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Imprimer / PDF</button>
-               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-            </div>
-         </div>
-      </div>
-      <!-- Modal Conditions générales -->
-      <div id="modal-terms" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-            <h2 class="text-2xl font-bold mb-4">Conditions générales</h2>
-            <ul class="list-disc list-inside space-y-2">
-               <li><strong>Réservation :</strong> Confirmée après paiement intégral.</li>
-               <li><strong>Paiement :</strong> Sécurisé via nos partenaires.</li>
-               <li><strong>Annulation :</strong> Selon conditions des prestataires.</li>
-               <li><strong>Responsabilité :</strong> Événements hors contrôle exclus.</li>
-               <li><strong>Mise à jour :</strong> Conditions modifiables à tout moment.</li>
-            </ul>
-            <div class="mt-6 flex justify-end space-x-3">
-               <button onclick="printModal('modal-terms')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Imprimer / PDF</button>
-               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-            </div>
-         </div>
-      </div>
-      <!-- Modal Politique de cookies -->
-      <div id="modal-cookies" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-            <h2 class="text-2xl font-bold mb-4">Politique de cookies</h2>
-            <p>Ce site utilise des cookies pour améliorer votre expérience et analyser le trafic.</p>
-            <ul class="list-disc list-inside mt-2 space-y-1">
-               <li>Cookies nécessaires au fonctionnement du site</li>
-               <li>Cookies analytiques pour suivre la performance</li>
-               <li>Cookies de préférences pour personnaliser votre expérience</li>
-            </ul>
-            <div class="mt-6 flex justify-end space-x-3">
-               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-            </div>
-         </div>
-      </div>
-      <!-- Modal Aide -->
-      <div id="modal-help" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-            <h2 class="text-2xl font-bold mb-4">Aide</h2>
-            <p>Vous avez besoin d'aide ? Voici quelques ressources :</p>
-            <ul class="list-disc list-inside mt-2 space-y-1">
-               <li>Pour les réservations, contactez notre support via WhatsApp ou email.</li>
-               <li>Consultez la FAQ pour les questions fréquentes.</li>
-               <li>Pour tout problème technique sur le site, utilisez notre formulaire de contact.</li>
-            </ul>
-            <div class="mt-6 flex justify-end space-x-3">
-               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-            </div>
-         </div>
-      </div>
-      <!-- Modal FAQ -->
-      <div id="modal-faq" class="modal fixed inset-0 flex items-center justify-center hidden z-50 px-4">
-         <div class="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
-            <h2 class="text-2xl font-bold mb-6 text-red-600">FAQ – Questions fréquentes</h2>
-            <div class="space-y-4">
-               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-                  <h3 class="font-semibold mb-1 text-white">Comment réserver un voyage ?</h3>
-                  <p class="text-gray-300">Réservez via notre formulaire en ligne ou WhatsApp.</p>
-               </div>
-               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-                  <h3 class="font-semibold mb-1 text-white">Quels modes de paiement sont acceptés ?</h3>
-                  <p class="text-gray-300">Cartes bancaires, PayPal, crypto et espèces.</p>
-               </div>
-               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-                  <h3 class="font-semibold mb-1 text-white">Comment annuler ou modifier une réservation ?</h3>
-                  <p class="text-gray-300">Contactez notre support via WhatsApp ou email.</p>
-               </div>
-               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-                  <h3 class="font-semibold mb-1 text-white">Comment obtenir un visa ?</h3>
-                  <p class="text-gray-300">Suivez la procédure dans la section Visa et fournissez les documents requis.</p>
-               </div>
-               <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-                  <h3 class="font-semibold mb-1 text-white">Est-ce que les hôtels sont garantis ?</h3>
-                  <p class="text-gray-300">Nos partenaires sont fiables, mais certaines réservations sont soumises à disponibilité.</p>
-               </div>
-            </div>
-            <div class="mt-6 flex justify-end">
-               <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 close-modal">Fermer</button>
-            </div>
-         </div>
-      </div>
-      <script>
-         const overlay = document.getElementById("modal-overlay");
-         document.querySelectorAll("[data-modal]").forEach(link => {
-           link.addEventListener("click", e => {
-             e.preventDefault();
-             const modalId = "modal-" + link.dataset.modal;
-             document.getElementById(modalId).classList.remove("hidden");
-             overlay.classList.remove("hidden");
-           });
-         });
-         document.querySelectorAll(".close-modal").forEach(btn => {
-           btn.addEventListener("click", () => {
-             document.querySelectorAll(".modal").forEach(m => m.classList.add("hidden"));
-             overlay.classList.add("hidden");
-           });
-         });
-         function printModal(id) {
-           const content = document.getElementById(id).innerHTML;
-           const win = window.open("", "", "width=900,height=700");
-           win.document.write(`<html><body>${content}</body></html>`);
-           win.document.close();
-           win.print();
-         }
-      </script>
-      <style>
-         .scrollbar-thin { scrollbar-width: thin; }
-         .scrollbar-thin::-webkit-scrollbar { width: 6px; }
-         .scrollbar-thin::-webkit-scrollbar-thumb { background-color: #9ca3af; border-radius: 10px; }
-         .scrollbar-thin::-webkit-scrollbar-track { background-color: #f3f4f6; border-radius: 10px; }
-      </style>
-      <!-- Popup Promotion -->
-      <div id="promoPopup" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
-         <div class="bg-white rounded-2xl max-w-sm w-full p-6 relative">
-            <button onclick="closePopup()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 text-xl">&times;</button>
-            <h4 class="text-red-600 text-xl font-bold mb-2">Offres Spéciales</h4>
-            <p class="text-gray-700 mb-4">Voyage à Dubaï dès 1 799$ et Zanzibar dès 1 100$ !</p>
-            <a href="#destinations" class="block w-full text-center bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition">Voir les promos</a>
-         </div>
-      </div>
-      <script>
-         setTimeout(()=>{document.getElementById('promoPopup').classList.remove('hidden');document.getElementById('promoPopup').classList.add('flex');}, 2000);
-         function closePopup(){
-           document.getElementById('promoPopup').classList.add('hidden');
-           document.getElementById('promoPopup').classList.remove('flex');
-         }
-      </script>
-      <!-- FLOATING WHATSAPP -->
-      <div id="floating-whatsapp" class="fixed right-6 bottom-6 z-50 flex flex-col items-end">
-         <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20j'aimerais%20des%20informations." 
-            target="_blank" rel="noreferrer">
-            <div class="w-16 h-16 flex items-center justify-center rounded-full shadow-xl bg-gradient-to-br from-green-500 to-green-400 hover:scale-110 transition-transform duration-300">
-               <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-8 h-8">
-            </div>
-         </a>
-         <button id="close-whatsapp" 
-            class="mt-1 w-5 h-5 flex items-center justify-center text-white text-xs bg-gray-800 bg-opacity-60 hover:bg-opacity-80 rounded-full shadow-sm transition-opacity duration-200">
-         ✕
-         </button>
-      </div>
-      <script>
-         // Faire remonter le WhatsApp lorsqu'on atteint le bas de la page
-         const whatsapp = document.getElementById("floating-whatsapp");
-         
-         window.addEventListener("scroll", () => {
-           const scrollPosition = window.scrollY + window.innerHeight;
-           const pageHeight = document.documentElement.scrollHeight;
-         
-           if(scrollPosition >= pageHeight - 50) { 
-             whatsapp.style.bottom = "80px"; // remonte de 50px
-           } else {
-             whatsapp.style.bottom = "24px"; // position normale
-           }
-         });
-         
-         // Bouton pour fermer le WhatsApp flottant
-         document.getElementById("close-whatsapp").addEventListener("click", () => {
-           whatsapp.style.display = "none";
-         });
-      </script>
-      <!-- MODALES DESTINATIONS -->
-      <div id="dubaiModal" class="modal">
-         <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-               <h4 class="text-xl font-bold text-red-500">Dubaï — Luxe & Shopping</h4>
-               <button onclick="closeModal('dubaiModal')" class="text-gray-400 hover:text-white">✕</button>
-            </div>
-            <p class="text-sm text-gray-300 mb-4">Luxe, shopping et désert.</p>
-            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-               <li>Hôtel 4★</li>
-               <li>billet</li>
-               <li>Guides et visites incluses</li>
-               <li>Transferts privés</li>
-               <li>Assistance visa</li>
-               <li>assurance offerte</li>
-            </ul>
-            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Dubaï." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-         </div>
-      </div>
-      <div id="zanzibarModal" class="modal">
-         <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-               <h4 class="text-xl font-bold text-red-500">Zanzibar — Séjour détente & découverte</h4>
-               <button onclick="closeModal('zanzibarModal')" class="text-gray-400 hover:text-white">✕</button>
-            </div>
-            <p class="text-sm text-gray-300 mb-4">
-               Profitez des plages et de la culture swahilie.
-            </p>
-            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-               <li>Hôtel 4★</li>
-               <li>billet</li>
-               <li>Guides et visites incluses</li>
-               <li>Transferts privés</li>
-               <li>Assistance visa</li>
-               <li>assurance offerte</li>
-            </ul>
-            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Zanzibar." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-         </div>
-      </div>
-      <div id="istanbulModal" class="modal">
-         <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-               <h4 class="text-xl font-bold text-red-500">Istanbul — Histoire & Gastronomie</h4>
-               <button onclick="closeModal('istanbulModal')" class="text-gray-400 hover:text-white">✕</button>
-            </div>
-            <p class="text-sm text-gray-300 mb-4">Découvrez la ville historique et ses spécialités culinaires.</p>
-            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-               <li>Hôtel 4★</li>
-               <li>billet</li>
-               <li>Guides et visites incluses</li>
-               <li>Transferts privés</li>
-               <li>assurance offerte</li>
-            </ul>
-            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Istanbul." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-         </div>
-      </div>
-      <div id="parisModal" class="modal">
-         <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-               <h4 class="text-xl font-bold text-red-500">Paris — Romance & Culture</h4>
-               <button onclick="closeModal('parisModal')" class="text-gray-400 hover:text-white">✕</button>
-            </div>
-            <p class="text-sm text-gray-300 mb-4">Explorez la ville lumière, ses monuments et sa gastronomie.</p>
-            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-               <li>Hôtel 4★</li>
-               <li>billet</li>
-               <li>Guides et visites incluses</li>
-               <li>Transferts privés</li>
-               <li>Assistance visa</li>
-               <li>assurance offerte</li>
-            </ul>
-            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Paris." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-         </div>
-      </div>
-      <div id="barceloneModal" class="modal">
-         <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-               <h4 class="text-xl font-bold text-red-500">Barcelone — Plage & Architecture</h4>
-               <button onclick="closeModal('barceloneModal')" class="text-gray-400 hover:text-white">✕</button>
-            </div>
-            <p class="text-sm text-gray-300 mb-4">Prages et de l’architecture moderniste.</p>
-            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-               <li>Hôtel 4★</li>
-               <li>billet</li>
-               <li>Guides et visites incluses</li>
-               <li>Transferts privés</li>
-               <li>Assistance visa</li>
-               <li>assurance offerte</li>
-            </ul>
-            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Barcelone." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-         </div>
-      </div>
-      <div id="maldivesModal" class="modal">
-         <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-               <h4 class="text-xl font-bold text-red-500">Maldives — Luxe & Détente</h4>
-               <button onclick="closeModal('maldivesModal')" class="text-gray-400 hover:text-white">✕</button>
-            </div>
-            <p class="text-sm text-gray-300 mb-4">Séjour paradisiaque sur des plages idylliques avec confort et détente.</p>
-            <ul class="text-sm text-gray-300 list-disc list-inside space-y-1 mb-4">
-               <li>Hôtel 5★</li>
-               <li>billet</li>
-               <li>Guides et excursions incluses</li>
-               <li>Transferts privés</li>
-               <li>Assistance visa</li>
-               <li>assurance offerte</li>
-            </ul>
-            <a href="https://wa.me/243854442103?text=Bonjour%20Terra%20Voyage%2C%20envoyez-moi%20une%20proposition%20détaillée%20pour%20Maldives." target="_blank" class="block text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg">Demander un devis personnalisé</a>
-         </div>
-      </div>
-      <script>
-         const menuBtn = document.getElementById('menuBtn');
-         const closeMenuBtn = document.getElementById('closeMenuBtn');
-         const mobileMenu = document.getElementById('mobileMenuPanel');
-         const mobileOverlay = document.getElementById('mobileOverlay');
-         
-         function toggleMenu() {
-           const isOpen = !mobileMenu.classList.contains('translate-x-full');
-           mobileMenu.classList.toggle('translate-x-full', isOpen);
-           mobileOverlay.classList.toggle('hidden', isOpen);
-         }
-         
-         menuBtn.addEventListener('click', toggleMenu);
-         closeMenuBtn.addEventListener('click', toggleMenu);
-         mobileOverlay.addEventListener('click', toggleMenu);
-      </script>
-      </footer>
-   </body>
+         <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terra Voyage — Agence de voyage & billetterie</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Terra Voyage, agence de voyage spécialisée en vols internationaux, hôtels, visas et voyages sur mesure." />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+</head>
+
+<body class="bg-black text-white font-sans">
+
+<!-- ================= HEADER ================= -->
+<header class="fixed top-0 w-full z-40 bg-black/80 backdrop-blur">
+  <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+    <a href="#home" class="font-extrabold text-xl text-red-600">
+      Terra Voyage
+    </a>
+
+    <a href="https://wa.me/243854442103" target="_blank"
+       class="hidden md:inline-flex items-center gap-2 bg-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-red-700">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+
+  </nav>
+</header>
+
+<main class="pt-20">
+
+<!-- ================= HERO ================= -->
+<section id="home" class="relative min-h-[95vh] flex items-center overflow-hidden">
+
+  <!-- Background -->
+  <div id="heroBg" class="absolute inset-0 bg-cover bg-center opacity-50"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/90"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+    <div class="max-w-3xl">
+
+      <!-- Welcome badge -->
+      <span id="welcomeText"
+        class="inline-block mb-4 px-4 py-2 rounded-full bg-red-600 text-sm font-semibold opacity-0 translate-y-6">
+        Bienvenue chez Terra Voyage
+      </span>
+
+      <!-- Title -->
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight animate-zoomIn">
+        Voyagez autrement.<br class="hidden md:block">
+        Avec élégance et précision.
+      </h1>
+
+      <p class="mt-5 text-gray-300 text-lg">
+        Vols internationaux, hôtels, assurances et accompagnement personnalisé.
+      </p>
+
+      <!-- ================= FORM HERO ================= -->
+      <form id="heroForm"
+        class="mt-8 bg-gray-900/80 backdrop-blur-xl p-6 rounded-2xl shadow-2xl
+               grid grid-cols-1 md:grid-cols-7 gap-4">
+
+        <!-- Type voyage -->
+        <div class="md:col-span-7 flex flex-wrap gap-4 text-sm">
+          <label class="flex items-center gap-2">
+            <input type="radio" name="tripType" value="Aller simple" checked>
+            Aller simple
+          </label>
+          <label class="flex items-center gap-2">
+            <input type="radio" name="tripType" value="Aller-retour">
+            Aller-retour
+          </label>
+          <label class="flex items-center gap-2" id="multiVilleLabel">
+            <input type="radio" name="tripType" value="Multi-villes">
+            Multi-villes
+          </label>
+        </div>
+
+        <!-- Segments -->
+        <div id="segmentsContainer" class="md:col-span-7 space-y-3"></div>
+
+        <!-- Passagers -->
+        <div class="md:col-span-2">
+          <select id="passengersHero"
+            class="w-full px-4 py-3 rounded-lg bg-gray-800 focus:ring-2 focus:ring-red-600">
+            <option>1 passager</option>
+            <option>2 passagers</option>
+            <option>3 passagers</option>
+            <option>4 passagers</option>
+            <option>5 passagers</option>
+          </select>
+        </div>
+
+        <!-- Submit -->
+        <div class="md:col-span-2">
+          <button type="submit"
+            class="w-full bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-bold transition">
+            Rechercher
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-gray-950 border-t border-gray-800 mt-20">
+
+  <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-10 text-sm">
+
+    <div>
+      <h5 class="font-semibold mb-3">Navigation</h5>
+      <ul class="space-y-2 text-gray-400">
+        <li><a href="#home" class="hover:text-red-600">Accueil</a></li>
+        <li><a href="#services" class="hover:text-red-600">Services</a></li>
+        <li><a href="#destinations" class="hover:text-red-600">Destinations</a></li>
+        <li><a href="#contact" class="hover:text-red-600">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h5 class="font-semibold mb-3">Services</h5>
+      <ul class="space-y-2 text-gray-400">
+        <li>Billetterie aérienne</li>
+        <li>Voyages sur mesure</li>
+        <li>Hôtels & Resorts</li>
+        <li>Visas & assistance</li>
+      </ul>
+    </div>
+
+    <div>
+      <h5 class="font-semibold mb-3">Contact</h5>
+      <p class="text-gray-400">
+        WhatsApp : +243 854 442 103<br>
+        Email : contact@terravoyage.com
+      </p>
+    </div>
+
+  </div>
+
+  <div class="border-t border-gray-800 py-6 text-center text-gray-500 text-xs">
+    © 2025 Terra Voyage — Tous droits réservés
+  </div>
+
+</footer>
+
+<!-- ================= ANIMATIONS ================= -->
+<style>
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-zoomIn {
+  animation: zoomIn 1s ease forwards;
+}
+</style>
+
+<!-- ================= JS ================= -->
+<script src="assets/js/main.js" defer></script>
+
+</body>
 </html>
+
