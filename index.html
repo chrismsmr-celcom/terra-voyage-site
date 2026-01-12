@@ -1,150 +1,145 @@
 <!DOCTYPE html>
 <html lang="fr">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://emrldtp.cc/NDg3MjE4.js?t=487218';
-      document.head.appendChild(script);
-  })();
-</script>
-      <title>Terra Voyage</title>
-      <!-- Favicon principal -->
-      <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
-      <!-- Pour compatibilité avec tous les navigateurs -->
-      <link rel="icon" type="image/png" sizes="96x96" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
-      <link rel="icon" type="image/png" sizes="192x192" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
-      <!-- Option Apple Touch Icon (iOS) -->
-      <link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
-      <meta name="description" content="Terra Voyage – Agence de voyage premium. Billets d’avion, visas, hôtels et voyages sur mesure.">
-      <meta name="keywords" content="agence de voyage, visa, billet d'avion, voyage sur mesure, Terra Voyage">
-      <meta name="author" content="Terra Voyage">
-      <script src="https://cdn.tailwindcss.com"></script>
-      <style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+         (function () {
+             var script = document.createElement("script");
+             script.async = 1;
+             script.src = 'https://emrldtp.cc/NDg3MjE4.js?t=487218';
+             document.head.appendChild(script);
+         })();
+  </script>
+  <title>Terra Voyage</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/2qwqvtDL/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png">
+  <meta name="description" content="Terra Voyage – Agence de voyage premium. Billets d’avion, visas, hôtels et voyages sur mesure.">
+  <meta name="keywords" content="agence de voyage, visa, billet d'avion, voyage sur mesure, Terra Voyage">
+  <meta name="author" content="Terra Voyage">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
          .modal { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index:50; }
          .modal-content { background: #111; padding: 1.5rem; border-radius: 1rem; max-width: 600px; width: 100%; }
-      </style>
-      <link rel="stylesheet" href="assets/css/style.css">
-   </head>
-   <body class="bg-black text-white font-sans antialiased overflow-x-hidden">
-      <!-- NAVBAR -->
-      <header class="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-red-700/30">
-         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-               <img src="https://i.postimg.cc/j5VzVV3c/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png"
-                  class="h-14 w-auto" alt="Terra Voyage logo">
-               <span class="font-bold tracking-wide">TERRA VOYAGE</span>
-            </div>
-            <nav class="hidden md:flex gap-8 text-sm">
-               <a href="#home" class="hover:text-red-500">Accueil</a>
-               <a href="#destinations" class="hover:text-red-500">Destinations</a>
-               <a href="#services" class="hover:text-red-500">Services</a>
-               <a href="#about" class="hover:text-red-500">À propos</a>
-               <a href="#contact" class="hover:text-red-500">Contact</a>
-            </nav>
-            <div class="flex items-center gap-4">
-               <a href="https://wa.me/243854442103"
-                  class="hidden md:inline-flex px-4 py-2 rounded-lg bg-red-700 hover:bg-red-800">
-               WhatsApp
-               </a>
-<!-- Hamburger -->
-<button id="menuBtn" class="md:hidden">☰</button>
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+               @keyframes zoomIn {
+               0% { opacity: 0; transform: scale(0.8); }
+               100% { opacity: 1; transform: scale(1); }
+               }
+               .animate-zoomIn {
+               animation: zoomIn 1s ease forwards;
+               }
+  </style>
+  <style>
+         /* cacher scrollbar */
+         .scrollbar-none {
+         -ms-overflow-style: none;  
+         scrollbar-width: none;      
+         }
+         .scrollbar-none::-webkit-scrollbar {
+         display: none;              
+         }
+         /* Effet coverflow léger */
+         #mobileCarousel > div {
+         transform-style: preserve-3d;
+         transition: transform 0.3s ease;
+         }
+         #mobileCarousel > div:hover {
+         transform: scale(1.05) rotateY(0deg);
+         }
+  </style>
+  <style>
+            .tab-btn svg {
+            transition: transform 0.3s ease, color 0.3s ease;
+            }
+            .tab-btn:hover svg {
+            transform: translateY(-5px);
+            color: #f59e0b; /* Jaune/orange subtil */
+            }
+            .tab-btn span {
+            position: relative;
+            display: inline-block;
+            }
+            .tab-btn span::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 0;
+            bottom: -4px;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+            }
+            .tab-btn:hover span::after {
+            width: 100%;
+            }
+  </style>
+  <style>
+         @keyframes zoomIn {
+         from { opacity: 0; transform: scale(0.85); }
+         to { opacity: 1; transform: scale(1); }
+         }
+         .animate-zoomIn {
+         animation: zoomIn 1s ease forwards;
+         }
+  </style>
+</head>
 
-<!-- Overlay -->
-<div id="mobileOverlay" class="hidden fixed inset-0 bg-black/50 z-40"></div>
+<body class="bg-black text-white font-sans antialiased overflow-x-hidden">
+  <header class="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-red-700/30">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <img src="https://i.postimg.cc/j5VzVV3c/YABISO-VOYAGE-20251216-035622-0000-removebg-preview.png" class="h-14 w-auto" alt="Terra Voyage logo"> <span class="font-bold tracking-wide">TERRA VOYAGE</span>
+      </div>
+      <nav class="hidden md:flex gap-8 text-sm">
+        <a href="#home" class="hover:text-red-500">Accueil</a> <a href="#destinations" class="hover:text-red-500">Destinations</a> <a href="#services" class="hover:text-red-500">Services</a> <a href="#about" class="hover:text-red-500">À propos</a> <a href="#contact" class="hover:text-red-500">Contact</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="https://wa.me/243854442103" class="hidden md:inline-flex px-4 py-2 rounded-lg bg-red-700 hover:bg-red-800">WhatsApp</a> <button id="menuBtn" class="md:hidden">☰</button>
+        <div id="mobileOverlay" class="hidden fixed inset-0 bg-black/50 z-40"></div>
+        <div id="mobileMenuPanel" class="fixed top-0 right-0 h-full w-64 bg-gray-950 transform translate-x-full transition-transform z-50">
+          <button id="closeMenuBtn" class="p-4 text-white">✕</button>
+          <nav class="flex flex-col mt-6 space-y-4 px-4">
+            <a href="#home" class="text-white">Accueil</a> <a href="#services" class="text-white">Services</a> <a href="#destinations" class="text-white">Destinations</a> <a href="#contact" class="text-white">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/70 hidden z-40 transition-opacity duration-300"></div>
+    <div id="mobileMenuPanel" class="fixed top-0 right-0 h-screen w-4/5 max-w-sm bg-white text-black shadow-2xl transform translate-x-full transition-transform duration-300 ease-out z-50 flex flex-col px-6 pt-8">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold text-red-600">Terra Voyage</h3><button id="closeMenuBtn" class="text-3xl">×</button>
+      </div>
+      <nav class="flex-1 overflow-y-auto flex flex-col gap-4 text-base font-poppins">
+        <a href="#home" onclick="toggleMenu()">Accueil</a> <a href="#destinations" onclick="toggleMenu()">Destinations</a> <a href="#services" onclick="toggleMenu()">Services</a> <a href="#about" onclick="toggleMenu()">À propos</a> <a href="#contact" onclick="toggleMenu()">Contact</a>
+        <hr class="border-gray-300 my-2">
+        <a href="#hotels" onclick="toggleMenu()">Réservation d’hôtel</a> <a href="#insurance" onclick="toggleMenu()">Assurance voyage</a> <a href="#car-rental" onclick="toggleMenu()">Car rental</a> <a href="#transfers" onclick="toggleMenu()">Transfers</a>
+        <hr class="border-gray-300 my-2">
+        <a href="#" data-modal="legal" onclick="toggleMenu()">Mentions légales</a> <a href="#" data-modal="privacy" onclick="toggleMenu()">Politique de confidentialité</a> <a href="#" data-modal="terms" onclick="toggleMenu()">Conditions d'utilisation</a> <a href="#" data-modal="cookies" onclick="toggleMenu()">Politique de cookie</a> <a href="#" data-modal="help" onclick="toggleMenu()">Aide</a> <a href="#payment" onclick="toggleMenu()">Options de paiement</a> <a href="https://chrismsmr-celcom.github.io/mak24mus/" target="_blank" rel="noreferrer">Makem Groupe</a> <button id="changeLang" class="mt-4 px-4 py-2 rounded-lg border border-gray-400 text-black font-semibold">Langue : FR</button>
+        <div class="mt-4 px-4 py-3 border border-gray-400 rounded-lg">
+          <span class="font-semibold">Devis accepté :</span>
+          <div class="mt-2 flex flex-wrap gap-3 text-sm">
+            <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">USD</span> <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">EUR</span> <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">CDF</span> <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">BTC</span> <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">BNB</span>
+          </div>
+        </div><a href="https://wa.me/243854442103" target="_blank" rel="noreferrer" class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-red-600 text-white font-semibold">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="pt-24"></main>
+  <section id="home" class="relative h-[95vh] pt-24 flex items-center overflow-hidden">
+    <div id="heroBg" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-50"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+      <div class="max-w-3xl text-white">
+        <span id="welcomeText" class="inline-block mb-4 px-4 py-3 rounded-full bg-red-600/90-backdrop-30 text-sm font-semibold text-white opacity-0 transform translate-y-6">
+        <script>
 
-<!-- Menu mobile -->
-<div id="mobileMenuPanel" class="fixed top-0 right-0 h-full w-64 bg-gray-950 transform translate-x-full transition-transform z-50">
-  <button id="closeMenuBtn" class="p-4 text-white">✕</button>
-  <nav class="flex flex-col mt-6 space-y-4 px-4">
-    <a href="#home" class="text-white">Accueil</a>
-    <a href="#services" class="text-white">Services</a>
-    <a href="#destinations" class="text-white">Destinations</a>
-    <a href="#contact" class="text-white">Contact</a>
-  </nav>
-</div>
-            </div>
-         </div>
-         <!-- Mobile overlay -->
-         <div id="mobileOverlay" class="fixed inset-0 bg-black/70 hidden z-40 transition-opacity duration-300"></div>
-         <!-- Mobile menu panel -->
-         <div id="mobileMenuPanel" class="fixed top-0 right-0 h-screen w-4/5 max-w-sm bg-white text-black shadow-2xl transform translate-x-full transition-transform duration-300 ease-out z-50 flex flex-col px-6 pt-8">
-            <div class="flex justify-between items-center mb-6">
-               <h3 class="text-xl font-bold text-red-600">Terra Voyage</h3>
-               <button id="closeMenuBtn" class="text-3xl">&times;</button>
-            </div>
-            <!-- Contenu du menu scrollable -->
-            <nav class="flex-1 overflow-y-auto flex flex-col gap-4 text-base font-poppins">
-               <!-- NAVIGATION PRINCIPALE -->
-               <a href="#home" onclick="toggleMenu()">Accueil</a>
-               <a href="#destinations" onclick="toggleMenu()">Destinations</a>
-               <a href="#services" onclick="toggleMenu()">Services</a>
-               <a href="#about" onclick="toggleMenu()">À propos</a>
-               <a href="#contact" onclick="toggleMenu()">Contact</a>
-               <hr class="border-gray-300 my-2">
-               <a href="#hotels" onclick="toggleMenu()">Réservation d’hôtel</a>
-               <a href="#insurance" onclick="toggleMenu()">Assurance voyage</a>
-               <a href="#car-rental" onclick="toggleMenu()">Car rental</a>
-               <a href="#transfers" onclick="toggleMenu()">Transfers</a>
-               <hr class="border-gray-300 my-2">
-               <!-- LIENS LÉGAUX / INFO -->
-               <a href="#" data-modal="legal" onclick="toggleMenu()">Mentions légales</a>
-               <a href="#" data-modal="privacy" onclick="toggleMenu()">Politique de confidentialité</a>
-               <a href="#" data-modal="terms" onclick="toggleMenu()">Conditions d'utilisation</a>
-               <a href="#" data-modal="cookies" onclick="toggleMenu()">Politique de cookie</a>
-               <a href="#" data-modal="help" onclick="toggleMenu()">Aide</a>
-               <a href="#payment" onclick="toggleMenu()">Options de paiement</a>
-               <a href="https://chrismsmr-celcom.github.io/mak24mus/" target="_blank" rel="noreferrer">Makem Groupe</a>
-               <!-- LANGUE -->
-               <button id="changeLang" class="mt-4 px-4 py-2 rounded-lg border border-gray-400 text-black font-semibold">
-               Langue : FR
-               </button>
-               <!-- Devis interactif -->
-               <div class="mt-4 px-4 py-3 border border-gray-400 rounded-lg">
-                  <span class="font-semibold">Devis accepté :</span>
-                  <div class="mt-2 flex flex-wrap gap-3 text-sm">
-                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-                     <i class="fas fa-dollar-sign"></i> USD
-                     </span>
-                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-                     <i class="fas fa-euro-sign"></i> EUR
-                     </span>
-                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-                     <i class="fas fa-coins"></i> CDF
-                     </span>
-                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-                     <i class="fab fa-bitcoin"></i> BTC
-                     </span>
-                     <span class="flex items-center gap-1 px-2 py-1 bg-gray-100 text-black rounded-full">
-                     <i class="fab fa-bnb"></i> BNB
-                     </span>
-                  </div>
-               </div>
-               <a href="https://wa.me/243854442103" target="_blank" rel="noreferrer" class="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-red-600 text-white font-semibold">
-               WhatsApp
-               </a>
-            </nav>
-         </div>
-      </header>
-      <main class="pt-24">
-         <!-- tes sections ici -->
-      </main>
-      <!-- HERO dynamique avec Multi-villes modifiable -->
-      <section id="home" class="relative h-[95vh] pt-24 flex items-center overflow-hidden">
-         <!-- Background dynamique --> 
-         <div id="heroBg" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-50"></div>
-         <!-- Overlay gradient -->
-         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80"></div>
-         <!-- Contenu --> 
-         <div class="relative z-10 max-w-7xl 
-            mx-auto px-6 w-full">
-         <div class="max-w-3xl text-white">
-            <span class=
-            <span id="welcomeText" class="inline-block mb-4 px-4 py-3 rounded-full bg-red-600/90-backdrop-30 text-sm font-semibold text-white opacity-0 transform translate-y-6">
-               <script>
+
                   window.addEventListener('load', () => {
                     const text = document.getElementById('welcomeText');
                     
@@ -169,87 +164,44 @@
                       text.classList.add('opacity-0', '-translate-y-8');
                     }, 4000); // 4s
                   });
-               </script> 
-            </span>
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight opacity-0 animate-zoomIn">
-               Voyagez autrement.<br class="hidden md:block"> Avec élégance et précision.
-            </h1>
-            <style>
-               @keyframes zoomIn {
-               0% { opacity: 0; transform: scale(0.8); }
-               100% { opacity: 1; transform: scale(1); }
-               }
-               .animate-zoomIn {
-               animation: zoomIn 1s ease forwards;
-               }
-            </style>
-            </h1> 
-            <p class="mt-5 text-gray-300 text-lg"> Vols internationaux, hôtels, assurances et accompagnement personnalisé. Terra Voyage s’occupe de tout, avec rigueur et excellence. </p>
-            <!-- Formulaire -->
-            <!-- FORMULAIRE HERO -->
-            <form id="heroForm"
-               onsubmit="openWhatsAppHero(event)"
-               class="mt-8 max-w-6xl mx-auto
-               bg-gray-900/80 backdrop-blur-xl
-               p-4 sm:p-6 md:p-8
-               rounded-2xl shadow-2xl
-               grid grid-cols-1 md:grid-cols-7 gap-4 w-full">
-               <!-- TYPE DE VOYAGE -->
-               <div class="md:col-span-7 flex flex-wrap gap-4 text-sm text-gray-200">
-                  <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="tripType" value="Aller simple" checked onchange="toggleTrip(this)">
-                  Aller simple
-                  </label>
-                  <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="tripType" value="Aller-retour" onchange="toggleTrip(this)">
-                  Aller-retour
-                  </label>
-                  <label class="flex items-center gap-2 cursor-pointer"> <label id="multiVilleLabel" data-trip="multi" class="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="tripType" value="Multi-villes" onchange="toggleTrip(this)">
-                  Multi-villes
-                  </label>
-               </div>
-               <!-- SEGMENTS -->
-               <div id="segmentsContainer" class="md:col-span-7 flex flex-col gap-3"></div>
-               <!-- BOUTONS MULTI-VILLES -->
-               <div id="multiBtns" class="md:col-span-7 flex gap-2 hidden">
-                  <button type="button"
-                     onclick="addSegment()"
-                     class="px-4 py-2 text-sm bg-gray-700 hover:bg-red-600 rounded-lg text-white font-semibold transition">
-                  + Segment
-                  </button>
-                  <button type="button"
-                     onclick="removeSegment()"
-                     class="px-4 py-2 text-sm bg-gray-700 hover:bg-red-600 rounded-lg text-white font-semibold transition">
-                  − Segment
-                  </button>
-               </div>
-               <!-- PASSAGERS -->
-               <div class="md:col-span-2">
-                  <select id="passengersHero"
-                     class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white text-sm
-                     focus:outline-none focus:ring-2 focus:ring-red-600">
-                     <option>1 passager</option>
-                     <option>2 passagers</option>
-                     <option>3 passagers</option>
-                     <option>4 passagers</option>
-                     <option>5 passagers</option>
-                  </select>
-               </div>
-               <!-- BOUTON RECHERCHE -->
-               <div class="md:col-span-2">
-                  <button type="submit"
-                     class="w-full px-6 py-3 bg-red-600 hover:bg-red-700
-                     rounded-lg font-bold text-white
-                     transition transform hover:scale-[1.02]">
-                  Rechercher
-                  </button>
-               </div>
-            <form onsubmit="openWhatsAppHero(event)">
-            </form>
-         </div>
-         <!-- Scripts -->
-         <script>
+        </script></span>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight opacity-0 animate-zoomIn">Voyagez autrement.<br class="hidden md:block">
+        Avec élégance et précision.</h1>
+        <p class="mt-5 text-gray-300 text-lg">Vols internationaux, hôtels, assurances et accompagnement personnalisé. Terra Voyage s’occupe de tout, avec rigueur et excellence.</p>
+        <form id="heroForm" onsubmit="openWhatsAppHero(event)" class="mt-8 max-w-6xl mx-auto bg-gray-900/80 backdrop-blur-xl p-4 sm:p-6 md:p-8 rounded-2xl shadow-2xl grid grid-cols-1 md:grid-cols-7 gap-4 w-full" name="heroForm">
+          <div class="md:col-span-7 flex flex-wrap gap-4 text-sm text-gray-200">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="tripType" value="Aller simple" checked onchange="toggleTrip(this)"> Aller simple</label> <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="tripType" value="Aller-retour" onchange="toggleTrip(this)"> Aller-retour</label> <label class="flex items-center gap-2 cursor-pointer"><label id="multiVilleLabel" data-trip="multi" class="flex items-center gap-2 cursor-pointer"><input type="radio" name="tripType" value="Multi-villes" onchange="toggleTrip(this)"> Multi-villes</label></label>
+          </div>
+          <div id="segmentsContainer" class="md:col-span-7 flex flex-col gap-3"></div>
+          <div id="multiBtns" class="md:col-span-7 flex gap-2 hidden">
+            <button type="button" onclick="addSegment()" class="px-4 py-2 text-sm bg-gray-700 hover:bg-red-600 rounded-lg text-white font-semibold transition">+ Segment</button> <button type="button" onclick="removeSegment()" class="px-4 py-2 text-sm bg-gray-700 hover:bg-red-600 rounded-lg text-white font-semibold transition">− Segment</button>
+          </div>
+          <div class="md:col-span-2">
+            <select id="passengersHero" class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white text-sm focus:outline-none focus:ring-2 focus:ring-red-600">
+              <option>
+                1 passager
+              </option>
+              <option>
+                2 passagers
+              </option>
+              <option>
+                3 passagers
+              </option>
+              <option>
+                4 passagers
+              </option>
+              <option>
+                5 passagers
+              </option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <button type="submit" class="w-full px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-bold text-white transition transform hover:scale-[1.02]">Rechercher</button>
+          </div>
+          <form onsubmit="openWhatsAppHero(event)"></form>
+        </form>
+      </div>
+      <script>
             (function () {
             
               const heroForm = document.getElementById('heroForm');
@@ -609,140 +561,100 @@
             document.addEventListener('DOMContentLoaded',()=>{
               toggleTrip(document.querySelector('input[name="tripType"]:checked'));
             });
-         </script>
-      </section>
-      <!-- DESTINATIONS -->
-      <section id="destinations" class="py-20 bg-gray-950 text-white overflow-hidden">
-         <div class="max-w-7xl mx-auto px-6">
-            <h3 class="text-3xl font-bold text-center text-red-600">
-               Destinations populaires
-            </h3>
-            <p class="text-center text-gray-400 mt-2">
-               Des voyages créés pour ceux qui aiment le raffinement.
-            </p>
-            <!-- DESKTOP GRID -->
-            <div class="hidden md:grid mt-12 gap-8 grid-cols-3">
-               <!-- DUBAÏ -->
-               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-                  <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80"
-                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-                  <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-                     <h4 class="text-xl font-semibold text-white">Dubaï</h4>
-                     <p class="text-sm text-gray-200 mt-1">Luxe, shopping et désert</p>
-                     <div class="mt-3 flex justify-between text-sm text-gray-200">
-                        <span>6j / 5n</span>
-                        <span class="font-semibold text-white">Dès 1 799 $</span>
-                     </div>
-                     <div class="mt-4 flex gap-3">
-                        <button onclick="openModal('dubaiModal')" class="flex-1 px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600 transition">En savoir plus</button>
-                        <a href="https://wa.me/243854442103" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 transition">WhatsApp</a>
-                     </div>
-                  </div>
-               </div>
-               <!-- ZANZIBAR -->
-               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-                  <img src="https://images.unsplash.com/photo-1758040223029-2259eb8141fd?w=500&q=80"
-                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-                     <h4 class="text-xl font-semibold text-white">Zanzibar</h4>
-                     <p class="text-sm text-gray-200">Plages & détente</p>
-                     <div class="mt-3 flex justify-between text-sm text-gray-200">
-                        <span>7j / 6n</span>
-                        <span class="font-semibold">Dès 1 100 $</span>
-                     </div>
-                     <button onclick="openModal('zanzibarModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-                  </div>
-               </div>
-               <!-- ISTANBUL -->
-               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-                  <img src="https://images.unsplash.com/photo-1589561454226-796a8aa89b05?w=1600&q=80"
-                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-                     <h4 class="text-xl font-semibold text-white">Istanbul</h4>
-                     <p class="text-sm text-gray-200">Histoire & gastronomie</p>
-                     <div class="mt-3 flex justify-between text-sm text-gray-200">
-                        <span>5j / 4n</span>
-                        <span class="font-semibold">Dès 1 950 $</span>
-                     </div>
-                     <button onclick="openModal('istanbulModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-                  </div>
-               </div>
-               <!-- PARIS -->
-               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-                  <img src="https://images.unsplash.com/photo-1605701877331-645ad05dcb97?w=800&q=80"
-                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-                     <h4 class="text-xl font-semibold text-white">Paris</h4>
-                     <p class="text-sm text-gray-200">Romance & culture</p>
-                     <div class="mt-3 flex justify-between text-sm text-gray-200">
-                        <span>5j / 4n</span>
-                        <span class="font-semibold">Dès 1 650 $</span>
-                     </div>
-                     <button onclick="openModal('parisModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-                  </div>
-               </div>
-               <!-- BARCELONE -->
-               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-                  <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80"
-                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-                     <h4 class="text-xl font-semibold text-white">Barcelone</h4>
-                     <p class="text-sm text-gray-200">Plage & architecture</p>
-                     <div class="mt-3 flex justify-between text-sm text-gray-200">
-                        <span>4j / 3n</span>
-                        <span class="font-semibold">Dès 1 300 $</span>
-                     </div>
-                     <button onclick="openModal('barceloneModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-                  </div>
-               </div>
-               <!-- MALDIVES -->
-               <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
-                  <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80"
-                     class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
-                  <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
-                  <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
-                     <h4 class="text-xl font-semibold text-white">Maldives</h4>
-                     <p class="text-sm text-gray-200">Luxe & détente</p>
-                     <div class="mt-3 flex justify-between text-sm text-gray-200">
-                        <span>7j / 6n</span>
-                        <span class="font-semibold">Dès 2 900 $</span>
-                     </div>
-                     <button onclick="openModal('maldivesModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
-                  </div>
-               </div>
+      </script>
+    </div>
+  </section>
+  
+  <div style="max-width:728px; margin:20px auto; position:relative; padding-top:12.36%; background:#fff;">
+    <iframe
+        src="https://fr.trip.com/partners/ad/DB10207395?Allianceid=7181378&SID=288688982&trip_sub1="
+        style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+        frameborder="0"
+        scrolling="no"
+        id="DB10207395">
+    </iframe>
+</div>
+
+  
+  <section id="destinations" class="py-20 bg-gray-950 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <h3 class="text-3xl font-bold text-center text-red-600">Destinations populaires</h3>
+      <p class="text-center text-gray-400 mt-2">Des voyages créés pour ceux qui aiment le raffinement.</p>
+      <div class="hidden md:grid mt-12 gap-8 grid-cols-3">
+        <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+          <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&amp;q=80" class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110" alt="photo-1518684079-3c830dcef090">
+          <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+            <h4 class="text-xl font-semibold text-white">Dubaï</h4>
+            <p class="text-sm text-gray-200 mt-1">Luxe, shopping et désert</p>
+            <div class="mt-3 flex justify-between text-sm text-gray-200">
+              <span>6j / 5n</span> <span class="font-semibold text-white">Dès 1 799 $</span>
             </div>
-            <!-- fin desktop grid -->
-            <!-- MOBILE CAROUSEL 3D COVERFLOW -->
-            <div id="mobileCarousel" class="md:hidden mt-10 flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-6 px-6 py-6 scrollbar-none perspective-1000">
-               <!-- Cartes injectées via JS -->
+            <div class="mt-4 flex gap-3">
+              <button onclick="openModal('dubaiModal')" class="flex-1 px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600 transition">En savoir plus</button> <a href="https://wa.me/243854442103" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 transition">WhatsApp</a>
             </div>
-         </div>
-      </section>
-      <style>
-         /* cacher scrollbar */
-         .scrollbar-none {
-         -ms-overflow-style: none;  
-         scrollbar-width: none;      
-         }
-         .scrollbar-none::-webkit-scrollbar {
-         display: none;              
-         }
-         /* Effet coverflow léger */
-         #mobileCarousel > div {
-         transform-style: preserve-3d;
-         transition: transform 0.3s ease;
-         }
-         #mobileCarousel > div:hover {
-         transform: scale(1.05) rotateY(0deg);
-         }
-         
-      </style>
-      <script>
+          </div>
+        </div>
+        <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+          <img src="https://images.unsplash.com/photo-1758040223029-2259eb8141fd?w=500&amp;q=80" class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110" alt="photo-1758040223029-2259eb8141fd">
+          <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+          <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+            <h4 class="text-xl font-semibold text-white">Zanzibar</h4>
+            <p class="text-sm text-gray-200">Plages & détente</p>
+            <div class="mt-3 flex justify-between text-sm text-gray-200">
+              <span>7j / 6n</span> <span class="font-semibold">Dès 1 100 $</span>
+            </div><button onclick="openModal('zanzibarModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+          </div>
+        </div>
+        <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+          <img src="https://images.unsplash.com/photo-1589561454226-796a8aa89b05?w=1600&amp;q=80" class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110" alt="photo-1589561454226-796a8aa89b05">
+          <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+          <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+            <h4 class="text-xl font-semibold text-white">Istanbul</h4>
+            <p class="text-sm text-gray-200">Histoire & gastronomie</p>
+            <div class="mt-3 flex justify-between text-sm text-gray-200">
+              <span>5j / 4n</span> <span class="font-semibold">Dès 1 950 $</span>
+            </div><button onclick="openModal('istanbulModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+          </div>
+        </div>
+        <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+          <img src="https://images.unsplash.com/photo-1605701877331-645ad05dcb97?w=800&amp;q=80" class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110" alt="photo-1605701877331-645ad05dcb97">
+          <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+          <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+            <h4 class="text-xl font-semibold text-white">Paris</h4>
+            <p class="text-sm text-gray-200">Romance & culture</p>
+            <div class="mt-3 flex justify-between text-sm text-gray-200">
+              <span>5j / 4n</span> <span class="font-semibold">Dès 1 650 $</span>
+            </div><button onclick="openModal('parisModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+          </div>
+        </div>
+        <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+          <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&amp;q=80" class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110" alt="photo-1539037116277-4db20889f2d4">
+          <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+          <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+            <h4 class="text-xl font-semibold text-white">Barcelone</h4>
+            <p class="text-sm text-gray-200">Plage & architecture</p>
+            <div class="mt-3 flex justify-between text-sm text-gray-200">
+              <span>4j / 3n</span> <span class="font-semibold">Dès 1 300 $</span>
+            </div><button onclick="openModal('barceloneModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+          </div>
+        </div>
+        <div class="group relative rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+          <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&amp;q=80" class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110" alt="photo-1590523277543-a94d2e4eb00b">
+          <div class="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-80 transition"></div>
+          <div class="absolute bottom-0 p-5 translate-y-14 group-hover:translate-y-0 transition duration-500">
+            <h4 class="text-xl font-semibold text-white">Maldives</h4>
+            <p class="text-sm text-gray-200">Luxe & détente</p>
+            <div class="mt-3 flex justify-between text-sm text-gray-200">
+              <span>7j / 6n</span> <span class="font-semibold">Dès 2 900 $</span>
+            </div><button onclick="openModal('maldivesModal')" class="mt-4 w-full px-4 py-2 rounded-lg border border-gray-600 hover:border-red-600">En savoir plus</button>
+          </div>
+        </div>
+      </div>
+      <div id="mobileCarousel" class="md:hidden mt-10 flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-6 px-6 py-6 scrollbar-none perspective-1000"></div>
+    </div>
+  </section>
+  <script>
          const destinations = [
            {name:'Dubaï', days:'6j / 5n', price:'1 799 $', img:'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80', modal:'dubaiModal', desc:'Luxe, shopping et désert'},
            {name:'Zanzibar', days:'7j / 6n', price:'1 100 $', img:'https://images.unsplash.com/photo-1758040223029-2259eb8141fd?w=500&q=80', modal:'zanzibarModal', desc:'Plages & détente'},
@@ -795,144 +707,59 @@
              card.style.transform = `rotateY(${offset}deg) scale(1)`;
            });
          });
-      </script>
-      <!-- ABOUT -->
-      <section id="about" class="py-20 bg-gray-50 text-gray-900">
-         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-            <div>
-               <h3 class="text-3xl font-bold">À propos de Terra Voyage</h3>
-               <p class="text-gray-900 mt-4">Terra Voyage est une agence spécialisée dans les expériences premium. Notre priorité : votre confort et des souvenirs inoubliables. Nous opérons avec transparence et une équipe locale dédiée pour chaque destination.</p>
-               <ul class="mt-6 text-gray-900 space-y-2 text-sm">
-                  <li>• Équipe bilingue (FR / EN)</li>
-                  <li>• Réservation via WhatsApp pour une personnalisation complète</li>
-                  <li>• Partenaires hôteliers sélectionnés</li>
-               </ul>
+  </script>
+  <section id="about" class="py-20 bg-gray-50 text-gray-900">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h3 class="text-3xl font-bold">À propos de Terra Voyage</h3>
+        <p class="text-gray-900 mt-4">Terra Voyage est une agence spécialisée dans les expériences premium. Notre priorité : votre confort et des souvenirs inoubliables. Nous opérons avec transparence et une équipe locale dédiée pour chaque destination.</p>
+        <ul class="mt-6 text-gray-900 space-y-2 text-sm">
+          <li>• Équipe bilingue (FR / EN)</li>
+          <li>• Réservation via WhatsApp pour une personnalisation complète</li>
+          <li>• Partenaires hôteliers sélectionnés</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl overflow-hidden bg-white/5 p-4">
+        <img src="https://i.postimg.cc/YSkZfVMS/YABISO-VOYAGE-20251216-035622-0000.png" alt="Notre équipe" class="w-full h-64 object-cover rounded-lg">
+        <div class="mt-4 text-gray-900 text-sm">
+          Nous croyons au voyage qui transforme — laissez-nous imaginer le vôtre.
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-20 px-6 bg-gray-50 text-gray-900">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12 text-center">Pourquoi choisir Terra Voyage</h2>
+      <div class="flex flex-wrap justify-center gap-6 mb-12">
+        <div class="flex flex-wrap justify-center gap-6 mb-12">
+          <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="support"><img src="https://cdn-icons-png.flaticon.com/128/7595/7595894.png" alt="Support 24/7" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110"> Support 24/7 <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Discutez avec notre équipe à tout moment</span></button> <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="payment"><img src="https://cdn-icons-png.flaticon.com/128/6993/6993595.png" alt="Paiement" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110"> Méthodes de paiement <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Visa, Mastercard, Crypto, Orange Money, M-Pesa</span></button> <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="rewards"><img src="https://cdn-icons-png.flaticon.com/128/372/372768.png" alt="Avantages &amp; Réductions" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110"> Avantages & Réductions <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Offres exclusives et promotions régulières</span></button> <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="bestprice"><img src="https://cdn-icons-png.flaticon.com/128/9419/9419260.png" alt="Meilleur Prix" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110"> Garantie Meilleur Prix <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Nous ajustons vos tarifs si vous trouvez moins cher</span></button>
+        </div>
+        <div class="tab-content space-y-6">
+          <div id="support" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+            <h3 class="text-2xl font-bold mb-4">Support 24/7</h3>
+            <p>Notre service client est disponible 24h/24 et 7j/7 pour vous accompagner à chaque étape de votre voyage. Que ce soit pour une information, une modification de réservation ou une assistance urgente, notre équipe est à votre écoute. Grâce à notre support intelligent, vous obtenez des réponses immédiates aux questions les plus fréquentes, et un conseiller dédié prend le relais dès que nécessaire via WhatsApp. Chez Terra Voyage, votre tranquillité d’esprit est une priorité, avant, pendant et après votre déplacement.</p>
+          </div>
+          <div id="payment" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+            <div id="payment" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+              <h3 class="text-2xl font-bold mb-6">Méthodes de paiement acceptées</h3>
+              <p class="mb-6 text-gray-900">Terra Voyage vous offre une large gamme de solutions de paiement sécurisées, locales et internationales.</p>
+              <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center"><img src="https://cdn-icons-png.flaticon.com/128/11378/11378185.png" alt="Mastercard" class="h-10 mx-auto"> <img src="https://cdn-icons-png.flaticon.com/128/5968/5968397.png" alt="Visa" class="h-10 mx-auto"> <img src="https://cdn-icons-png.flaticon.com/128/38/38971.png" alt="PayPal" class="h-10 mx-auto"> <img src="https://images.seeklogo.com/logo-png/44/1/m-pesa-logo-png_seeklogo-442995.png" alt="M-Pesa" class="h-10 mx-auto"> <img src="https://www.logo.wine/a/logo/Orange_Money/Orange_Money-Logo.wine.svg" alt="Orange Money" class="h-10 mx-auto"> <img src="https://images.seeklogo.com/logo-png/55/1/airtel-money-uganda-logo-png_seeklogo-556391.png" alt="Airtel Money" class="h-10 mx-auto"> <img src="https://www.logo.wine/a/logo/Google_Pay/Google_Pay-Logo.wine.svg" alt="Google Pay" class="h-10 mx-auto"> <img src="https://cdn-icons-png.flaticon.com/128/5977/5977576.png" alt="Apple Pay" class="h-10 mx-auto"> <img src="https://cdn-icons-png.flaticon.com/128/14446/14446125.png" alt="Binance Pay" class="h-10 mx-auto"> <img src="https://cdn-icons-png.flaticon.com/128/4305/4305512.png" alt="Paiement agent cash" class="h-10 mx-auto"> <img src="https://cdn-icons-png.flaticon.com/128/4021/4021708.png" alt="Carte locale" class="h-10 mx-auto"> <img src="https://cdn-icons-png.flaticon.com/128/13974/13974303.png" alt="Chèque" class="h-10 mx-auto"></div>
+              <p class="mt-6 text-sm text-gray-400 text-center">Tous les paiements sont traités de manière sécurisée selon nos conditions générales.</p>
             </div>
-            <div class="rounded-2xl overflow-hidden bg-white/5 p-4">
-               <img src="https://i.postimg.cc/YSkZfVMS/YABISO-VOYAGE-20251216-035622-0000.png" alt="Notre équipe" class="w-full h-64 object-cover rounded-lg">
-               <div class="mt-4 text-gray-900 text-sm">Nous croyons au voyage qui transforme — laissez-nous imaginer le vôtre.</div>
-            </div>
-         </div>
-      </section>
-      <!-- WHY CHOOSE US -->
-      <section class="py-20 px-6 bg-gray-50 text-gray-900">
-         <div class="max-w-6xl mx-auto">
-         <h2 class="text-3xl font-bold mb-12 text-center">Pourquoi choisir Terra Voyage</h2>
-         <!-- Onglets -->
-         <style>
-            .tab-btn svg {
-            transition: transform 0.3s ease, color 0.3s ease;
-            }
-            .tab-btn:hover svg {
-            transform: translateY(-5px);
-            color: #f59e0b; /* Jaune/orange subtil */
-            }
-            .tab-btn span {
-            position: relative;
-            display: inline-block;
-            }
-            .tab-btn span::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            left: 0;
-            bottom: -4px;
-            background-color: #f59e0b;
-            transition: width 0.3s ease;
-            }
-            .tab-btn:hover span::after {
-            width: 100%;
-            }
-         </style>
-         <div class="flex flex-wrap justify-center gap-6 mb-12">
-            <!-- Onglets -->
-            <div class="flex flex-wrap justify-center gap-6 mb-12">
-               <!-- Support 24/7 -->
-               <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="support">
-               <img src="https://cdn-icons-png.flaticon.com/128/7595/7595894.png" alt="Support 24/7" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
-               Support 24/7
-               <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Discutez avec notre équipe à tout moment</span>
-               </button>
-               <!-- Méthodes de paiement -->
-               <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="payment">
-               <img src="https://cdn-icons-png.flaticon.com/128/6993/6993595.png" alt="Paiement" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
-               Méthodes de paiement
-               <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Visa, Mastercard, Crypto, Orange Money, M-Pesa</span>
-               </button>
-               <!-- Avantages & Réductions -->
-               <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="rewards">
-               <img src="https://cdn-icons-png.flaticon.com/128/372/372768.png" alt="Avantages & Réductions" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
-               Avantages & Réductions
-               <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Offres exclusives et promotions régulières</span>
-               </button>
-               <!-- Meilleur Prix -->
-               <button class="tab-btn flex flex-col items-center bg-gray-50 hover:bg-gray-700 px-10 py-10 rounded-xl font-semibold transition-transform transform hover:scale-105 group" data-tab="bestprice">
-               <img src="https://cdn-icons-png.flaticon.com/128/9419/9419260.png" alt="Meilleur Prix" class="h-10 w-10 mb-2 transition-transform group-hover:scale-110">
-               Garantie Meilleur Prix
-               <span class="text-sm text-gray-500 mt-2 text-center group-hover:text-gray-200 transition-colors">Nous ajustons vos tarifs si vous trouvez moins cher</span>
-               </button>
-            </div>
-            <!-- Contenu des onglets -->
-            <div class="tab-content space-y-6">
-               <div id="support" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-                  <h3 class="text-2xl font-bold mb-4">Support 24/7</h3>
-                  <p>Notre service client est disponible 24h/24 et 7j/7 pour vous accompagner à chaque étape de votre voyage.
-                     Que ce soit pour une information, une modification de réservation ou une assistance urgente, notre équipe est à votre écoute.
-                     Grâce à notre support intelligent, vous obtenez des réponses immédiates aux questions les plus fréquentes, et un conseiller dédié prend le relais dès que nécessaire via WhatsApp.
-                     Chez Terra Voyage, votre tranquillité d’esprit est une priorité, avant, pendant et après votre déplacement.
-                  </p>
-               </div>
-               <div id="payment" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-                  <!-- Méthodes de paiement -->
-                  <div id="payment" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-                     <h3 class="text-2xl font-bold mb-6">Méthodes de paiement acceptées</h3>
-                     <p class="mb-6 text-gray-900">
-                        Terra Voyage vous offre une large gamme de solutions de paiement sécurisées, locales et internationales.
-                     </p>
-                     <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center">
-                        <!-- Cartes internationales -->
-                        <img src="https://cdn-icons-png.flaticon.com/128/11378/11378185.png" alt="Mastercard" class="h-10 mx-auto">
-                        <img src="https://cdn-icons-png.flaticon.com/128/5968/5968397.png" alt="Visa" class="h-10 mx-auto">
-                        <img src="https://cdn-icons-png.flaticon.com/128/38/38971.png" alt="PayPal" class="h-10 mx-auto">
-                        <!-- Mobile Money -->
-                        <img src="https://images.seeklogo.com/logo-png/44/1/m-pesa-logo-png_seeklogo-442995.png" alt="M-Pesa" class="h-10 mx-auto">
-                        <img src="https://www.logo.wine/a/logo/Orange_Money/Orange_Money-Logo.wine.svg" alt="Orange Money" class="h-10 mx-auto">
-                        <img src="https://images.seeklogo.com/logo-png/55/1/airtel-money-uganda-logo-png_seeklogo-556391.png" alt="Airtel Money" class="h-10 mx-auto">
-                        <!-- Paiements digitaux -->
-                        <img src="https://www.logo.wine/a/logo/Google_Pay/Google_Pay-Logo.wine.svg" alt="Google Pay" class="h-10 mx-auto">
-                        <img src="https://cdn-icons-png.flaticon.com/128/5977/5977576.png" alt="Apple Pay" class="h-10 mx-auto">
-                        <img src="https://cdn-icons-png.flaticon.com/128/14446/14446125.png" alt="Binance Pay" class="h-10 mx-auto">
-                        <!-- Paiements locaux -->
-                        <img src="https://cdn-icons-png.flaticon.com/128/4305/4305512.png" alt="Paiement agent cash" class="h-10 mx-auto">
-                        <img src="https://cdn-icons-png.flaticon.com/128/4021/4021708.png" alt="Carte locale" class="h-10 mx-auto">
-                        <img src="https://cdn-icons-png.flaticon.com/128/13974/13974303.png" alt="Chèque" class="h-10 mx-auto">
-                     </div>
-                     <p class="mt-6 text-sm text-gray-400 text-center">
-                        Tous les paiements sont traités de manière sécurisée selon nos conditions générales.
-                     </p>
-                  </div>
-               </div>
-               <div id="rewards" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-                  <h3 class="text-2xl font-bold mb-4">Avantages & Réductions</h3>
-                  <p>voyager avec Terra Voyage, c’est bénéficier de privilèges exclusifs.
-                     Nous récompensons la fidélité de nos clients par des offres personnalisées, des réductions régulières et des promotions ciblées selon vos habitudes de voyage.
-                     Profitez d’avantages négociés auprès de nos partenaires aériens, hôteliers et logistiques, ainsi que d’un accès prioritaire à certaines disponibilités.
-                     Plus vous voyagez avec nous, plus vos avantages grandissent.
-                  </p>
-               </div>
-               <div id="bestprice" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
-                  <h3 class="text-2xl font-bold mb-4">Garantie Meilleur Prix</h3>
-                  <p>Nous nous engageons à vous proposer des tarifs justes, transparents et compétitifs.
-                     Si vous trouvez une offre équivalente à un prix inférieur, nous ajustons votre réservation selon nos conditions afin de vous garantir le meilleur rapport qualité-prix.
-                     Cette garantie s’accompagne d’une politique claire de remboursement et d’ajustement tarifaire, pour vous permettre de réserver en toute confiance.
-                     Avec Terra Voyage, vous êtes assuré de payer le bon prix, sans compromis sur la qualité du service.
-                  </p>
-               </div>
-            </div>
-         </div>
-      </section>
-      <script>
+          </div>
+          <div id="rewards" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+            <h3 class="text-2xl font-bold mb-4">Avantages & Réductions</h3>
+            <p>voyager avec Terra Voyage, c’est bénéficier de privilèges exclusifs. Nous récompensons la fidélité de nos clients par des offres personnalisées, des réductions régulières et des promotions ciblées selon vos habitudes de voyage. Profitez d’avantages négociés auprès de nos partenaires aériens, hôteliers et logistiques, ainsi que d’un accès prioritaire à certaines disponibilités. Plus vous voyagez avec nous, plus vos avantages grandissent.</p>
+          </div>
+          <div id="bestprice" class="tab-item hidden bg-gray-100 p-8 rounded-xl opacity-0 transform translate-y-6 transition-all duration-500">
+            <h3 class="text-2xl font-bold mb-4">Garantie Meilleur Prix</h3>
+            <p>Nous nous engageons à vous proposer des tarifs justes, transparents et compétitifs. Si vous trouvez une offre équivalente à un prix inférieur, nous ajustons votre réservation selon nos conditions afin de vous garantir le meilleur rapport qualité-prix. Cette garantie s’accompagne d’une politique claire de remboursement et d’ajustement tarifaire, pour vous permettre de réserver en toute confiance. Avec Terra Voyage, vous êtes assuré de payer le bon prix, sans compromis sur la qualité du service.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
          const tabButtons = document.querySelectorAll('.tab-btn');
          const tabItems = document.querySelectorAll('.tab-item');
          let activeTab = null;
@@ -964,87 +791,42 @@
          });
          
          if(tabButtons.length > 0) tabButtons[0].click();
-      </script>
-      <section id="partners" class="py-20 bg-gray-50 text-gray-900">
-         <div class="max-w-7xl mx-auto px-6 text-center">
-         <h3 class="text-3xl font-bold text-gray-900 mb-12">Nos partenaires</h3>
-         <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-               <!-- Compagnies aériennes -->
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Air_France_Logo.svg/512px-Air_France_Logo.svg.png" alt="Air France" class="h-16 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/logo-ethiopian-airlines.svg"alt="Ethiopian airlines" class="h-20 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/emirates-fly-better-logo-6.svg" alt="Emirates" class="h-20 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/logo-american-airlines.svg" alt="American Airlines" class="h-24 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/turkish-airlines-logo.svg" alt="turkish Airlines" class="h-24 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/qatar-airways-1.svg" alt="Qatar Airlines" class="h-24 object-contain">
-               </div>
-               <!-- Hôtels -->
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/accor-logo.svg" alt="accor live limiteless" class="h-24 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/hilton-3.svg" alt="Hilton Hotels" class="h-24 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/bookingcom-1.svg" alt="Booking.com" class="h-24 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/hyatt-vacations.svg" alt="Hyatt Hotels" class="h-24 object-contain">
-               </div>
-               <!-- Assurances -->
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/allianz-1.svg" alt="Allianz" class="h-24 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://files.brandlogos.net/svg/OeSUpbYXG3/hotels.com-logo-brandlogos.net_stqquk45q.svg" alt="Marriott hotels et resorts" class="h-24 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/axa-logo-4.svg" alt="AXA Insurance" class="h-24 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/dubai-1.svg" alt="Dubai class="h-20 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://brandlogos.net/wp-content/uploads/2023/09/yango-logo_brandlogos.net_tymas-768x253.png" alt="Dubai class="h-20 object-contain">
-               </div>
-               <!-- Paiement -->
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://files.brandlogos.net/svg/aqOfS52Rxn/kenya-airways-logo-brandlogos.net_au19uargz.svg" alt="Visa" class="h-16 object-contain">
-               </div>
-               <!-- Location véhicules -->
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/dollar-rent-a-car.svg" alt="dollar rent a car" class="h-20 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1158px-Mastercard-logo.svg.png" alt="Avis" class="h-20 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://cdn.worldvectorlogo.com/logos/enterprise-rent-a-car.svg" alt="Enterprise Rent-A-Car" class="h-20 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Brussels_Airlines.svg/1200px-Brussels_Airlines.svg.png" alt="Alamo Car Rental" class="h-20 object-contain">
-               </div>
-               <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg">
-                  <img src="https://vectorseek.com/wp-content/uploads/2023/09/Uganda-Airlines-Logo-Vector.svg-.png" alt="Alamo Car Rental" class="h-20 object-contain">
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- Swiper CSS & JS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-      <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-      <script>
+  </script>
+  <section id="partners" class="py-20 bg-gray-50 text-gray-900">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold text-gray-900 mb-12">Nos partenaires</h3>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Air_France_Logo.svg/512px-Air_France_Logo.svg.png" alt="Air France" class="h-16 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/logo-ethiopian-airlines.svg" alt="Ethiopian airlines" class="h-20 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/emirates-fly-better-logo-6.svg" alt="Emirates" class="h-20 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/logo-american-airlines.svg" alt="American Airlines" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/turkish-airlines-logo.svg" alt="turkish Airlines" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/qatar-airways-1.svg" alt="Qatar Airlines" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/accor-logo.svg" alt="accor live limiteless" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/hilton-3.svg" alt="Hilton Hotels" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/bookingcom-1.svg" alt="Booking.com" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/hyatt-vacations.svg" alt="Hyatt Hotels" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/allianz-1.svg" alt="Allianz" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://files.brandlogos.net/svg/OeSUpbYXG3/hotels.com-logo-brandlogos.net_stqquk45q.svg" alt="Marriott hotels et resorts" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/axa-logo-4.svg" alt="AXA Insurance" class="h-24 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/dubai-1.svg" alt="Dubai class=" h-20=""></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://brandlogos.net/wp-content/uploads/2023/09/yango-logo_brandlogos.net_tymas-768x253.png" alt="Dubai class=" h-20=""></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://files.brandlogos.net/svg/aqOfS52Rxn/kenya-airways-logo-brandlogos.net_au19uargz.svg" alt="Visa" class="h-16 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/dollar-rent-a-car.svg" alt="dollar rent a car" class="h-20 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1158px-Mastercard-logo.svg.png" alt="Avis" class="h-20 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://cdn.worldvectorlogo.com/logos/enterprise-rent-a-car.svg" alt="Enterprise Rent-A-Car" class="h-20 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Brussels_Airlines.svg/1200px-Brussels_Airlines.svg.png" alt="Alamo Car Rental" class="h-20 object-contain"></div>
+          <div class="swiper-slide flex justify-center items-center transition-transform transform hover:scale-110 hover:shadow-lg"><img src="https://vectorseek.com/wp-content/uploads/2023/09/Uganda-Airlines-Logo-Vector.svg-.png" alt="Alamo Car Rental" class="h-20 object-contain"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> 
+  <script>
+
+
          const swiper = new Swiper(".mySwiper", {
            slidesPerView: 4,
            spaceBetween: 30,
@@ -1056,11 +838,12 @@
              1024: { slidesPerView: 4 },
            },
          });
-      </script>
-      <!-- Swiper JS & CSS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-      <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-      <script>
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> 
+  <script>
+
+
          const partnersSwiper = new Swiper('.partnersSwiper', {
            slidesPerView: 2,
            spaceBetween: 40,
@@ -1075,91 +858,59 @@
              1024: { slidesPerView: 6 },
            },
          });
-      </script>
-      <!-- CONTACT -->
-      <section id="contact" class="py-20 bg-gray-100">
-         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h3 class="text-3xl font-bold text-red-600">
-               Prêt à voyager ?
-            </h3>
-            <p class="text-black mt-4">
-               Contactez-nous et construisons ensemble votre prochain voyage.
-            </p>
-            <a href="https://wa.me/243854442103"
-               target="_blank"
-               class="inline-block mt-8 px-8 py-4 bg-red-600 hover:bg-red-700 rounded-xl text-lg font-semibold text-white transition">
-            Discuter sur WhatsApp
-            </a>
-         </div>
-      </section>
-      <!-- FOOTER PREMIUM MOBILE ACCORDÉON -->
-      <footer class="bg-gray-950 text-gray-300 pt-12 md:pt-20 pb-10 relative">
-         <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <!-- Logo & description -->
-            <div class="flex flex-col justify-start mb-8 md:mb-0">
-               <h4 class="text-2xl font-extrabold text-white mb-2 md:mb-4">
-                  Terra <span class="text-red-600">Voyage</span>
-               </h4>
-               <p class="text-sm leading-relaxed text-gray-400 md:max-w-xs">
-                  Agence de voyage premium dédiée aux expériences sur mesure, aux voyages d’affaires et aux destinations d’exception.
-               </p>
-            </div>
-         
-<!-- ================= FOOTER ================= -->
-<footer class="bg-gray-950 border-t border-gray-800 mt-20">
-
-  <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-10 text-sm">
-
-    <div>
-      <h5 class="font-semibold mb-3">Navigation</h5>
-      <ul class="space-y-2 text-gray-400">
-        <li><a href="#home" class="hover:text-red-600">Accueil</a></li>
-        <li><a href="#services" class="hover:text-red-600">Services</a></li>
-        <li><a href="#destinations" class="hover:text-red-600">Destinations</a></li>
-        <li><a href="#contact" class="hover:text-red-600">Contact</a></li>
-      </ul>
+  </script>
+  <section id="contact" class="py-20 bg-gray-100">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold text-red-600">Prêt à voyager ?</h3>
+      <p class="text-black mt-4">Contactez-nous et construisons ensemble votre prochain voyage.</p><a href="https://wa.me/243854442103" target="_blank" class="inline-block mt-8 px-8 py-4 bg-red-600 hover:bg-red-700 rounded-xl text-lg font-semibold text-white transition">Discuter sur WhatsApp</a>
     </div>
-
-    <div>
-      <h5 class="font-semibold mb-3">Services</h5>
-      <ul class="space-y-2 text-gray-400">
-        <li>Billetterie aérienne</li>
-        <li>Voyages sur mesure</li>
-        <li>Hôtels & Resorts</li>
-        <li>Visas & assistance</li>
-      </ul>
+  </section>
+  <footer class="bg-gray-950 text-gray-300 pt-12 md:pt-20 pb-10 relative">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="flex flex-col justify-start mb-8 md:mb-0">
+        <h4 class="text-2xl font-extrabold text-white mb-2 md:mb-4">Terra <span class="text-red-600">Voyage</span></h4>
+        <p class="text-sm leading-relaxed text-gray-400 md:max-w-xs">Agence de voyage premium dédiée aux expériences sur mesure, aux voyages d’affaires et aux destinations d’exception.</p>
+      </div>
+      <footer class="bg-gray-950 border-t border-gray-800 mt-20">
+        <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-10 text-sm">
+          <div>
+            <h5 class="font-semibold mb-3">Navigation</h5>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#home" class="hover:text-red-600">Accueil</a>
+              </li>
+              <li>
+                <a href="#services" class="hover:text-red-600">Services</a>
+              </li>
+              <li>
+                <a href="#destinations" class="hover:text-red-600">Destinations</a>
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-red-600">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold mb-3">Services</h5>
+            <ul class="space-y-2 text-gray-400">
+              <li>Billetterie aérienne</li>
+              <li>Voyages sur mesure</li>
+              <li>Hôtels & Resorts</li>
+              <li>Visas & assistance</li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold mb-3">Contact</h5>
+            <p class="text-gray-400">WhatsApp : +243 854 442 103<br>
+            Email : contact@terravoyage.com</p>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 py-6 text-center text-gray-500 text-xs">
+          © 2025 Terra Voyage — Tous droits réservés
+        </div>
+      </footer>
+      <script src="assets/js/main.js" defer></script>
     </div>
-
-    <div>
-      <h5 class="font-semibold mb-3">Contact</h5>
-      <p class="text-gray-400">
-        WhatsApp : +243 854 442 103<br>
-        Email : contact@terravoyage.com
-      </p>
-    </div>
-
-  </div>
-
-  <div class="border-t border-gray-800 py-6 text-center text-gray-500 text-xs">
-    © 2025 Terra Voyage — Tous droits réservés
-  </div>
-
-</footer>
-
-<!-- ================= ANIMATIONS ================= -->
-<style>
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale(0.85); }
-  to { opacity: 1; transform: scale(1); }
-}
-.animate-zoomIn {
-  animation: zoomIn 1s ease forwards;
-}
-</style>
-
-<!-- ================= JS ================= -->
-<script src="assets/js/main.js" defer></script>
-
+  </footer>
 </body>
 </html>
-
